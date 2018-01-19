@@ -1,0 +1,4 @@
+201801121132   0     1     0laur3110 C:\Users\laur3110\Documents\REM 429\Lab 1\Moscow_Slope = SLOPE(C:\Users\laur3110\Documents\REM 429\Lab 1\UIEF_data\UIEF_data\TOPOGRAPHY\ELEVATION\dem_10,  1.0, PERCENTRISE)
+201801121134   0     2     0laur3110 C:\Users\laur3110\Documents\REM 429\Lab 1\Moscow_Contours = CONTOUR(C:\Users\laur3110\Documents\REM 429\Lab 1\UIEF_data\UIEF_dat
+201801121135   0     1     0laur3110 C:\Users\laur3110\Documents\REM 429\Lab 1\moscow_aspect = ASPECT(C:\Users\laur3110\Documents\REM 429\Lab 1\UIEF_data\UIEF_data\TOPOGRAPHY\ELEVATION\dem_10)
+201801121136   0     2     0laur3110 C:\Users\laur3110\Documents\REM 429\Lab 1\mscw_hillshde = HILLSHADE(C:\Users\laur3110\Documents\REM 429\Lab 1\UIEF_data\UIEF_dat

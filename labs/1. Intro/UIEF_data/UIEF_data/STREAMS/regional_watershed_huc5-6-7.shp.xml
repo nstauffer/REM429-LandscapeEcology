@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Sandra Thiel--Idaho Department of Water Resources</origin>
+				<pubdate>20000829</pubdate>
+				<title Sync="TRUE">regional_watershed_huc5-6-7</title>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<pubinfo>
+					<pubplace>Boise, Idaho</pubplace>
+					<publish>Idaho Department of Water Resources</publish>
+				</pubinfo>
+				<onlink>&lt;URL:http://www.idwr.state.id.us/gisdata/gis_data.htm&gt;</onlink>
+				<ftname Sync="TRUE">regional_watershed_huc5-6-7</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>
+The fifth field watershed coverage consists of watersheds
+approximately 50,000 acres in size.  The coverage is complete
+at the fifth field level for all hydrologic units within Idaho.
+Major contributors to watershed deliniation include the Bureau of
+Land Management, U.S. Forest Service, Idaho Department of Lands,
+Boise Cascade Corporation, and the Idaho Deparment of Water
+Resources.  This coverage also contains sixth and seventh field
+watersheds where they are available. However, much of the state
+remains undefined at that scale.
+</abstract>
+			<purpose>
+To create a standardized set of line work for use by state, federal
+and local agencies. We want a coverage that can be certified by both USGS and NRCS as well as local users.
+</purpose>
+			<supplinf>IDWR watershed page is available at www.idwr.state.id.us/gisdata/gis.htm. NRCS info is at http://www.ftw.nrcs.usda.gov/huc_data.html.  The USGS http://wwwga.usgs.gov/gis/iag.html. USGS and NRCS have created a new standard which is scheduled to be final in October 2000.</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates>
+					<begdate>1995</begdate>
+					<enddate>Present</enddate>
+				</rngdates>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>In work</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-117.037898</westbc>
+				<eastbc Sync="TRUE">-116.533304</eastbc>
+				<northbc Sync="TRUE">46.954365</northbc>
+				<southbc Sync="TRUE">46.686892</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">497116.355750</leftbc><rightbc Sync="TRUE">535511.637194</rightbc><bottombc Sync="TRUE">5170475.219900</bottombc><topbc Sync="TRUE">5200092.898263</topbc></lboundng><minalti>2550</minalti><maxalti>4983</maxalti><altunits>feet, above mean sea level</altunits></spdom>
+		<keywords>
+			<theme>
+				<themekt>none</themekt>
+				<themekey>HUC</themekey>
+				<themekey>watershed</themekey><themekey>hydrologic units</themekey><themekey>stream gauge</themekey></theme>
+			<place>
+				<placekt>none</placekt>
+				<placekey>Idaho</placekey>
+				<placekey>Latah County</placekey><placekey>Potlatch</placekey></place>
+		</keywords>
+		<accconst>None with the understanding that this is a draft</accconst>
+		<useconst>
+There are scale variations.  Some of the line work was digitized at
+a scale of 1:1000,000.  Others were done at 1:24,000. This is a draft
+coverage. Linework and attribute information may change.  When the final federal watershed delineation standards are released, changes will may be made to linework and attribute information to bring the coverage into compliance.
+</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntpos>Forest Manager</cntpos>
+				<cntvoice>2088857035</cntvoice>
+				<cntfax>2088856226</cntfax>
+				<cntaddr><address>University of Idaho</address><address>College of Natural Resources, Experimental Forest</address><addrtype>mailing address</addrtype><city>Moscow</city><state>Idaho</state><postal>83844-1133</postal><country>USA</country></cntaddr><cntorgp><cntorg>University of Idaho College of Natural Resources, Experimental Forest</cntorg><cntper>Harold Osborne</cntper></cntorgp></cntinfo>
+		</ptcontac>
+		<datacred>
+The following as a list of people who participated in
+fifth through seventh field delineation or were part of
+the coordination effort:
+
+Hal Anderson
+Idaho Dept. of Water Resources
+1301 N. Orchard Street
+Boise, ID  83706-2237
+208-327-7888
+FAX: 208-327-7866
+handerso@idwr.state.id.us
+
+Scott Augustine
+USEPA - Region 10
+1200 Sixth Avenue
+Seattle, WA  98121
+206-553-1795
+FAX: 206-553-0119
+augustine.scott@epamail.epa.gov
+
+Leigh Bailey
+Payette National Forest
+P.O. Box 1026
+McCall, ID  83638
+208-634-0709
+FAX: 208-634-0744
+lbailey/r4,payette@fs.fed.us
+
+Wendy Berelson
+University of Wyoming
+(307)766-2735
+
+Bart Butterfield
+Idaho Dept. of Fish and Game
+600 Walnut
+Boise, ID 83707
+208-334-2722
+FAX: 208-334-2114
+bbutterf@idfg.state.id.us
+
+John Courtright
+U.S. Bureau of Land Management
+1387 S. Vinnell Way
+Boise, ID  83709
+208-373-3966
+208-373-3949
+jcourtri@id.blm.gov
+
+Ervin Cowley
+U.S. Bureau of Land Management
+1387 S. Vinnell Way
+Boise, ID  38709
+
+Todd Cutler
+Boise Cascade Corp.
+1111 W. Jefferson
+Boise, ID  83728
+208-384-7988
+FAX: 208-384-7699
+todd.cutler@bc.com
+
+Linda Davis
+Idaho Dept. of Water Resources
+1301 N. Orchard Street
+Boise, ID  83706-2237
+208-327-7998
+FAX: 208-327-7866
+ldavis@idwr.state.id.us
+
+Gail Ewart
+Division of Environmental Quality
+1410 N. Hilton
+Boise, ID  93706
+208-373-0226
+FAX: 208-373-0315
+gewart@deq.state.id.us
+
+Domoni Glass
+Boise Cascade
+One Jefferson Square
+Boise, ID  83702
+208-384-6670
+domoni_glass@bc.com
+
+Blaise Grden
+Walla Walla District
+U.S. Army Corps of Engineers
+210 N. Third Avenue
+Walla Walla, WA  99362-9265
+509-527-7271
+FAX:  509-527-7832
+blaise.g.grden@npw01.usace.army.mil
+
+David Green
+Nez Perce National Forest, Region 1
+Rt. 2, Box 475
+Grangeville, ID  83530
+208-983-1950
+dgreen/rl_nezperce@fs.fed.us
+
+Dave Gruenhagen
+Idaho Department of Lands
+P.O. Box 83720
+Boise, ID  83720-0050
+208-334-0277
+FAX: 208-334-2339
+dgruenha@idl.state.id.us
+
+Dale Goenther
+U.S. Forest Service
+(505)808-2188
+dgoenther/r6pnw@fs.fed.us
+
+John Hintz
+Nez Perce Tribe
+(208)843-7391
+johnh@nezperce.org
+
+David Hoover
+NRCS
+9173 West Barnes Dr., Suite C
+Boise, ID  83709
+208-378-5785
+FAX: 208-378-5735
+dhoover@id.nrcs.usda.gov
+
+Pat Lambert
+U.S. Geological Survey-WRD
+230 Collins Road
+Boise, ID  83702
+208-387-1387
+FAX: 208-387-1372
+plambert@usgs.gov
+
+Andy Little
+Power Engineers
+1295 S. Eagle Flight Way
+Boise, ID  83709
+208-378-6303
+FAX:  208-378-0025
+alittle@ram.powereng.com
+
+Ed Lozar
+GIS Coodinator - Clear Water National Forest
+elozar@fs.fed.us
+
+Molly Maupin
+U.S. Geological Survey - WRD
+230 Collins Road
+Boise, ID  83702
+
+Bruce McCammon
+U.S. Forest Service
+P.O. Box 3623
+Portland, OR  97208
+McCammon_Bruce_P/r6pnw@fs.fed.us
+
+Warren McFall
+U.S. Environmental Protection Agency
+1435 N. Orchard Street
+Boise, ID  83706
+208-378-5759
+mcfall.warren@epamail.epa.gov
+
+Tony Morse
+Idaho Dept. of Water Resources
+1301 N. Orchard Street
+Boise, ID  83706-2237
+208-327-7997
+FAX: 208-327-7866
+tmorse@idwr.state.id.us
+
+Dennis Murphy
+Potlatch Corporation
+P.O. Box 1016
+Lewiston, ID  83705
+208-799-1156
+FAX:  208-799-1018
+dlmurphy@potlatcorp.com
+
+Rosa Nygaard
+Systems Analyst, EAP
+U.S. Forest Service, Region 1
+Federal Building
+200 E. Broadway St.
+P.O. Box 7669
+Missoula, MT  59807
+406-326-3461
+rnygaard/r1@fs.fed.us
+
+Bill Ondrechen
+Idaho Dept. of Water Resources
+1301 N. Orchard Street
+Boise, ID  83706-2237
+208-327-7988
+FAX: 208-327-7866
+bondrech@idwr.state.id.us
+
+Rick Patten
+Forest Hydrologist, Watershed Program Leader
+Idaho Panhandle National Forests
+3815 Schrieber Way
+Coeur d'Alene, ID  83815
+208-765-7407
+FAX: 208-765-7307
+rpatten/rl_ipnf@fs.fed.us
+
+Ann Puffer
+U.S. Forest Service, Region 1
+Federal Building
+200 East Broadway St.
+Box 7669
+Missoula, MT  59807
+
+Mary Ellen Pearce
+GIS Coordinator - Idaho Panhandle National Forest
+(208)765-7279
+mpearce@fs.fed.us
+
+Betsy Rieffenberger
+Salmon and Challis National Forests
+RR2, Box 600
+Salmon, ID  83467
+
+Robert Smith
+Idaho Department of Lands
+Box 83720
+Boise, ID 83720-0050
+(208)334-0276
+bsmith@idl.state.id.us
+</datacred>
+		<native Sync="TRUE">Microsoft Windows 2000 Version 5.0 (Build 2195) Service Pack 2; ESRI ArcCatalog 8.1.0.642</native>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<attracc>
+			<attraccr>Because this is a draft coverage, there may some inconsistancies in the attribute information. An initial check was done to make sure that reasonable attribute information is present within the fields submitted, but no check has been done to make sure that duplicate field names or numbers do not occur or to make sure that the basin name correctly reflects the watershed. These checks will be done before the coverage is released as a final coverage. If errors are found, please submit them to sthiel@idwr.state.id.us and she will coordinate updates with the agency that contributed the data.</attraccr>
+		</attracc>
+		<logic>
+Polygon and chain-node topology present.
+No label errors. Normal ArcInfo polygon file with polygon and line attributes.
+</logic>
+		<complete>
+Incomplete - in progress. Many of the forests have submitted watersheds as fine as the sixth
+field.  However, much of the state remains at the fifth field level. As coordination occurs with other states and agencies, the linework and attribute information will change.
+</complete>
+		<posacc>
+			<horizpa>
+				<horizpar>The horizontal accuracy may vary widely within this coverage. Some of the original lines were screen digitized with 1:100,000 scale hydrography to approximate watershed delineations.  Some of the lines have been digitized at the 1:24,000 scale and are within 1:24,000 map accuracy standards.  Check the source attribute on the linework for the information about a specific line.</horizpar>
+			</horizpa>
+		</posacc>
+		<cloud>0</cloud>
+		<lineage><procstep><proccont><cntinfo><cntaddr><address>University of Idaho</address><addrtype>mailing address</addrtype><address>College of Natural Resources, Experimental Forest</address><city>Moscow</city><state>Idaho</state><postal>83844-1133</postal><country>USA</country></cntaddr><cntorgp><cntorg>University of Idaho College of Natural Resources, Experimental Forest</cntorg><cntper>B.D. Austin</cntper></cntorgp><cntpos>Forester</cntpos><cntvoice>2088857517</cntvoice><cntfax>2088856226</cntfax></cntinfo></proccont><procdesc>Projected to UTM NAD83 Zone 11.
+statewide HUC coverage clipped to greater Moscow Mountain region.</procdesc><procsv>Arc 8.1, ArcToolbox, ArcMap</procsv><procdate>200202</procdate><srcprod>regional_watershed_huc5-6-7.*</srcprod></procstep></lineage></dataqual>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf>
+			<sdtsterm Name="regional_watershed_huc5-6-7">
+				<sdtstype Sync="TRUE">G-polygon</sdtstype>
+				<ptvctcnt Sync="TRUE">64</ptvctcnt>
+			</sdtsterm>
+			<sdtsterm>
+				<sdtstype>String</sdtstype>
+				<ptvctcnt>14095</ptvctcnt>
+			</sdtsterm>
+			<sdtsterm>
+				<sdtstype>GT-polygon composed of chains</sdtstype>
+				<ptvctcnt>4591</ptvctcnt>
+			</sdtsterm>
+			<esriterm Name="regional_watershed_huc5-6-7"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">64</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer><featdesc>Greater Moscow Mountain region watershed polygons.</featdesc></esriterm></ptvctinf>
+		<indspref>Greater Moscow Mountain region, Latah County, Idaho.</indspref></spdoinfo>
+	<spref>
+		<horizsys>
+			<planar>
+				<planci>
+					<plance Sync="TRUE">coordinate pair</plance>
+					<coordrep>
+						<absres Sync="TRUE">0.000064</absres>
+						<ordres Sync="TRUE">0.000064</ordres>
+					</coordrep>
+					<plandu Sync="TRUE">meters</plandu>
+				</planci>
+				<gridsys><gridsysn Sync="TRUE">Universal Transverse Mercator</gridsysn><utm><utmzone Sync="TRUE">11</utmzone><transmer><sfctrmer Sync="TRUE">0.999600</sfctrmer><longcm Sync="TRUE">-117.000000</longcm><latprjo Sync="TRUE">0.000000</latprjo><feast Sync="TRUE">500000.000000</feast><fnorth Sync="TRUE">0.000000</fnorth></transmer></utm></gridsys></planar>
+			<geodetic>
+				<horizdn Sync="TRUE">North American Datum of 1983</horizdn>
+				<ellips Sync="TRUE">Geodetic Reference System 80</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257222</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><projcsn Sync="TRUE">NAD_1983_UTM_Zone_11N</projcsn></cordsysn></horizsys>
+	</spref>
+	<eainfo>
+		<overview>
+			<eaover>
+&gt;
+&gt;WATERSHD.PAT:
+&gt;
+&gt;COLUMN   ITEM NAME        WIDTH OUTPUT  TYPE N.DEC  ALTERNATE NAME
+&gt;		1  AREA                   4    12     F      3
+&gt;		5  PERIMETER              4    12     F      3
+&gt;		9  WATERSHD#              4     5     B      -
+&gt;	 13  WATERSHD-ID            4     5     B      -
+&gt;	 17  HUC4CODE               8     8     C      -
+&gt;	 25  HUC4NAME              30    30     C      -
+&gt;	 55  HUC5CODE              10    10     C      -
+&gt;	 65  HUC5NAME              30    30     C      -
+&gt;	 95  LEGACY5               10    10     C      -
+&gt;	105  HUC6CODE              12    12     C      -
+&gt;	117  HUC6NAME              30    30     C      -
+&gt;	147  HUC7CODE              14    14     C      -
+&gt;	161  HUC7NAME              30    30     C      -
+&gt;	191  SOURCE                30    30     C      -
+&gt;
+&gt;
+&gt;WATERSHD.AAT:
+&gt;
+&gt;COLUMN   ITEM NAME        WIDTH OUTPUT  TYPE N.DEC  ALTERNATE NAME
+&gt;		1  FNODE#                 4     5     B      -
+&gt;		5  TNODE#                 4     5     B      -
+&gt;		9  LPOLY#                 4     5     B      -
+&gt;	 13  RPOLY#                 4     5     B      -
+&gt;	 17  LENGTH                 4    12     F      3
+&gt;	 21  WATERSHD#              4     5     B      -
+&gt;	 25  WATERSHD-ID            4     5     B      -
+&gt;	 29  AGENCY                30    30     C      -
+&gt;	 59  SOURCE                30    30     C      -
+&gt;	 89  BORDERS               30    30     C      -
+&gt;
+&gt;
+&gt;WATERSHD.NAT:
+&gt;
+&gt;COLUMN   ITEM NAME        WIDTH OUTPUT  TYPE N.DEC  ALTERNATE NAME
+&gt;		1  ARC#                 4     5     B      -
+&gt;		5  WATERSHD#            4     5     B      -
+&gt;		9  WATERSHD-ID          4     5     B      -
+&gt;
+&gt;
+&gt;PAT
+&gt;	HUC4CODE:  Hydrologic Unit Number
+&gt;	HUC4NAME:  Basin Name if one exists
+&gt;	HUC5CODE:  Fifth field number
+&gt;	HUC5NAME:  Fifith field name if one exists
+&gt;	LEGACY5:   Former fifth field code value before most recent updates.
+&gt;	HUC6CODE:  Sixth field number
+&gt;	HUC6NAME:  Sixth field name if one exists
+&gt;	HUC7CODE:  Seventh field number
+&gt;	HUC7NAME:  Seventh field name if one exists
+&gt;	SOURCE:    Souce of the polygon values
+&gt;
+&gt;AAT
+&gt;	AGENCY:   Name of agency submitting information
+&gt;	SOURCE:   Source of changes.  Often submitted by the agency indicating
+&gt;		        DRGs or 24k line work as the source of the arc.
+&gt;	BORDERS:  Added to indicate descripencies between various agencies
+&gt;		        line work.
+&gt;
+&gt;
+</eaover>
+			<eadetcit>Contact Idaho Department of Water Resources for greater information as to the listed attributes for stream arc/segments.</eadetcit></overview>
+		<detailed Name="regional_watershed_huc5-6-7"><enttyp><enttypl Sync="TRUE">regional_watershed_huc5-6-7</enttypl><enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">64</enttypc><enttypd>Attribute table for hucs 5,6,7 clipped to greater Moscow Mountain region.</enttypd><enttypds>B.D. Austin</enttypds></enttyp><attr><attrlabl Sync="TRUE">FID</attrlabl><attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">Shape</attrlabl><attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Feature geometry.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Coordinates defining the features.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">AREA</attrlabl><attalias Sync="TRUE">AREA</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">16</attwidth><atnumdec Sync="TRUE">3</atnumdec><attrdef>Watershed area</attrdef><attrdefs>B.D. Austin</attrdefs></attr><attr><attrlabl Sync="TRUE">PERIMETER</attrlabl><attalias Sync="TRUE">PERIMETER</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">16</attwidth><atnumdec Sync="TRUE">3</atnumdec><attrdef>Watershed perimeter</attrdef><attrdefs>B.D Austin</attrdefs></attr><attr><attrlabl Sync="TRUE">WATERSHD_</attrlabl><attalias Sync="TRUE">WATERSHD_</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">11</attwidth><attrdef>Watershed identifier code</attrdef><attrdefs>B.D. Austin</attrdefs></attr><attr><attrlabl Sync="TRUE">WATERSHD_I</attrlabl><attalias Sync="TRUE">WATERSHD_I</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">11</attwidth><attrdef>Watershed identifier code</attrdef><attrdefs>B.D. Austin</attrdefs></attr><attr><attrlabl Sync="TRUE">HUC4CODE</attrlabl><attalias Sync="TRUE">HUC4CODE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">8</attwidth><attrdef>Hydrologic Unit Number</attrdef><attrdefs>Entity and attribute overview</attrdefs></attr><attr><attrlabl Sync="TRUE">HUC4NAME</attrlabl><attalias Sync="TRUE">HUC4NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth><attrdef>Basin Name if one exists</attrdef><attrdefs>Entity and attribute overview</attrdefs></attr><attr><attrlabl Sync="TRUE">HUC5CODE</attrlabl><attalias Sync="TRUE">HUC5CODE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">10</attwidth><attrdef>Hydrologic Unit Number</attrdef><attrdefs>Entity and attribute overview</attrdefs></attr><attr><attrlabl Sync="TRUE">HUC5NAME</attrlabl><attalias Sync="TRUE">HUC5NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth><attrdefs>Entity and attribute overview</attrdefs><attrdef> Fifith field name if one exists</attrdef></attr><attr><attrlabl Sync="TRUE">LEGACY5</attrlabl><attalias Sync="TRUE">LEGACY5</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">10</attwidth><attrdef>Former fifth field code value before most recent updates.</attrdef><attrdefs>Entity and attribute overview</attrdefs></attr><attr><attrlabl Sync="TRUE">HUC6CODE</attrlabl><attalias Sync="TRUE">HUC6CODE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">12</attwidth><attrdef>Hydrologic Unit Number</attrdef><attrdefs>Entity and attribute overview</attrdefs></attr><attr><attrlabl Sync="TRUE">HUC6NAME</attrlabl><attalias Sync="TRUE">HUC6NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth><attrdefs>Entity and attribute overview</attrdefs><attrdef> Sixth field name if one exists</attrdef></attr><attr><attrlabl Sync="TRUE">HUC7CODE</attrlabl><attalias Sync="TRUE">HUC7CODE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">14</attwidth><attrdef>Hydrologic Unit Number</attrdef><attrdefs>Entity and attribute overview</attrdefs></attr><attr><attrlabl Sync="TRUE">HUC7NAME</attrlabl><attalias Sync="TRUE">HUC7NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth><attrdefs>Entity and attribute overview</attrdefs><attrdef>Seventh field name if one exists</attrdef></attr><attr><attrlabl Sync="TRUE">SOURCE</attrlabl><attalias Sync="TRUE">SOURCE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth><attrdefs>Entity and attribute overview</attrdefs><attrdef> Souce of the polygon values</attrdef></attr></detailed></eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Idaho Department of Water Resources</cntorg>
+				</cntorgp>
+				<cntpos>GIS Analyst</cntpos>
+				<cntaddr>
+					<addrtype>Mailing and Physical Address</addrtype>
+					<address>1301 N. Orchard St.</address>
+					<city>Boise</city>
+					<state>Idaho</state>
+					<postal>83706</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(208) 327-7882</cntvoice>
+				<cntinst>Contact via email</cntinst>
+			</cntinfo>
+		</distrib>
+		<distliab>This is a draft copy. Please give data providers credit for data set.</distliab>
+		<stdorder>
+			<fees>Charge for cost of media or person reqesting data furnishes tape or blank cd</fees>
+			<ordering>email sthiel@idwr.state.id.us or call (208) 327-7886</ordering>
+			<turnarnd>3 working days from request received</turnarnd>
+			<digform><digtinfo><transize Sync="TRUE">0.315</transize><dssize Sync="TRUE">0.315</dssize><formname>ARCG</formname></digtinfo><digtopt><offoptn><offmedia>CD-ROM</offmedia><reccap><recden>680</recden><recdenu>unknown</recdenu></reccap><recfmt>ISO 9660 format</recfmt><compat>ISO 9660 compatable</compat></offoptn></digtopt></digform></stdorder>
+		<resdesc>Greater Moscow Mountain region watershed polygons, HUC 5, 6, 7.</resdesc><availabl><timeinfo><rngdates><begdate>2002</begdate><enddate>unknown</enddate></rngdates></timeinfo></availabl></distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20020326</metd>
+		<metc>
+			<cntinfo>
+				<cntpos>Forester</cntpos>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>University of Idaho</address>
+					<city>Moscow</city>
+					<state>Idaho</state>
+					<postal>83844-1133</postal>
+					<country>USA</country>
+					<address>College of Natural Resources, Experimental Forest</address></cntaddr>
+				<cntvoice>2088857517</cntvoice><cntfax>2088856226</cntfax><cntorgp><cntorg>University of Idaho College of Natural Resources, Experimental Forest</cntorg><cntper>Brian Austin</cntper></cntorgp></cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<mettc Sync="TRUE">local time</mettc>
+		<metac>none</metac>
+		<metuc>none</metuc>
+		<langmeta Sync="TRUE">en</langmeta><metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv><metsi><metscs>none</metscs><metsc>Unclassified</metsc><metshd>none</metshd></metsi><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><MetaID>{E7EA52BD-C9CB-4786-9673-8EA5E6202C67}</MetaID><CreaDate>20020215</CreaDate><CreaTime>10552400</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20020326</SyncDate><SyncTime>15361300</SyncTime><ModDate>20020326</ModDate><ModTime>15361300</ModTime></Esri></metadata>

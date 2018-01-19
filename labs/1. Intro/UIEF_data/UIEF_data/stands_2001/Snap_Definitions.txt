@@ -1,0 +1,55 @@
+UI School Forest Code Deffinitions (as used in SNAP)		
+
+Seral Stage Code Definitions		
+
+Code	Label	Description
+1	Wetland	Permanent Wetland
+2	Meadow	Permanent Opening
+3	Open Field	Agriculture
+4	Grass/forb	Current Pasture
+5	Seedling	With Shrub or Grass
+6	Sapling 1	"even - DBH (0 to 2"")"
+7	Sapling 2	"even - DBH (2.1 to 4"")"
+8	Pole Timber 1	"even - DBH (4.1 to 6"")"
+9	Pole Timber 2	"even - DBH (6.1 to 8"")"
+10	Small Saw 1	"even - DBH (8.1 to 10"")"
+11	Small Saw 2	"even - DBH (10.1 to 12"")"
+12	Medium Saw 1	"even - DBH (12.1 to 14"")"
+13	Medium Saw 2	"even - DBH (14.1 to 16"")"
+14	Large Saw 1	"even - DBH (16.1 to 18"")"
+15	Large Saw 2	"even - DBH (20.1"" +)"
+16	Mixed - Low	Uneven low density stocking
+17	Mixed - medium	Uneven Medium density stocking
+18	Mixed - High	Uneven High Density Stocking
+19	Shrubfield	Established brush
+
+
+Silvicultural Treatment Code Definitions		
+
+Code	Label	Description
+1	Afforest	Afforestation of open space by plantation
+2	Clearcut/Plant	Clearcut regeneration by either plant or natural
+3	Seed Tree	Even-age regen cut with 15 TPA/ 20 - 40 BA
+4	Shelterwood	Even-age regen cut with 35 TPA/ 30 - 60 BA
+5	Removal Cut	Clearcut removal of seed tree or shelter trees
+6	Single Select	Single tree selection to BA 90
+7	Group Select	Group or Patch selection to BA 90
+8	Precom Thin	Precommercial stocking control to 250 -350 TPA
+9	Com Thin	Commercial thin/stand improvement to 150 TPA
+10	No Cut	No Practices this period (or Natural area)
+11	Com Thin/fert	Commercial thin w fertilization
+12	Fertilize only	Fertilize only/no cutting
+13	Salvage	Remove merchantable Mortality
+14	Sanitation	Remove merchantable Premortality
+15	Restoration	Ecosystem restoration to pre 1860 conditions
+16	Riparian	Riparian vegetation Management
+
+System	1 - Tractor
+	2 - Cable
+
+Z_g1	% total volume in cedar saw logs
+Z_g2	% total volume in saw logs except cedar
+Z_g3	% total volume in pulp wood
+
+Vol_99	estimated current volume 1000board feet (mbf)
+

@@ -1,0 +1,9 @@
+199608201442   0     3     0stump912 import cover hydro.e00 hydro
+199608241135   0     0     0lizaf copy hydro /data/gis/uief/stream
+19960827 940   0     2     0lizaf export cover /data/gis/uief/stream uief_stream
+19960910 835   0     2     0lizaf export cover stream stream.e00
+200003151526   0     0     0administrator copy stream h:\sam\stream_utm27
+200003161202   0     2     0administrator project cover stream_utm27 stream_utm83 n27ton83.prj
+200003161210   0     0     0administrator build stream_utm83 line
+200010101514   0     1     0administrator copy stream_utm83 i:\stream_83
+200109051445   0     0     0administrator copy stream_83 I:\arcinfo_covers\stream_utm83

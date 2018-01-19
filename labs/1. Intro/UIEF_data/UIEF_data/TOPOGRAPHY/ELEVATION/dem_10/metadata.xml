@@ -1,0 +1,470 @@
+<?xml version="1.0"?>
+<!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
+<metadata xml:lang="en"><Esri><MetaID>{466CFB00-AF05-4FDE-82CB-F98A58F4901B}</MetaID><CreaDate>20020219</CreaDate><CreaTime>09514600</CreaTime><SyncOnce>FALSE</SyncOnce><ModDate>20020326</ModDate><ModTime>15364400</ModTime><SyncDate>20020326</SyncDate><SyncTime>15364400</SyncTime></Esri><idinfo><ptcontac><cntinfo><cntaddr><address>47914 252nd Street</address><addrtype>mailing and physical address</addrtype><city>Sioux Falls</city><state>SD</state><postal>57198-0001</postal><country>USA</country></cntaddr><cntorgp><cntorg>U.S. Geological Survey - EROS Data Center</cntorg><cntper>Customer Services Representative</cntper></cntorgp><cntvoice>: 605-594-6151</cntvoice><cntfax>605-594-6589</cntfax><cntemail>custserv@edcmail.cr.usgs.gov</cntemail><hours>8:00 am - 4:00 pm CST</hours><cntinst>: Please specify NED in the subject of any request so it gets routed appropriately
+</cntinst></cntinfo></ptcontac><citation><citeinfo><pubdate>Unpublished Material</pubdate><pubtime>Unknown</pubtime><origin>University of Idaho Library, Lily Wai</origin><title Sync="TRUE">dem_10</title><ftname Sync="TRUE">dem_10</ftname><geoform Sync="TRUE">raster digital data</geoform><onlink Sync="TRUE">\\clan\library\coverages\experimental_forest\moscow_mountain_region\topography\elevation\dem_10</onlink></citeinfo></citation><keywords><theme><themekt>GCMD Parameter Keywords</themekt><themekey>EARTH SCIENCE</themekey><themekey>LAND SURFACE</themekey><themekey>TOPOGRAPHY</themekey><themekey>: LANDFORMS</themekey><themekey>TERRAIN ELEVATION</themekey><themekey>1-DEGREE DEM</themekey><themekey>2-ARC-SECOND DEM</themekey><themekey>7.5-MINUTE DEM</themekey><themekey>CARTOGRAPHY</themekey><themekey>DEM</themekey><themekey>DIGITAL ELEVATION MODEL</themekey><themekey>DIGITAL MAPPING</themekey><themekey>EDC</themekey><themekey>EROS</themekey><themekey>GEODATA</themekey><themekey>GIS</themekey><themekey>MAPPING</themekey><themekey>RASTER</themekey><themekey>USGS</themekey></theme><place><placekey>University of Idaho</placekey><placekey>College of Natural Resources</placekey><placekey>Moscow</placekey><placekey>Latah County</placekey><placekey>Moscow Mountain</placekey><placekey>University of Idaho Experimental Forest</placekey><placekt>none</placekt></place><place><placekey>NORTH AMERICA</placekey><placekey>UNITED STATES</placekey><placekey>UNITED STATES OF AMERICA</placekey><placekt>GCMD Location Keywords</placekt></place></keywords><spdom><minalti>2550</minalti><maxalti>4983</maxalti><altunits>feet, above mean sea level</altunits><bounding><westbc Sync="TRUE">-117.037868</westbc><eastbc Sync="TRUE">-116.533344</eastbc><northbc Sync="TRUE">46.954343</northbc><southbc Sync="TRUE">46.686849</southbc></bounding><lboundng><leftbc Sync="TRUE">497118.581383</leftbc><rightbc Sync="TRUE">535508.581383</rightbc><bottombc Sync="TRUE">5170470.472837</bottombc><topbc Sync="TRUE">5200090.472837</topbc></lboundng></spdom><native Sync="TRUE">Microsoft Windows 2000 Version 5.0 (Build 2195) Service Pack 2; ESRI ArcCatalog 8.1.0.642</native><descript><langdata Sync="TRUE">en</langdata><abstract>The U.S. Geological Survey has developed a National Elevation Database (NED). The NED is a seamless mosaic of best-available elevation data. The 7.5-minute elevation data for the conterminous United States are the primary initial source data. In addition to the availability of complete 7.5-minute data, efficient processing methods were developed to filter production artifacts in the existing data, convert to the NAD83 datum, edge-match, and fill slivers of missing data at quadrangle seams. One of the effects of the NED processing steps is a much-improved base of elevation data for calculating slope and hydrologic derivatives. 
+</abstract><purpose>Geospatial elevation data are utilized by the scientific and resource management communities for global change research, hydrologic modeling, resource monitoring, mapping, and visualization applications. 
+</purpose><supplinf>An Arc/Info coverage of polygon-based metadata is provided with the NED. The following data dictionary for the polygon based metadata that accompanies the NED was provided by IDWR. 
+
+SOURCE IDENTIFICATION
+
+Fields: 
+DEMNAME
+FULLPATH
+QUADNAME
+
+
+FULLPATH (text)
+
+The fully expressed path to the source DEM file, as used during processing. This information is retained to provide an unambiguous link to the data source.
+
+Example: FULLPATH = /sgs9/DEM/7.5min/O/oak_island_MN/30.2.1.1181199
+
+
+DEMNAME (text)
+
+The name of the source DEM file without any path information. This field is derived from the FULLPATH field.
+
+Example: DEMNAME = 30.2.1.1181199 
+
+
+QUADNAME (text)
+
+The name of the quadrangle, usually derived from the FULLPATH field. This information is also present in the first 40 bytes of the FREETEXT field.
+
+Example: QUADNAME = oak_island_MN
+
+
+SOURCE PRODUCTION
+
+Fields:
+PSITE
+PMETHOD
+PDEVICE
+FREETEXT
+RESOLUTION
+S_DATE
+I_DATE
+
+
+PSITE (text)
+
+The site or party who created the source DEM.
+
+Currently valid codes are:
+
+UNKNOWN--Unknown
+CONT--Contractor
+MCMC--Mid-Continent Mapping Center
+RMMC--Rocky Mountain Mapping Center
+EMC--Eastern Mapping Center
+WMC--Western Mapping Center
+MAC--Mapping Applications Center
+FS--Forest Service
+BLM--Bureau of Land Management
+GPM2--Gestalt Photomapper II at MAC
+
+
+PMETHOD (integer)
+
+The compilation method used to compile the source DEM.
+
+Current valid codes are:
+
+0-Unknown
+1--Electronic linage Correlation (specifically GPM 11)
+2--Manual Profiling
+3--DLG2DEM
+4--DCASS
+5--LT4X
+
+
+PDEVICE (text)
+
+The name of the instrument used to compile the source DEM. This field is of significance primarily to DEMs 
+produced by manual profiling (PMETHOD = 1).
+
+The current list of identified instruments is:
+
+Wild A-7--Wild Autograph A7 - Mechanical Stereoplotter
+Wild A-8--Wild Autograph A8 - Mechanical Stereoplotter
+Wild AG-1--Wild AG1 - Analytical Stereoplotter
+OMI AS11A--OMI AS11A - Mechanical Stereoplotter
+Wild B-8--Wild Aviograph B8 - Mechanical Stereoplotter
+Wild BC-1--Wild BC1 - Analytical Stereoplotter
+Wild BC-2--Wild BC2 - Analytical Stereoplotter
+Wild BC-3--Wild BC3 - Analytical Stereoplotter
+Zeiss C-8--Zeiss Stereoplanigraph C8 - Stereoplotter
+Zeiss C100--Zeiss C100 Planicomp - Analytical Stereoplotter
+Zeiss C120--Zeiss C120 Planicomp - Analytical Stereoplotter
+Kern DSR-1--Kern DSR-1 Stereoplotter
+GPM--Gestalt Photo Mapper II (GPM II)
+KELSH--Kelsh - Optical Stereoplotter
+Kern PG-2--Kern PG-2 - Mechanical Stereoplotter
+Wild PPO-8--Wild PPO-8 Orthophoto Equipment (Used with Wild A8)
+Santoni IIC--Santoni IIC - Analytical Stereoplotter
+Galileo IIId--Galileo-Santoni Stereosimplex IIId
+Galileo 6--Galileo Stereosimplex 6
+Jena Topocart B--Zeiss Jena Topocart B
+Matra Traster--Matra Optique Traster - Photogrammetric Workstation
+Helava US-2--Helava US-2 - Analytical Stereoplotter
+Zeiss P-3--Zeiss P3 - Analytical Stereoplotter
+Zeiss C-12--Zeiss C12 - Analytical Stereoplotter
+Scitex Scanner--Scitex Scanner
+CP100--Unknown, but appears to be a stereoplotter
+AMU--Unknown, but appears to be a stereoplotter
+CTOG--Contour to Grid Conversion
+DCASS--Digital Cartographic Software System (USGS Software)
+DLG--Digital Line Graph
+LT4X--Either LT4X or LTPlus software
+
+
+FREETEXT
+
+The first 136 bytes of the source DEM file, including the quadrangle name, free format text, and process field. This field may contain additional information, though there are no standards for the use of the free text field. PMETHOD and PDEVICE may often be derived from text present in the FREETEXT field.
+
+Example:
+
+NORTH CHINOOK RESERVOIR, MT -VDYA 1-09 9/06/75 WILD A-7
+
+60000 4 -10915 0.0000 4845 0.00002
+
+The contents of the freetext field vary greatly from one DEM to the next, and in some cases are more confusing than helpful. This field is retained in the NED metadata primarily to allow for confirmation of the PMETHOD and PDEVICE fields.
+
+
+RESOLUTION (integer)
+
+The planimetric (x,y) spacing of elevation postings within the source DEM.
+
+Current valid values are:
+
+2--2-arc seconds (1: 100k series)
+3--3-arc seconds (1:250k series)
+10--10 meters (7.5-minute series)
+30--30 meters (7.5-minute series)
+
+Note that all source data are resampled to a common resolution during NED production. For all IDTM data, the resolution is 30 meters.
+
+
+S_DATE (text)
+
+Data Source Date (data element 21 in the source DEM's Type A record)
+
+Format is either YYMM or YYYY
+
+The date of original photography from which the DEM was compiled. For more information consult Standards for Digital Elevation Models
+
+
+I_DATE (text)
+
+Data Inspection Date (data element 22 in the source DEM's Type A record)
+
+Format is either YYMM or YYYY
+
+DEM Edit System (DES) inspection date.
+
+
+PLANIMETRIC DESCRIPTORS
+
+Fields:
+HDATUM
+UTMZONE
+XSHIFT
+YSHIFT
+LRLAT
+LRLON
+ULLAT
+ULLON
+
+
+HDATUM (integer)
+
+Horizontal Datum of source DEM.
+
+Currently valid values are:
+
+27--North American Datum of 1927 (NAD 27)
+83--North American Datum of 1983 (NAD 83)
+72--World Geodetic System of 1972 (WGS 72)
+
+
+UTMZONE (integer)
+
+UTM zone of source DEM, or 0 if source DEM is not cast in UTM coordinates. A value of 0 in this field indicates that the source DEM is cast in geographic (lat/lon) coordinates.
+
+
+XSHIFT, YSHIFT (float)
+
+Units: decimal degrees
+
+The positional shifts in longitude and latitude, respectively, applied to each posting in the source DEM to convert from NAD27 coordinates to NAD83 coordinates. These values will be zero if the source DEM's HDATUM field value is 83 or 72. (WGS 72 is sufficiently similar to NAD83 that no shift was deemed necessary). The shift values were obtained from NGS's NADCON software, and were calculated at the nominal center of each quadrangle.
+
+
+LRLAT, LRLON, ULLAT, ULLON (float)
+
+Units: decimal degrees
+
+Coordinates in NAD 83 defining the minimum bounding box of the source DEM, derived from corner coordinates indicated in data element 11 of the DEM's Type A record. In most cases this will correspond to the boundaries of the metadata polygon.
+
+LRLAT--Lower right latitude
+LRLON--Lower right longitude
+ULLAT--Upper left latitude
+ULLON--Upper left longitude
+
+
+ELEVATION DESCRIPTORS
+
+Fields: 
+VDATUM
+ZUNIT
+ZSTEP
+ZSHIFT
+
+
+VDATUM (integer)
+
+Vertical datum
+
+Valid values are:
+
+0--Unknown
+1--Local mean sea level
+29--National Geodetic Vertical Datum of 1929 (NGVD 29)
+88--North American Vertical Datum of 1988 (NAVD 88)
+
+
+ZUNIT (integer)
+
+Vertical units
+
+Valid values:
+
+0--Feet
+1--Meters
+
+
+ZSTEP (float)
+
+Vertical resolution
+
+With ZUNIT, this field defines vertical resolution of the source DEM.
+
+Typical values are 1 and 0.1, though others are possible.
+
+Example:
+ZUNIT = 1
+ZSTEP = 0.1
+
+This indicates that the source DEM records elevations to the nearest tenth of a meter.
+
+
+ZSHIFT (float)
+
+The elevation shift, in meters, applied to each posting within the source DEM to convert to NAVD88 values. The shift values were obtained from NGS's VERTCON software, and were calculated at the nominal center of each quadrangle.
+
+
+SUMMARY STATISTICS
+
+Fields:
+MIN 
+MAX 
+MEAN 
+SIGMA
+
+
+MIN, MAX (float)
+
+The minimum and maximum elevation values of the source DEM before any filtering or reprojection, but after conversion to meters and to NAVD88. Subtracting ZSHIFT and converting to the DEM's original units results in the min and max values reported in data element 12 of the DEM's Type A record.
+
+
+MEAN (float)
+
+The mean elevation value of the source DEM, before any filtering or reprojection, but after conversion to meters and to NAVD88.
+
+
+SIGMA (float)
+
+The standard deviation of the elevations of the source DEM, before any filtering or reprojection, but after conversion to meters.
+
+
+Discussion
+
+The summary statistics shown in these fields describe the entire source DEM, even when only some portion of the source DEM is used in NED, or when the source DEM is represented by more than one polygon within the metadata.
+
+These data are presented in common units and in a common datum to allow for more meaningful graphical displays and simplified queries.
+
+
+ACCURACY STATISTICS
+
+Fields:
+ABS RMSE
+ABSX RMSEX
+ABSY RMSEY
+ABSZ RMSEZ
+ABSPTS RMSEPTS
+
+These fields echo the source DEM's Type C record.
+See Standards for Digital Elevation Models for more information
+
+
+ABS
+
+Code indicating availability of absolute accuracy statistics (data element 1).
+
+Valid values:
+
+1--Available
+0--Not available
+
+
+ABSX, ABSY, ABSZ
+
+Absolute accuracy in X, Y, Z - zero if not available (data element 2).
+
+
+ABSPTS
+
+Sample size (data element 3).
+
+
+RMSE
+
+Code indicating availability of relative accuracy statistics (data element 4).
+
+Valid values:
+
+1--Available
+0--Not available
+
+
+RMSEX, RMSEY, RMSEZ
+
+Relative accuracy in X, Y, Z - zero if not available (data element 5).
+
+
+RMSEPTS
+
+Sample size (data element 6).
+
+
+FILTERING PARAMETERS and STATISTICS
+
+Fields:
+KERNEL
+LPCUTOFF
+VFILTSIZE
+VFILTLIMIT
+HFILTSIZE
+HFILTLIMIT
+R_MIN
+R_MAX
+R_MEAN
+R_SIGMA
+
+In addition to the metadata which is derived from the DEM itself, additional items are
+recorded for each source DEM, describing the filtering which was performed.
+
+Example:
+
+KERNEL--0
+LPCUTOFF--0.030000
+VFILTSIZE--11
+VFILTLIMIT--4.000000
+HFILTSIZE--0
+HFILTLIMIT--0.000000
+R_MIN-- -4.000000
+R MAX--4.000000
+R_MEAN-- -0.008025
+R_SIGMA--0.587705
+
+
+KERNEL (integer)
+
+Indicates whether Gaussian or Sinc weighting was used in the low-pass operation.
+
+Valid values:
+
+0--Gaussian kernel
+1--Sinc kernel
+
+
+LPCUTOFF (float)
+
+A parameter which effects the bandwidth of the low-pass filter. When Sinc weighting is employed, this parameter has a direct physical significance, as it is equal to the cutoff wavelength. When Gaussian weighting is selected (as it was in this example), there is no well-defined cutoff. In this case LPCUTOFF relates to the width of the Gauss curve.
+
+
+VFILTSIZE, HFILTSIZE (integer)
+
+The cutoff wavelength of the high-pass filter, which may varied independently for each axis. A value of zero, as shown here for HFILTSIZE, indicates that no filtering was performed on this axis.
+
+
+VFILTLIMIT, HFILTLIMIT (float)
+
+The largest absolute change in elevation which the filter was allowed to make. Where two filtering steps are used, as with the GPM II, VFILTLIMIT and HFILTLIMIT are additive. That is, after two filtering steps, the largest absolute change in elevation is the sum of these two numbers.
+
+
+R_MIN, R_MAX, R_MEAN, R_SIGMA (float)
+
+The min, max, mean, and standard deviation of the residuals, obtained by subtracting the pre-filtered DEM from the filtered DEM. R_MEAN is usually very close to zero, in which case R_SIGMA may be interpreted as an RMS value. Note that the min and max changes introduced by the filtering are constrained to the value of VFILTLIMIT + HFILTLIMIT.
+
+
+NED PRODUCTION TIMESTAMPS
+
+Fields:
+TIMESTAMP
+TILEDATE
+QUADDATE
+
+
+TIMESTAMP (text)
+
+The time and date on which the source DEM was most recently processed into NED.
+
+
+TlLEDATE (integer)
+
+The date on which the source DEM was most recently processed into NED. Derived from TIMESTAMP.
+
+Format YYYYMMDD
+
+
+QUADDATE (integer)
+
+The date on which the source DEM was first processed into NED. This field is particularly useful in the identification of recently updated quads.
+
+Format YYYYMMDD
+
+
+REFERENCES
+
+Standards for Digital Elevation Models
+Available at http://rockyweb.cr.usgs.gov/nmpstds/demstds.html
+
+
+Data Users Guide 5 - Digital Elevation Models
+Available at ftp://mapping.usgs.gov/pub/ti/DEM/demguide
+
+
+</supplinf></descript><timeperd><current>publication date</current><timeinfo><rngdates><begdate>19990201</begdate><enddate>unknown</enddate></rngdates></timeinfo></timeperd><status><progress>In work</progress><update>As needed</update></status><accconst>None.</accconst><useconst>None.</useconst><natvform Sync="TRUE">Raster Dataset</natvform><datacred>Acknowledgement of the originating agencies would be appreciated in products derived from these data.
+</datacred></idinfo><dataqual><lineage><procstep><proccont><cntinfo><cntaddr><address>University of Idaho</address><address>College of Natural Resources, Experimental Forest</address><addrtype>mailing address</addrtype><city>Moscow</city><state>Idaho</state><postal>83844-1133</postal><country>USA</country></cntaddr><cntorgp><cntorg>University of Idaho, College of Natural Resources, Experimental Forest</cntorg><cntper>Harold Osborne</cntper></cntorgp><cntpos>Forest Manager</cntpos><cntvoice>2088857035</cntvoice><cntfax>2088856226</cntfax></cntinfo></proccont><srcused>NED</srcused><procdesc>University of Idaho Library.  Unknown Description of Process.</procdesc><procdate>Unknown</procdate></procstep><srcinfo><srccite><citeinfo><origin>U.S. Geological Survey, EROS Data Center</origin><pubdate>1999</pubdate><title>National Elevation Dataset</title><edition>1</edition><geoform>raster digital data</geoform><pubinfo><pubplace>Sioux Falls, SD</pubplace><publish>U.S. Geological Survey</publish></pubinfo><onlink>http://edcnts12.cr.usgs.gov/ned/</onlink></citeinfo></srccite><srcscale>24000</srcscale><typesrc>CD-ROM</typesrc><srctime><timeinfo><rngdates><begdate>19990201</begdate><enddate>unknown</enddate></rngdates></timeinfo><srccurr>publication date</srccurr></srctime><srccitea>NED</srccitea><srccontr>Data were provided to INSIDE Idaho by the USGS through IDWR. Six CDs covering Idaho were received in NAD83 and geographic projection covering the following latitude, longitude extents: 
+
+1. 45 to 49, -116 to -118
+2. 45 to 49, -114 to -116
+3. 45 to 49, -112 to -114
+4. 42 to 45, -116 to -118
+5. 42 to 45, -114 to -116
+6. 42 to 45, -111 to -114
+
+</srccontr></srcinfo></lineage><attracc><attraccr>See Completeness Report</attraccr></attracc><logic>A plan for assessing the overall accuracy of the National Elevation Dataset (NED) based on independent high-accuracy geodetic control is currently under development.
+</logic><complete>Until an independent overall assessment of the accuracy of NED is completed, it is best to refer to published information on the accuracy of the source digital elevation models (DEM's) from which NED was assembled. The primary source data were the USGS 7.5-minute (30-meter or 10-meter resolution) DEM's. Gaps in the 7.5-minute DEM coverage were filled with data from USGS 30-minute (2-arc-second resolution) or 1-degree (3-arc-second resolution) DEM's. The USGS Data Users Guide 5 for DEM's (traditionally known as the "blue book"), last published in 1993, contains a general discussion of DEM accuracy and a brief description of the accuracy testing methodology. 
+The DEM data users guide also describes the classification levels of standard USGS DEM products. The level of a DEM is defined, in part, on the basis of its accuracy.
+
+</complete><posacc><horizpa><horizpar>See Completeness Report</horizpar></horizpa><vertacc><vertaccr>See Completeness Report
+See Completeness Report
+
+</vertaccr></vertacc></posacc><cloud>0</cloud></dataqual><distinfo><distrib><cntinfo><cntaddr><address>University of Idaho</address><addrtype>mailing address</addrtype><address>College of Natural Resources, Experimental Forest</address><city>Moscow</city><state>Idaho</state><postal>83844-1133</postal><country>USA</country></cntaddr><cntorgp><cntorg>University of Idaho, College of Natural Resources, Experimental Forest</cntorg><cntper>Harold Osborne</cntper></cntorgp><cntpos>Forest Manager</cntpos><cntvoice>2088857035</cntvoice><cntfax>2088856226</cntfax></cntinfo></distrib><stdorder><ordering>Contact the distributor listed, requesting, as specific as possible, the digital form of data needed (e.g., roads_2001.dbf).  </ordering><turnarnd>As timely as possible</turnarnd><digform><digtinfo><transize Sync="TRUE">43.499</transize><dssize Sync="TRUE">43.499</dssize><formname>DEM</formname></digtinfo><digtopt><offoptn><offmedia>CD-ROM</offmedia><reccap><recden>680</recden><recdenu>unknown</recdenu></reccap><recfmt>ISO 9660 format</recfmt><compat>ISO 9660 compatable</compat></offoptn></digtopt></digform><fees>$10.00 per CD-ROM</fees></stdorder><distliab>The creator and distributor of said product can not be held liable for damages due to the incorrectness or incompleteness of the data set.
+
+The user must assume responsibility to determine the usability of this data for their purposes. 
+
+The University of Idaho Experimental Forest provides these geographic data "as is". UIEF makes no guarantee or warranty concerning the accuracy of information contained in the geograpic data. UIEF further make no warranties, either expressed or implied as to any other matter whatsoever, including, without limitation, the condition of the product, or its fitness for any particular purpose. The burden for determining fitness for use lies entirely with the user. Although these data have beeen processed successfully on computers of UIEF, no warranty, expressed or implied, is made by UIEF regarding the use of these data on any other system, nor does the fact of distribution constitute or imply any such warranty.
+
+In no event shall the UIEF have any liability whatsoever for payment of any consequential, incidental, indirect, special, or tort damages of any kind, including, but not limited to, any loss of profits arising out of use of or reliance on the geographic data or arising out of the delivery, installation, operation, or support by UIEF.</distliab><resdesc>Greater Moscow Mountain region Digital Elevation Model, 10 meter.</resdesc><availabl><timeinfo><rngdates><begdate>2002</begdate><enddate>unknown</enddate></rngdates></timeinfo></availabl></distinfo><metainfo><metc><cntinfo><cntaddr><address>University of Idaho</address><addrtype>mailing address</addrtype><address>College of Natural Resources, Experimental Forest</address><city>Moscow</city><state>Idaho</state><postal>83844-1133</postal><country>USA</country></cntaddr><cntorgp><cntorg>University of Idaho, College of Natural Resources, Experimental Forest</cntorg><cntper>Brian Austin</cntper></cntorgp><cntpos>Forester</cntpos><cntvoice>2088857517</cntvoice><cntfax>2088856226</cntfax></cntinfo></metc><metd Sync="TRUE">20020326</metd><langmeta Sync="TRUE">en</langmeta><metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn><metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv><mettc Sync="TRUE">local time</mettc><metac>None.</metac><metuc>None.</metuc><metsi><metscs>none</metscs><metsc>Unclassified</metsc><metshd>none</metshd></metsi><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo><spdoinfo><direct Sync="TRUE">Raster</direct><rastinfo><rasttype Sync="TRUE">Grid Cell</rasttype><rowcount Sync="TRUE">2962</rowcount><colcount Sync="TRUE">3839</colcount><rastxsz Sync="TRUE">10.000000</rastxsz><rastysz Sync="TRUE">10.000000</rastysz><rastbpp Sync="TRUE">32</rastbpp><vrtcount Sync="TRUE">1</vrtcount><rastorig Sync="TRUE">Upper Left</rastorig><rastcmap Sync="TRUE">FALSE</rastcmap><rastcomp Sync="TRUE">Default</rastcomp><rastband Sync="TRUE">1</rastband><rastdtyp Sync="TRUE">matrix values</rastdtyp><rastplyr Sync="TRUE">FALSE</rastplyr><rastifor Sync="TRUE">ESRI GRID</rastifor><rastxu>meters</rastxu><rastyu>meters</rastyu></rastinfo><indspref>Greater Moscow Mountain region, Latah County, Idaho.</indspref></spdoinfo><spref><horizsys><cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><projcsn Sync="TRUE">NAD_1983_UTM_Zone_11N</projcsn></cordsysn><planar><planci><plance Sync="TRUE">row and column</plance><plandu Sync="TRUE">meters</plandu><coordrep><absres Sync="TRUE">10.000000</absres><ordres Sync="TRUE">10.000000</ordres></coordrep></planci><gridsys><gridsysn Sync="TRUE">Universal Transverse Mercator</gridsysn><utm><utmzone Sync="TRUE">11</utmzone><transmer><sfctrmer Sync="TRUE">0.999600</sfctrmer><longcm Sync="TRUE">-117.000000</longcm><latprjo Sync="TRUE">0.000000</latprjo><feast Sync="TRUE">500000.000000</feast><fnorth Sync="TRUE">0.000000</fnorth></transmer></utm></gridsys></planar><geodetic><horizdn Sync="TRUE">North American Datum of 1983</horizdn><ellips Sync="TRUE">Geodetic Reference System 80</ellips><semiaxis Sync="TRUE">6378137.000000</semiaxis><denflat Sync="TRUE">298.257222</denflat></geodetic></horizsys></spref></metadata>
