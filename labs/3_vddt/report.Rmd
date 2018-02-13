@@ -1,0 +1,161 @@
+---
+title: "Landscape Ecology Lab: Vegetation Dynamics Development Tool"
+author: "Nelson Stauffer"
+date: "February 7, 2018"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(ggthemes)
+```
+```{r figures, echo = FALSE}
+# Lookup table for the class abbreviations
+lut <- data.frame(rbind(c("GrFrb OHB", "A"),
+                        c("ArVth OLS", "B"),
+                        c("ArVth CLS", "C"),
+                        c("JuSwg CLS", "D"),
+                        c("JuSwg SIW", "E"),
+                        c("JuWsi YMW", "F"),
+                        c("JuWsi OMW", "G"),
+                        c("NaFor OHB", "H"),
+                        c("NaPgr OHB", "I"),
+                        c("JuNbu CLS", "J")),
+                  stringsAsFactors = FALSE)
+names(lut) <- c("ClassAbbr", "Class")
+
+# Read in the outputs from the runs
+managed.results <- read.csv("C:/Users/Nelson/Documents/Projects/GitHub/REM429-LandscapeEcology/labs/3_vddt/vddt_output/ClassesSummary_managed_070218.csv", stringsAsFactors = FALSE)
+# Also make a class abbreviation column
+managed.results <- tidyr::unite(managed.results,
+                                "ClassAbbr",
+                                CTAbbr, SSAbbr,
+                                sep = " ",
+                                remove = FALSE)
+managed.wide <- dplyr::select(tidyr::spread(dplyr::filter(merge(x = managed.results,
+                                                                y = lut,
+                                                                by = "ClassAbbr",
+                                                                all.x = TRUE),
+                                                          Timestep %in% c(1,25,50,100)),
+                                            key = Timestep,
+                                            value = Area),
+                              Class, dplyr::matches(match = "^\\d{1,3}$"))
+managed.results$run <- "Managed"
+# Add the class codes using the lookup table from above
+managed.results <- merge(x = managed.results,
+                         y = lut,
+                         all.x = TRUE)
+
+# Do the same for the baseline
+baseline.results <- read.csv("C:/Users/Nelson/Documents/Projects/GitHub/REM429-LandscapeEcology/labs/3_vddt/vddt_output/ClassesSummary_baseline_070218.csv", stringsAsFactors = FALSE)
+baseline.results <- tidyr::unite(baseline.results,
+                                 "ClassAbbr",
+                                 CTAbbr, SSAbbr,
+                                 sep = " ",
+                                 remove = FALSE)
+baseline.wide <- dplyr::select(tidyr::spread(dplyr::filter(merge(x = baseline.results,
+                                                   y = lut,
+                                                   by = "ClassAbbr",
+                                                   all.x = TRUE),
+                                             Timestep %in% c(1,25,50,100)),
+                               key = Timestep,
+                               value = Area),
+                               Class, dplyr::matches(match = "^\\d{1,3}$"))
+baseline.results$run <- "Baseline"
+baseline.results <- merge(x = baseline.results,
+                          y = lut,
+                          all.x = TRUE)
+
+results <- rbind(baseline.results, managed.results)
+
+
+
+#################
+# Make figures here for use in a bit
+# These are just geom_col() plots for the timesteps 1, 25, 50, and 100
+# There are the specific ones that contain only the B, C, F, and G classes also
+plot.all <- ggplot(data = dplyr::filter(results,
+                                        Timestep %in% c(1,25,50,100)),
+                   aes(x = Class,
+                       y = Area)) +
+  geom_col(aes(fill = Class), color = "black") +
+  scale_fill_brewer(palette = "Blues") +
+  facet_grid(run ~ Timestep,
+             labeller = labeller(Timestep = as_labeller(c("1" = "Timestep 1",
+                                                          "25" = "Timestep 25",
+                                                          "50" = "Timestep 50",
+                                                          "100" = "Timestep 100")))) +
+  ylab("Percent of cells") +
+  xlab("Vegetation community class") +
+  theme(legend.position = "none")
+
+plot.bcfg <- ggplot(data = dplyr::filter(results,
+                                         Timestep %in% c(1,25,50,100),
+                                         Class %in% c("B", "C", "F", "G")),
+                    aes(x = Class,
+                        y = Area)) +
+  geom_col(aes(fill = Class), color = "black") +
+  scale_fill_brewer(palette = "Blues") +
+  facet_grid(run ~ Timestep,
+             labeller = labeller(Timestep = as_labeller(c("1" = "Timestep 1",
+                                                          "25" = "Timestep 25",
+                                                          "50" = "Timestep 50",
+                                                          "100" = "Timestep 100")))) +
+  ylab("Percent of cells") +
+  xlab("Vegetation community class") +
+  theme(legend.position = "none")
+```
+## Introduction
+
+This exercise was focused on a distributional state and transition model for the landscape in the Owyhee region of Idaho. This landscape has the potential for grass-dominated herblands, shrublands, and woodlands with successional pathways following that order. There is a second, parallel successional pathway resulting from disturbances in juniper woodlands that runs from native forb-dominated herblands to juniper woodlands. Without human intervention, the system is expected to trend toward juniper woodlands and stabilize with significant woodland dominance over a 100-year timescale. Additional probabilistic pathways representing disturbances (wildfire, human intervention including fire and mechanical treatments) lead from communities to earlier successional communities, although the default assumptions in the model regarding frequency of disturbances and the ages of the communities during which they can occur means that these pathways do not have anywhere near as significant an effect as the "forward" successional ones.
+
+
+The Vegetation Dynamics Development Tool (VDDT) model is distributional and includes both deterministic and probabilistic transitions, attempting to summarize areas of a landscape as cells assigned a vegetation class (*i.e.* a roughly discrete community of plant species as in a state and transition model for an ecological site) over time. Due to the distributional nature of the model, it does not take into account any potential adjacency relationships between cells when modeling their trajectories. Successional pathways are determinstic, happening when certain rules are satisfied, however human management actions are treated as probabilistic in the case of this particular model, so it cannot take into account management triggered by thresholds other than age (*e.g.* a partial mechanical removal of juniper and burn when > 10% of the landscape is juniper woodland). This leaves the user to approximate these actions by adjusting management probabilities and the commmunity age windows within which they can occur.
+
+Assuming that the predicted response pathways for the disturbances map well to reality, then this can help users to test management approaches without actually altering the landscape and over timescales that extend far beyond the period of time available to make decisions. In this case, it allowed for exploring possible outcomes for management regimes spanning a century with the goal of maintaining two sagebrush communities at approximately 20% of the landscape, each, and an juniper woodland community at 5-10% of the landscape.
+
+## Methods
+Initial parameters and configuration for the model were set using the provided files describing the modeled relationships between the ten communities (A:J) and the starting proportions of the landscape.
+
+Allowing the model to run for 100 timesteps without any changes to management produced "baseline" results and a rough framework to work from to decide how to adjust management parameters on successive runs. Because the desirable communities, B and C, rapidly dwindled without management, management was focused on disturbance pathways leading from juniper woodlands directly to B and C, but also to A, which precedes B and C in succession and would in later timesteps shift into those desired sagebrush communities.
+
+Wildfire probabilities were not adjusted. The assumption was that frequency of wildfire was intended to represent non-anthropogenic wildfires and so any fire disturbance parameters adjusted as part of management regimes were always varieties of controlled burns.
+
+After each adjustment of management disturbance parameters, the model was run and the results at timesteps 1, 25, 50, and 100 were used to inform the next round of adjustments. Where communities were too frequent, parameters were adjusted to increase the likelihood of disturbance to shift them to earlier succesional communities. Likewise, where communities were too infrequent, the probabilities of disturbance in earlier successional communities were adjusted downward to allow more of those cells to reach their age threshold to tick over into later successional stages.
+
+## Results
+After multiple hours of experimentation, the parameters found which most closely approximated the target proportions were a 5% chance for class A cells between the ages of 0 and 100 to undergo a prescribed burn; a 13% chance for class B cells between ages 1 and 100 to undergo a prescribed burn; and a 4% chance for class E cells between ages 10 and 100 to undergo a partial cut.
+
+This particular set of conditions helped to shift juniper woodlands to sagebrush communities through the mechanical treatments, capping later juniper communities and bolstering the percentage of the landscape in classes B and C, abd regulating the amount of the landscape in classes B and C through regular burns to shift them into class A herblands.
+
+``` {r tablebaseline, echo = FALSE}
+baseline.wide
+```
+~table of landscape composition at 0, 25, 50, and 100 without management~
+``` {r tablemanaged, echo = FALSE}
+managed.wide
+```
+~table of landscape composition at 0, 25, 50, and 100 with management~
+
+``` {r plot, echo = FALSE}
+plot.bcfg
+```
+
+Fig. A: Across 100 timesteps, the model with initial parameters excluding management settles into young juniper woodlands but with the proposed management regime maintains sagebrush communities and holds older juniper woodlands at 5% of the landscape.
+
+The management regime here did not succeed in maintaining classes B and C at approximately 20% of the landscape. They fell within 10% and 30%, which may be considered "good enough" depending on the management needs and sensitivities.
+
+## Discussion
+Given the system as modeled with the intial parameters for landscape allocation and non-management disturbance, the outcome is that by timestep 100 the landscape becomes dominated by juniper woodland communities, which is considered undesirable as a management conclusion. Without direct, active management, the model has infrequent (probability ranging from 0.005 to 0.01) wildfires, which in earlier successional stages lead back to grassland and shrubland, but in later stages only to either juniper woodlands or open herbland with a circuitous route to the desired shrubland communities.
+
+It is also likely that the model as initialized with prevalence of wildfires represents active suppression of wildfires as the default management assumption, which would technically make that baseline managed, but would contribute to wildfire not preventing juniper encroachment as it might have historically.
+
+The management regime that proposed as a solution is imperfect and results in the sagebrush community proportions oscillating around and overshooting the goal of 20%. It is, however, a dramatic improvement over the "unmanaged" scenario. The management does involve significantly more burns, which may better approximate historic patterns of fire on the landscape, but does also include some mechanical treatments with no direct natural equivalent. Initial attempts at narrower time windows for management actions looked promising, but did not bear fruit. There may still be better solutions which narrow the time windows within which management may occur and rotates management based on the age of the system overall, but those may also place excessive faith in the fidelity of the pathways in the model. Also, depending on the scale of the landscape, the level of monitoring necessary to resolve the difference between a class composing 20% of the area and 30% of the area may be outside reasonable scope.
+
+One of the major limitations of the model is that the management practices are treated as probabilistic, which in no way reflects the actual practice of active management. While there may be opportunistic burns where wildfires are shepherded as a management technique, under normal circumstances a management action would be taken or triggered after monitoring data confirms that the area in question has crossed into an undesirable state. In theory, this model could inform what kinds of management actions would have the desired effect and its magnitude, but does not reflect the targeted nature of human landscape management.
+
+It is also important to recognize that the model is distributional and does not attempt to represent how fires (or other management practices) would affect areas adjacent to any given cell. There are also assumptions about the ecological potential of the landscape, specifically that all cells are identical even though it is known that the soil types in Owyhee vary in their ability to support these vegetation communities and the plant-scale structures those communities may take.
+
+## Literature Cited
+(NEED AT LEAST TWO TO SHOW UP IN INTRO AND DISCUSSION)

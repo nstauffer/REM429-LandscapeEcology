@@ -1,0 +1,1157 @@
+HARVEST for Windows
+Timber Harvest Simulation Model
+Version 6.1
+User’s Guide
+Guide revised: September 27, 2005
+
+Description
+
+HARVEST was designed as a strategic research and planning tool, allowing assessment of the 
+spatial pattern consequences of broad timber management strategies.  The model is well 
+suited to evaluate alternative strategies by providing comparable predictions about how 
+the alternatives affect the age (or successional stage) distribution of the forest, the 
+spatial distribution of forest interior and edge habitats, and the patch structure of the 
+resulting forest landscape.  With HARVEST, the object is not to find a scheduling solution 
+(i.e., determining the order in which individual stands should be harvested), but to 
+assess the spatial pattern consequences of general management strategies.  HARVEST has 
+been shown to generate patterns similar to those produced by timber management (Gustafson 
+and Crow 1999).
+
+HARVEST may also be used to visually portray non-spatial outputs from harvest scheduling 
+models such as SPECTRUM.  Additionally, the spatial feasibility of the model solution can 
+be evaluated when harvest activities are subject to constraints (such as adjacency) that 
+are not addressed in the scheduling model.
+
+The stochastic nature of HARVEST allows the user to replicate a management strategy many 
+times to determine average spatial metrics with confidence intervals.  The model also 
+facilitates ‘what-if’ experimentation to explore the spatial effects alternative 
+management options.
+
+HARVEST simulates harvest practices that reset the age of forested sites to a specific 
+age.  This includes even-aged timber harvest techniques (e.g., clearcutting, shelterwood, 
+seed tree techniques) and uneven-aged group selection.  Version 6.1 has some capability to 
+simulate other uneven-aged techniques where such treatments predictably change stand 
+structure, by using stand age as a surrogate for stand structure.
+
+HARVEST allows the user to interactively simulate harvest activities that are targeted to 
+forest type and management area (MA).  Management areas are relatively large, multi-stand 
+areas that are to be managed by specific objectives.  The user specifies harvest 
+parameters (such as harvest size, rotation age, green-up interval), for a management area 
+and forest type.  The process may be repeated for multiple management area/forest type 
+combinations and time steps.
+
+HARVEST 6.1 is similar to v6.0, but has several significant changes.  Version 6.1 allows 
+the user to specify any combination of two treatment effects when a harvest is 
+implemented: 1) the age to which the treated cells are set and 2) whether the forest type 
+will be converted upon cutting (e.g., planting).  This is useful to simulate planting (or 
+under-planting), or other silvicultural techniques that convert forest type and/or reset 
+stand age.  These combined effects can be used to simulate simple, deterministic 
+succession or disturbances by converting the forest type of cells that are above a 
+specified age without resetting the age.  HARVEST 6.1 also can display the forest type and 
+the management area maps at any time, and to save the forest type map (v6.0 had a fixed 
+forest type map; v6.1 allows conversion and succession.)  The menus of version 6.1 have 
+also been re-designed.
+
+HARVEST can conduct several analyses of the spatial pattern of the landscape both before 
+and after simulated harvest.  The patch structure (patches defined by stand age or forest 
+type) can be analyzed for the entire mapped area or by individual management areas.  The 
+amount of forest interior and edge habitat can be calculated and displayed according to 
+the definition of interior given by the user.  Version 6.1 adds calculation of the 
+fragmentation index GISfrag (Ripple et al. 1991).  Analysis results of simulations can be 
+saved spatially as GIS maps and in tabular form as a text file.  An option to submit 
+internal and saved maps to the landscape pattern analysis program APACK (Mladenoff and 
+DeZonia 2004) is now provided.
+
+HARVEST was written by Eric Gustafson and Luke Rasmussen in Fortran 95 using the 
+Winteracter Windows libraries.  Address comments and questions to:
+
+Eric Gustafson
+USDA Forest Service
+North Central Research Station
+5985 Highway K
+Rhinelander, WI 54501-9128
+egustafson@fs.fed.us
+
+The most recent version of HARVEST and its documentation may be obtained from the North 
+Central Research Station Web site:  
+http://www.ncrs.fs.fed.us/4153/harvest/v61/default.asp.
+
+This guide has been formatted for double-sided printing and insertion into a loose-leaf 
+binder.
+
+
+
+Installing Harvest 6.1
+Download and save the self-extracting file Harv61.exe to your hard drive.  Save it in a 
+new directory, or one in which you wish to use HARVEST.
+Uncompress the file by double-clicking on the file.  
+The following files should be found following this operation:
+Harvest61.exe	The Harvest program
+Viewer.exe	A utility program used to view Erdas 7.4+ GIS map files
+Help61.txt	Online help file
+Harv61 User.doc	The file you are now reading
+Rgb.dat	Color table for the Harvest program
+Rgb192.dat	Color table for the Viewer program
+Sample.hsc	Example of a script file
+
+To run Harvest, open the file Harvest61.exe.
+
+
+Preparing input files
+HARVEST operates on a grid-cell (raster) representation of the landscape.  HARVEST 
+requires a set of 4 input map files to simulate harvest activity: forest age map, forest 
+type map, management area map, and a stand identification number (ID) map.  These maps are 
+typically prepared using a GIS, and exported for use by HARVEST.  Each input map file in 
+the set must be of the same area, and have the same (square) cell size and number of rows 
+and columns.  These files must be in an Erdas v7.4+, 8- or 16-bit GIS file format, 
+typically with a .gis extension.  Many common GIS programs can export this format.  4-bit 
+files will not be created if the highest cell value in the output GIS file is >16.  To 
+create an Erdas v7.4+ format file from an Arc grid (ESRI Arc/Info), use the GRIDIMAGE 
+command at the arc: prompt (not the grid: prompt).  In ArcGIS, use the Grid To Image 
+command located in Arc Toolbox.
+Forest Age Map file:  This map contains cells whose values represent the age (in years) of 
+the forest on each cell.  This map is used by HARVEST to determine if cells meet the age 
+constraints for harvest.  This map is typically prepared from a GIS stand map, assigning 
+values based on the age attribute, or calculated from the year of origin of the stand.  
+Cells with a value of zero are assumed to be areas that will never be harvested (land 
+owned by others, inoperable, permanently reserved from harvest, etc.), or are non-forested 
+areas such as streams, roads and agricultural areas.  Assigning zeros here is one way to 
+exclude parts of the mapped area from harvest.  Another is to designate management areas 
+(see below) in which you never specify any harvest activity.  As you generate the forest 
+age map, stands (forested cells) that have an actual age of zero (recently cut) should be 
+assigned an age of 1.  Negative numbers are not supported in the Erdas file format, and 
+should not be used.  Age values up to 32,767 are supported.
+Forest Type Map file:  Each cell in this map contains a user-assigned integer code value 
+(between 1 and 32,767) denoting a specific forest type.  Cells with a value of zero are 
+ignored by HARVEST.  This map is used by HARVEST to apply harvest rules to the correct 
+forest type.  HARVEST also uses this map when leaving uncut buffers (typically riparian 
+buffers), and to identify the non-forest land when calculating the amount of forest 
+interior and edge habitats.  HARVEST does not attach labels to the map values, so users 
+must document the values representing each forest or land cover type.  This map is 
+typically produced in a multi-stage process.  First, the forest types are gridded from the 
+forest type attribute in a GIS stand map.  You may wish to aggregate types to match the 
+types relevant to silvicultural treatments to reduce the number of harvest specifications 
+you must make when simulating with HARVEST.  For example, you may wish to aggregate aspen 
+and birch species into a single type.  Secondly, you may want to overlay the land cover 
+types that you will wish to leave uncut buffers around (e.g., streams, lakes, and maybe 
+even roads.)  If you do this, be sure to also conduct a similar operation on the age map 
+to ensure that these cells have a zero age value, or these cells will age during the 
+simulations as if they were uncut forest.  Optionally, you may want to mosaic this map 
+with land cover information for the parts of the age map that are coded with zeros (e.g., 
+outside your ownership).  This may be information derived from a satellite image 
+classification (e.g., USGS GAP program) or other land cover data (e.g., USGS LUDA data.)  
+The minimum information required for the parts of the map where there are zeros in the age 
+map is 2 classes: forest and non-forest.  Providing this information will allow you to 
+generate forest interior/edge maps for the entire image, rather than just where there are 
+non-zeros in the age map.  It is important to include at least one cell of each potential 
+forest type value (e.g., late successional species) in the starting map.  Forest types 
+that are not present in the initial map will not be recognized by HARVEST in subsequent 
+time steps.
+Management Area Map file:  Each cell in this map contains a user-assigned integer code 
+value (between 1 and 32,767) denoting the management area in which that cell falls.  Cells 
+with a value of zero are ignored by HARVEST.  A management area is a multiple-stand area 
+in which all the stands will be treated with similar, specific management practices.  
+Management areas with the same value need not be contiguous.  This map is used by HARVEST 
+to apply the harvest strategies you specify to the correct management area.  If you do not 
+wish to distinguish separate management areas, then produce a management area map with a 
+single value for all cells.  This map of MAs remains constant throughout a simulation of 
+multiple time periods.
+Stand ID map file:  This is a map of stand ID numbers, where each stand ID value is a 
+unique integer <64,535.  This map is used by HARVEST to track harvest activity in stands.  
+It is often produced from the stand age map by passing the age map through a GIS clumping 
+algorithm (e.g., REGIONGROUP in Arc GRID, CLUSTER in EPPL).  HARVEST reads the maximum 
+stand ID value (n) from the file header, and assumes that stand ID values start at 1, and 
+that there are no missing integers between 1 and n.  Cells with the same ID value will 
+usually be contiguous (stands that are not fragmented into noncontiguous parts), but this 
+is no longer required in v. 6.1.  This map of stand IDs remains constant throughout a 
+simulation of multiple time periods.
+Tips for preparing input maps
+*	The stand ID map can be made by intersecting forest type, age, and MA maps.  It is not 
+important to control specific stand ID values, as long as values do not exceed 64,535.
+*	Try to avoid “slivers” by combining small areas of unique forest types/ages/MAs with 
+similar larger adjacent polygons.  This will increase simulation efficiency without 
+compromising important detail, especially in larger landscapes.
+*	When using the ‘stand filling’ option for harvest routines, you may want to pass the 
+stand ID map through a stand-splitting algorithm to break apart stands larger than a 
+user-defined threshold.  For example, if you plan to use the stand filling option but 
+don’t want harvests larger than 40 acres, it may make sense to split apart stands that 
+are larger than 40 acres.
+
+Simulating harvests using Harvest 6.1
+HARVEST provides guidance for new users through context-sensitive “helper dialogs.”  To 
+turn this feature on, select ‘Preferences’ under the Edit menu item.  Check the “Show 
+helper dialogs” checkbox.  After you become familiar with the operation of HARVEST, you 
+may turn this feature off by clearing this checkbox (click on the checkbox to clear it).
+
+FILE
+
+This menu item allows you to load and save the files used by HARVEST.
+
+Load map set
+
+This command allows you to select the 4 map files on which HARVEST operates.  A standard 
+Windows File Selection dialog box will open, allowing you to choose the files you wish to 
+use.  The input files must be in ERDAS v. 7.4+, 8- or 16-bit format, and will typically 
+have a .gis extension.  The first map requested is the forest age map.  HARVEST will 
+report when maps have completed loading.  If some of the map information needed by HARVEST 
+is not present in the map header (e.g., cell width or unit of area), or if the map’s units 
+are different from the default units that you have defined (explained more under the 
+Preferences menu item), HARVEST will prompt you to supply this information.  (See section 
+EDIT-  Map header below for further explanation of map units and cell size units.)  After 
+you select the age map, it will be displayed on the screen.  You will then be prompted for 
+a forest type map.  If some of the map information needed by HARVEST (for this and 
+subsequent map files) is not present in the map header, HARVEST will offer to use the 
+information from the age map.  You will notice a check box that will cause HARVEST to 
+update this missing information in these maps so you will not have to do it each time you 
+load these maps.  You will next be prompted for a management area map.  Lastly you will be 
+prompted for a stand ID map.
+
+Maps other than the stand age map are not displayed initially.  Use the options under the 
+Window menu to view these maps.
+
+If you wish to use Harvest to calculate patch or interior metrics only, loading the MA and 
+stand ID maps is optional (press Cancel when prompted for those maps).  If you do not load 
+the management area map, you will not be able to calculate patch metrics by management 
+area.
+
+In addition to a map window, a text window will also appear.  This window will allow 
+HARVEST to communicate results and progress to you.  All of the information appearing in 
+this window is also recorded in a log file that you may save for future reference (see 
+Save menu item below).  
+
+Save
+
+This menu item allows you to save the results of your simulations and analyses.
+
+Age map
+
+You may save the simulated age map at any time.  The map will be saved in an ERDAS 7.4 
+format, which can be used as input to other HARVEST runs, or loaded into many common GIS 
+systems.  Note that once you load a new map set, all previous maps are cleared from 
+memory, so remember to save maps prior to loading another map set.
+
+Forest Type map
+
+You may save the current forest type map at any time.  This map is also saved in an ERDAS 
+7.4 format.  
+
+Interior map
+
+You may also save the current interior map at any time.  This map is also saved in an 
+ERDAS 7.4 format.  The map you see on the screen is the map that will be saved.  Once you 
+conduct a new analysis of interior (or load a new map set), any prior interior maps are 
+cleared from memory and cannot be retrieved later.
+
+Log file
+
+A running log of your HARVEST session is maintained by HARVEST and displayed in the 
+Progress and Results window.  This log records the input files and the parameters you 
+used, and the results of any analyses you conducted.  If you conduct multiple analyses 
+(including the use of many different interior calculation parameters, these will all be 
+appended to this running log.  The running log is cleared when you load (or re-load) a map 
+set.  You may save this log at any time, although it is cleared by saving, and when a new 
+map set is loaded.
+
+Clear log file
+
+This option will clear the contents of the Progress and Results window.  You will be given 
+the option to save the contents of this window before it is cleared.
+
+Exit
+
+This option will close the HARVEST program.  You will be reminded to save files, should 
+you desire to do so.
+
+EDIT
+
+The Edit menu item allows you to edit certain files.
+
+Preferences
+
+You may set the defaults that appear in several of HARVEST’s dialog boxes.  You also can 
+turn the Helper dialogs on or off.  The Helper dialogs provide context-sensitive 
+instructions to new users.  As you become experienced using HARVEST, they will become 
+unnecessary, and may be turned off as a preference setting.  Here is a description of the 
+preferences that you can modify and save (in the file defaults.sys):
+
+Time step default (years):  The value appearing here will be used as the default value in 
+the Time Step dialog.
+
+Show helper dialogs:  If this box is checked, HARVEST will advise you on your options for 
+running the program at each step of the process.  This is useful for new users.  To turn 
+this feature off, clear the check box.
+
+Only apply adjacency constraints to same Management Area:  If this box is checked, HARVEST 
+will only apply adjacency constraint checks to stands that have the same management area 
+as the stand being cut.  If this is unchecked, adjacency constraints will apply to any 
+stand.
+
+Working directory:  The directory entered here will be used by HARVEST whenever prompting 
+you for file names.  Use the Browse button to change the directory.
+
+Map Units:  Define the default map units that HARVEST should use (e.g., feet, meters, 
+acres, hectares).  When an age map is loaded, and its units differ from the defaults, you 
+will be asked if you would like to change the map units and save the changes to the ERDAS 
+file.  If you decline to do so, HARVEST will use the units found in the maps.
+
+Scripts:  Select the option for generating script files.  This controls how script 
+information is added to an existing script file.  Append - additional script information 
+will be appended to the end of the existing script information;  Overwrite - all existing 
+script information in the file will be erased.
+
+Group parameters: These values will appear as defaults for Group selection in the Harvest 
+parameters dialog.
+
+Harvest parameters: These values will appear as defaults in the Harvest parameters dialog.
+
+Interior analysis parameters:  These values will appear as defaults in the Interior 
+definitions dialog.
+
+Map header
+
+Use this option to change the values associated with the cell size of a map.  The values 
+that can be edited are cell width, cell area, and the units of area (either acres or 
+hectares – other units are not supported by HARVEST).  This is useful if the map data used 
+to create the input maps are in units not supported by HARVEST, or if map units are not 
+compatible with the values you want to use to specify harvest parameters, or if you wish 
+to change the units of the output results.  When ‘acres’ is specified, HARVEST assumes 
+that the cell width is in units of feet, and when ‘hectares’ is specified, the units are 
+assumed to be meters.  These assumptions cannot be changed.  Note: If you edit the header 
+of a map already loaded into HARVEST, the changes will not take effect until the map is 
+reloaded.
+
+MODEL
+
+This menu controls the simulation capabilities of HARVEST.
+
+Execute
+
+This option will cause HARVEST to initiate the simulation of harvesting on the currently 
+loaded input maps.  If you have already simulated some harvests, the maps you see on the 
+screen are the current maps, and additional harvests can be simulated on them by selecting 
+Execute.  HARVEST will allow you to simulate multiple harvest strategies on various 
+management areas and forest types in a given time step.  When you finish simulating all 
+harvest activity for a time step, HARVEST will let you proceed to the next time step to 
+repeat the process, or to quit harvesting.  You may view updated maps at any time during 
+this process by clicking on the Update Maps button.
+
+When you invoke Execute, you will be prompted for a random number seed.  This must be an 
+integer between 0 and 2147483647.  Selecting 0 (zero) will cause HARVEST to generate a 
+random number seed using the system clock.  HARVEST is a stochastic model, meaning that it 
+relies on a random number sequence to simulate harvesting activity.  The computer uses the 
+random number seed to initiate the sequence of random numbers.  Model runs using the same 
+input parameters and random number seed will be identical, but a change in the random 
+number seed will produce a somewhat different result.  This is a realistic approach for 
+timber harvest simulation, because different project planners will implement the same 
+forest management plan in different ways.
+
+You will then be prompted for an Institutional Memory file.  This file is used to store 
+information about harvest activities in each stand, such as when a harvest event occurred 
+in a stand, what type of harvest it was, and when the stand is to be treated again (if 
+applicable).  This file also contains information about each stand in the map.  Each stand 
+will be associated with a single management area and a single forest type.  In the event 
+that a stand overlaps multiple forest types and management areas, only the dominant forest 
+type and management area will be associated with the stand.  You will specify a new file 
+if this is the first time step, and select an existing file to continue a simulation run 
+begun previously.  HARVEST will create the file if it does not exist.
+
+You will then be prompted for the length of the time step (in years) that will be used 
+throughout the simulation.  At each time step, HARVEST increments the non-zero values in 
+the forest age map by the (integer) value you enter here, representing the aging of cells 
+during the period.  The time step interval cannot be changed within a HARVEST simulation 
+run.  The default value is 10.
+
+The final question you will be asked before specifying harvest parameters is: Do you want 
+to create a list of all log output (spreadsheet format)?  The contents of the Progress and 
+Results window are a log of your HARVEST session.  Because the log file is verbose, some 
+users find it useful to look at a summary of the input parameters and results in a 
+spreadsheet.  If you select the Yes dialog button here, you will be asked to enter a file 
+name, and HARVEST will create a comma-delimited file that can be imported into most 
+spreadsheet programs.
+
+The Harvest Parameters dialog box will now appear.  This dialog allows you to target 
+harvest parameters to a specific forest type within a specific management area.  Each time 
+you press the Harvest button, HARVEST will simulate harvest activity using the parameters 
+you specified, and then return the Harvest Parameters dialog box to the screen.  You may 
+then target other harvest activity to another forest type/management area combination, 
+advance to the next time step, update the maps so that you can observe the harvests that 
+have been allocated thus far, or exit the Harvesting process.  After pressing Exit, you 
+may resume harvesting where you left off (beginning with the next time step) by choosing 
+Execute again from the Model menu and selecting the same ‘Institutional Memory file’ you 
+were using for the initial run.
+
+
+Details of the Harvest Parameters Dialog:
+
+1.  Choose the integer value(s) representing the management area(s) and the value(s) 
+representing the forest type(s).  Only values actually found in the maps will be offered 
+(except for map values of zero).  You may select more than one management area and/or 
+forest type if the harvest parameters are applicable to multiple management area-forest 
+type combinations.  To select multiple values, click on the first value, and then select 
+the additional value(s) while simultaneously holding down the Ctrl key on your keyboard.  
+Harvests will be simulated only in stands of the specified forest type(s) located in the 
+specified management area(s).  
+
+2.  Average harvest size and standard deviation.  These values specify a normal (bell-
+shaped) distribution of harvest opening sizes.  HARVEST will randomly select harvest 
+opening sizes from this distribution.  You can expect that 95% of the randomly selected 
+sizes will fall within 2 standard deviations of the mean.  If you wish to truncate the 
+tails of this size distribution so that sizes are not selected that are less than some 
+minimum or greater than some maximum, enter those limits in the appropriate fields.  If 
+you do not wish to impose such limits, simply enter zeros.  If you want all harvests to be 
+exactly the same size, enter a standard deviation of 0.0.  This will cause the minimum and 
+maximum fields to be disabled, since their values will equal the mean.
+
+If you do not wish to specify the harvest size distribution, but instead require harvest 
+units to follow existing stand boundaries, check the Fill Stands box.  This will disable 
+all of the harvest size fields.  To specify a harvest size, yet avoid partial cutting of 
+stands, select both the Fill Stands and Fill stands to reach a size check boxes.  The 
+average harvest size field (only) will be activated.  To approximate this average size, 
+HARVEST will harvest adjacent stands until this size is reached or exceeded.
+
+3.  Dispersion method.  HARVEST will choose locations for harvests using one of 4 
+algorithms:
+a.	The dispersed method randomly selects stands (of the designated forest type within the 
+management area) for harvest independently of each other.  HARVEST continues to select 
+stands until the target acreage or percentage has been harvested, or until all the 
+stands satisfying the constraints for harvest have been cut.
+b.	The clumped method randomly chooses a focal stand, and then attempts to harvest the 
+stands that are neighbors of its neighbors (potentially creating a ring of harvested 
+stands, one stand removed from the initial stand.)  However, these stands may not 
+always be eligible for harvest because they may be a different management area or 
+forest type, or too young.  HARVEST attempts to harvest these nearby stands, and then 
+selects a new focal stand and repeats the process until the target acreage has been 
+harvested, or until all the stands satisfying the constraints for harvest have been 
+cut.
+c.	Group selection randomly chooses stands and then harvests small openings (groups or 
+patches) within those stands.  When group selection is chosen, you must also specify 
+the proportion of the area of each stand to be removed during each entry into the 
+stand.  The default is one-sixth of the stand.  This will be used to calculate the 
+total area of the stand that will be turned into harvested openings (i.e., cut) during 
+each entry into the stand.  If you imagine a stand as a piece of Swiss cheese, this 
+proportion is analogous to the proportion of the surface of the cheese that is holes.  
+HARVEST continues to select stands until the target acreage has been harvested, or 
+until all the stands satisfying the constraints for harvest have been cut.  Note: 
+because group selection places numerous openings within the boundaries of a stand, the 
+Fill Stands option is not available when group selection is specified.  
+d.	Oldest first selects from the stands of the designated forest type within the 
+management area in the order of decreasing age.  HARVEST continues to select stands 
+until the target acreage or percentage has been harvested, or until all the stands 
+satisfying the constraints for harvest have been cut.
+For each of these methods, you may specify a re-entry interval (in years).  This allows 
+HARVEST to cut stands on a set rotation.  When you press the Harvest button, HARVEST will 
+record for each stand cut the harvest parameters, and the time step when the stand should 
+be cut again.  When that time step arrives, HARVEST will automatically cut those stands 
+again, using the same harvest parameters used when the stand was first cut.  It will also 
+automatically schedule the next re-entry time step.  If you do not select the Re-enter 
+stands check box, harvested stands will again be eligible for selection for harvest when 
+they become old enough.  When a re-entry interval is specified, the timing of subsequent 
+harvests in a stand is deterministic; when a re-entry interval is not specified, the 
+random selection process of the dispersion methods described above determines the timing 
+of subsequent harvests.  Not checking the re-entry checkbox for group selection may be 
+useful to simulate certain patch-cutting harvest methods.  Note: re-entry is not allowed 
+for harvests that convert the forest type to zero, because zero usually represents a 
+generic non-forest type.  For harvests that convert forest type to a non-zero value, all 
+re-entries will necessarily be cutting the new forest type.
+
+Under all dispersion methods, stands must always meet minimum age requirements and other 
+specified constraints (e.g., adjacency constraints) before they can be harvested.
+
+4.  Treatment Effects.  These options specify what changes will be made to a cell when it 
+is ‘harvested.’  Several combinations of effects are possible.  Conversion of the forest 
+type without resetting cell age can be used to simulate natural conversions through 
+succession, or removing the dominant species in an even-aged stand.  Resetting cell age to 
+an age >1 without converting type could be used to simulate diameter-limit cutting 
+practices, for example.  Resetting cells to an age >1 and converting the type could be 
+used to simulate the release of an under-planted species.  Decreasing the current age by a 
+specific amount can be used to simulate thinning, where the vertical stand structure is 
+modified so that it now has the structural characteristics of a younger stand.  In this 
+case, stand age conceptually acts as a surrogate for stand structural development.
+
+a.	Convert forest type.  Check the checkbox if you wish to change the forest type of the 
+cells that are cut.  Select the forest type value that you want the cells converted 
+to.  You may not select more than one forest type value. You should not select a 
+forest type that is specified in the Riparian buffers field (see below) because 
+HARVEST produces anomalous patterns when trying to leave buffers around each converted 
+cell.  You will receive a warning if you choose to convert to the same forest type 
+that you are harvesting, but HARVEST will not prevent you from doing so.  In such a 
+case, no conversion will occur.
+b.	Reset Forest Age.  Check the checkbox if you wish to change the age of a cell when it 
+is cut, and enter a value to reflect the new age of the cells.  Resetting the cell age 
+to 1 is the default, which duplicates the behavior of all previous versions of 
+HARVEST.  Entering a positive value (greater than 0) resets the age of the cells to 
+that value.  However, if the new age is greater than the current age of a particular 
+cell, the cell age will not be changed.  A negative value (less than 0) decreases the 
+age of the cell by that amount.  If such a decrease would reduce the age of a cell to 
+zero or less, an age of 1 is assigned instead.  Values for the new age that are less 
+than zero (negative) will decrease the current age of each cut cell by that amount.  
+If such a decrease would reduce the age of a cell to zero or less, an age of 1 is 
+assigned instead.  Entering a value of zero precludes cells from being harvested 
+again, and they will no longer increase in age at each time step.  HARVEST assumes 
+that all age values of zero are non-forested cells.  Setting the age to zero should be 
+done whenever you cause HARVEST to convert the forest type to a non-forest value 
+(e.g., agriculture or permanent openings).
+
+5.  Minimum age for harvest.  This is comparable to a minimum rotation interval.  Forested 
+cells must be at least this old before they can be harvested.  To harvest stands on a 
+strict rotation basis, use the re-entry interval described above.  An alternative 
+specification for the age constraint is Minimum time since last harvested.  This is 
+relevant only for time steps after the first, since HARVEST only uses information found in 
+the Institutional Memory file about previous harvests that may have occurred in a stand.  
+HARVEST will round the number you enter here to the nearest multiple of the time step.
+
+6.  Maximum age for harvest.  This allows the user to specify the upper age limit for 
+stands and cells to be harvested.  A value of zero means that maximum age will not be 
+considered.  This feature can be used to simulate the protection of old-growth stands, or 
+to target the treatment effect(s) to a specific range of age classes.
+
+7.  Amount to harvest.  HARVEST requires an area (which it converts to a number of cells) 
+as a target for cutting.  This area can be specified by the user in one of three ways: 1) 
+as a percentage of the area of the forest type in the management area, 2) as a percentage 
+of the area of the forest type in the management area that also satisfies all constraints 
+(amount of available forest type), or 3) as an area entered by the user.  If entered as a 
+percentage, HARVEST will quickly scan the age map (by management area and forest type) to 
+determine the area available.  If you selected multiple management area-forest type 
+combinations, HARVEST will take their combined area into account.  This area will 
+immediately be reported in the ‘Area to be harvested’ field below the ‘Percent’ field 
+whenever you change the percent, the management area or the forest type.  HARVEST will 
+attempt to harvest the area specified.  It may actually cut more or less, usually within 
+an amount less than half of the mean harvest size specified.  HARVEST may not find enough 
+cells to fully allocate your request in every decade.  Usually this happens when stands 
+are not completely cut (including riparian buffers).  This leaves cells that HARVEST 
+thinks may be available, but the stand history or riparian buffers preclude harvests 
+there.  The area actually cut each decade is shown in the text output window and recorded 
+in the log file.
+
+Specifying area for Group selection is not always straightforward.  HARVEST expects you to 
+specify the area of the stands to be treated with group selection.  However, because only 
+a fraction of the stand area is cut (openings created) in each time step, the area 
+actually cut is always less than the area you specify.  To achieve a desired total area 
+cut, adjust the “Total Area Cut” by the “Proportion To Cut in Stands” (e.g. if the 
+proportion is one-sixth, multiply “Total Area Cut” by 6).
+
+8.  Adjacency constraints.  Check this box if you wish to enforce an adjacency constraint.  
+This constraint prevents HARVEST from cutting a stand that is adjacent to a stand that is 
+younger than the ‘green-up interval’ you specify here.  The green-up interval typically is 
+understood to be the length of time it takes for a stand to regenerate sufficiently to no 
+longer be considered a newly harvested opening.  Adjacent stands that are in a different 
+management area will not be considered if the Preference setting to Only apply adjacency 
+constraints to same Management Area is checked (see Preferences section above).
+
+9.  Provide riparian buffers.  Check this box if you wish to prevent cells from being 
+harvested that are within some distance of riparian areas.  When this box is checked, you 
+must also select the value(s) found in the forest type map that represents riparian areas 
+(or some other class you wish to buffer, such as roads).  To select multiple values, click 
+on the first value, and then select the additional value(s) while simultaneously holding 
+down the Ctrl key on your keyboard.  Also specify the minimum distance from these areas 
+where harvests are allowed.  HARVEST will round the number you enter here to the nearest 
+multiple of the cell width.  HARVEST does not allow you to specify different buffer widths 
+for different classes (e.g., water and roads) in the forest type map.  You should not 
+select a forest type that is specified in the Forest Type Conversion field (see above) 
+because HARVEST produces anomalous patterns when trying to leave buffers around each 
+converted cell.  You will receive a warning if you select the same forest type, but 
+HARVEST will not prevent you from doing so.
+
+   Buttons:
+
+     Harvest:  Simulates harvesting using the current harvest parameters and returns to 
+this dialog. All harvest openings simulated will be targeted to the specific management 
+area(s) and forest type(s) you selected in the management area and forest type fields of 
+the dialog.  When the dialog reappears, you have the option of specifying additional 
+harvests in this, or more likely, other management area/forest type combinations.
+
+     Go to Next Time Step:  Ends this time step and proceeds to the next time step.  
+Select this button when you have finished simulating harvests in all relevant management 
+area/forest type combinations for the current time step.  When HARVEST advances to the 
+next time step, it automatically performs two actions.  First HARVEST ages the age map by 
+the length of the time step, and the it re-enters any re-entry stands scheduled for the 
+current time step.  HARVEST finds this information in the ‘Institutional memory’ file, and 
+implements re-entries based on the re-entry interval specified when each stand was first 
+cut.
+
+     Update maps:  Re-draws all open map windows when you wish to see the results of 
+harvests simulated since the last map update.  HARVEST maintains the maps in memory, but 
+to save time the maps are only updated on demand, or when Exit is pressed from the Harvest 
+parameters dialog.  Also use this button if the map windows become corrupted.  Window 
+corruption sometimes occurs if the program is minimized or some other window covers a map 
+window during the map drawing process.
+
+     Exit:  Ends harvesting and returns to the main HARVEST program.  Note: you cannot 
+return to the current time step after exiting.  If you resume simulation by choosing 
+Execute and selecting an existing Institutional memory’ file, your simulation will resume 
+at the time step following the one you were in when you pressed Exit.
+
+Program Harvest Script 
+
+This option will behave like the ‘Execute’ option, but instead of running simulations, it 
+will save the parameters and rules you specify in a script (text) file, so that you can 
+run the simulation later.  This is useful if you want to produce a replicate of a 
+simulation, or wish to modify some parameters for experimental purposes, without having to 
+go through the manual process of inputting all the parameters.
+
+A dialog will ask you to name the script file (which must have an .hsc extension) or, if 
+you wish, select an existing script file.  HARVEST can either overwrite the existing 
+script, or append new script to the previous contents.  This behavior can be set in the 
+Preferences dialog located under the Edit menu (see the Edit section for more 
+information).
+
+A preliminary dialog box appears with the following check boxes:
+
+a.	Save age map each time step?  If you wish to have a series of age maps automatically 
+saved at the end of each time step, check this box and enter a base filename.  The 
+time step number (e.g., 01, 02) will be appended to this name, and saved with a .gis 
+extension.  These maps can later be viewed or analyzed for their spatial pattern 
+(load into HARVEST and use Analyze functions, or use other analysis software such as 
+Fragstats (McGarigal and Marks 1993)).  NOTE: if a filename already exists at 
+runtime, the file will be overwritten.
+b.	Allow manual harvests after script completes?  Check this box if you wish to manually 
+continue the simulation run after the programmed part is finished.  The harvest 
+parameters dialog will appear and the time step will not advance from the last time 
+step simulated by the script file.
+c.	Create results table file (spreadsheet format)?  Check this box if you want HARVEST 
+to create a comma-delimited file of the input parameters and results, which can later 
+be imported into a spreadsheet program.
+
+The script file can be edited to expedite minor modifications to a simulation.  Some users 
+may want to specify all simulations in Program mode, because errors can be edited before 
+executing.  HARVEST does not have an Undo option when running in normal Execute mode.  It 
+is also possible to copy and paste records in the script file.  This can save a tremendous 
+amount of time in specifying multiple time steps – just copy and paste the first time step 
+as many times as needed.  Modifications to subsequent time steps may be more easily 
+achieved by editing the script than by specifying them with the Harvest Parameters dialog.  
+Note: Although the records in the script file are numbered, HARVEST does not use the 
+numbers, so they need not be consecutive.  You may also append comments on each line, as 
+long as they do not appear where HARVEST expects data.  Leaving a couple of blank spaces 
+after the last character on a line is usually sufficient.
+
+Execute Harvest Script
+
+This option will run a previously created script.  You will be prompted for the name of 
+the script file, and asked if you would like the harvest parameters written to the log 
+file.  An answer of Yes will cause the parameters contained in the script file to be 
+written in the Progress and Results window as the simulation proceeds.  The simulations 
+will then proceed without further input from you.  If you selected the Allow manual 
+harvests after script completes option, the Harvest parameters dialog box will appear when 
+the script has finished executing.  You may simulate additional harvest activity as if you 
+had selected Execute from the Model menu.  The time step will not advance from the last 
+time step simulated by the script file.  If you wish to begin additional harvesting in the 
+subsequent time step, select the Go to Next Time Step button.
+
+Note:  script files prepared with HARVEST 6.0 are not compatible with version 6.1 because 
+each record now has additional lines.  It is possible to manually add those lines.  Please 
+contact the developer for instructions, or compare v. 6.0 scripts to v. 6.1 scripts to 
+determine the differences in format.
+
+
+Useful details about how the simulation model 
+works
+HARVEST will sequentially harvest stands of the specified forest type(s) in the specified 
+management area(s) until the target harvest amount has been cut.  It may actually cut more 
+or less, usually within an amount less than half of the mean harvest size specified.  When 
+the Fill Stands option is selected, the target may be exceeded by a considerable amount if 
+stands tend to be large.  HARVEST may fall considerably short of the target if all 
+remaining, suitable stands are larger than twice the amount needed to meet the target.  
+HARVEST also may not find enough cells to fully allocate your request in every decade.  
+Usually this happens when stands are not completely cut (including riparian buffers).  
+This leaves cells that the precursory scan by HARVEST shows may be available, but the 
+stand history or riparian buffers preclude harvests there.  The area actually cut each 
+decade is shown in the text output window and recorded in the log file.
+
+The ability to specify harvest size allows you to change the scale of patchiness of your 
+landscape.  When HARVEST allocates a cut that is smaller than the stand, some cells are 
+left uncut.  These cells may be cut at a later time step, especially if the stand is being 
+managed on a rotation.  Alternatively, if the size of the harvest is larger than the 
+stand, HARVEST will attempt to achieve the requested size by cutting in an adjacent stand, 
+provided it meets forest type and age requirements, and if cutting the adjacent stand 
+would not otherwise violate adjacency constraints (i.e., ignoring the obvious violation 
+caused by the spillover cutting.)  This adjacent stand will also likely be only partially 
+cut.
+
+In some cases the partial cutting of stands creates problems. For example, when converting 
+the forest type of cut cells, HARVEST will assign a new forest type to the stand based on 
+the most abundant forest type within the stand.  This may not be the type of the cut 
+cells, and the stand will not be treated as if it were converted in future time steps, 
+even though some cells were converted.  To specify a harvest size, yet avoid partial 
+cutting of stands, select both the Fill Stands and Fill stands to reach a size check 
+boxes.  If necessary, HARVEST will completely cut suitable adjacent stands (if they are 
+available) to form a cutblock that approximates the desired size.  When the Fill stands to 
+reach a size feature is activated, HARVEST does not check against the size parameter until 
+the initial stand has been completely cut, so target sizes smaller than the average size 
+of stands will usually be exceeded.
+
+The ageing of cells is simulated only once per time step, at the very beginning of a new 
+time step.  Revisit treatments are simulated after the cells are aged, but before any new 
+harvest treatments are allocated, so the age set by the revisit treatment is unchanged 
+until the next time step.  The minimum age specified in the Harvest Parameters Dialog is 
+applied to the age of cells at the time of harvest.  This has implications for stands that 
+may be treated multiple times through time.  For example, given a time step of 10 years, a 
+stand that has its age set to 1 in time step one will have an age of 11 at the beginning 
+of time step two.  It will not be eligible for a treatment having a minimum age of 12 
+until time step three.
+
+The internal (to the model) procedure for simulating harvests can be summarized as 
+follows:  1) build a list of stands that meet the constraints of a) management area, b) 
+forest type, c) age (i.e., greater than or equal to minimum age and less than or equal to 
+maximum age), and d) adjacency (if applicable).  2)  Sort the list by age if the 
+Dispersion Method is Oldest first.  3) Select a stand from the list, either by age or 
+randomly.  4) Stochastically generate a target harvest size using the mean and standard 
+deviation specified by the user, except when the Fill Stands option selected.  5) Cut the 
+stand by changing the age and forest type (as specified by user) of cells within the 
+stand.  If the Fill Stands option is used, cut every cell in the stand.  Otherwise, 
+randomly select a cell, and cut cells in an irregular cutting front away from that cell 
+until the target harvest size is reached.  In all cases, do not cut cells that violate 
+riparian buffer or age or forest type constraints.  If all eligible cells in the stand are 
+cut and the target harvest size has not been reached (also applies to the Fill Stands to 
+reach a size option), then HARVEST scans a list of neighboring stands (found in the *.mem 
+file) for stands that also meet the constraints, and continues the harvest in the first 
+eligible neighbor stand in the list, beginning with a cell adjacent to the stand just cut.  
+This process continues until the target size has been reached, or until all neighboring 
+stands have been checked.  6)  Record information in the *.mem file for the stand(s) cut 
+(e.g., time step when cut, harvest parameters used, revisit interval, etc.)  7) If the 
+target cut area for the management area-forest type combination has not been reached, 
+repeat starting at 3 above.  Note: when the Clustered dispersion method is selected, a 
+second list of eligible stands that are near the one selected at step 3 is generated, and 
+when the algorithm returns to step 3, stands are selected from the second list until it is 
+exhausted.  8) When the target area has been reached, the Harvest Parameters Dialog is re-
+displayed, or the next record from the script file is read.
+
+Notes on selecting harvest parameters.
+
+When simulating thinning or selection cutting, specify a negative age value for Reset cell 
+age.  To simulate a thinning regime that increases stand development (more mature within-
+stand structure) over time, specify a value with an absolute value less than the revisit 
+interval.  This results in an average increase in stand age over time.  Specifying an 
+absolute value greater than the revisit interval will result in an average decrease in 
+stand age, simulating a regression in stand development over time.  Adjacency constraints 
+are rarely applied to thinning or selective cutting activities.
+
+Specify a revisit interval for any management prescription that is static over time, 
+rather than explicitly specifying the activity in each time step in which it should occur.  
+This will save you much time in specifying simulation runs, make script files shorter and 
+reduce run times.
+
+Specify a standard deviation of 0.0 to cause all harvest units to be the same size.
+
+Use the Fill Stands option unless an explicit goal of the management activity is to change 
+the average size of stands (grain size of landscape pattern).  The stand-filling option 
+runs much faster, and avoids issues associated with partially cut stands.  The Fill Stands 
+to reach a size option provides some control over the size of harvest units, but it is 
+relatively coarse control because HARVEST does not check against the size parameter until 
+after each stand is completely cut.
+
+To simulate a deterministic natural process that always occurs when a forest type reaches 
+a certain age (e.g., succession, dieback), select all the management areas, select the 
+forest type(s) that are affected, set the Minimum Age to the age when the succession 
+begins to occur, Maximum Age to zero, and specify 100% of the Available FT in the MA.  The 
+treatment effects should be chosen to reflect the conditions after the successional 
+conversion is complete.  For example, aspen stands in Wisconsin die out by age 100, 
+typically leaving stands of northern hardwood species that established some 30 years 
+earlier.  This is simulated by specifying a forest type conversion to northern hardwood 
+and resetting age to 30. 
+
+Using the analysis features of Harvest 6.1
+ANALYZE
+
+This menu item causes HARVEST to conduct an analysis of the patch structure of the current 
+forest age map, or to analyze the amount of interior and edge habitat found in the current 
+forest age map.
+
+Patches
+
+There are two main options for calculating measures of landscape patch (contiguous similar 
+conditions) structure: use the simple calculations provided by HARVEST, or submit the 
+internal maps to APACK (Mladenoff and DeZonia 2004).  You may also submit multiple saved 
+maps for patch analysis in batch mode.  
+
+HARVEST can calculate the age distribution, the length of linear edge between patches of 
+different ages, the average size of patches of similar age, and the distribution of patch 
+sizes by age class.  You have the option of conducting these analyses on the current 
+(internal) age map, or on multiple saved maps in a batch mode.  You will be given the 
+option of calculating patches for the entire map, or by specific management area(s).  
+Patches are calculated based on 10-year age classes by default.  You may alternatively 
+enter user-defined age classes (two to five classes).  To do this, check the ‘Define age 
+classes’ box, select the number of age classes you wish to define, and enter the age 
+ranges for each class.  You may modify the labels for each age class that will be printed 
+in the resulting output.  The results of these analyses are reported in the Progress and 
+Results window and can be saved as a log file.
+
+If you choose to calculate landscape metrics with APACK, you must choose between the 
+internal stand age map and the forest type map.  When analyzing the age map, you may 
+define age classes as described above.  You may select among seven Landscape Statistics 
+(APACK term for mean patch characteristics), calculated by class (either age class or 
+forest type class), and three Class statistics (total area of each class, proportion of 
+the total area in each class and a connectivity index).  Specific APACK switches used are: 
+aa, ap, cor, ed, fd2, swd, ai, ar, ra and cce.  Consult the APACK user’s guide for details 
+about how the indices are calculated and what they mean.  The indices offered by HARVEST 
+are a subset of those calculated by APACK.  If you require other APACK indices, contact 
+the developer.  The results of APACK analyses are saved in files whose names are written 
+to the log file.
+
+NOTE: if you wish to use the APACK option, you must first download APACK 
+(http://landscape.forest.wisc.edu/projects/apack/) and install it in the directory from 
+which you run HARVEST, or be sure its directory is on the DOS PATH of your machine.  Also 
+note that APACK does not support directory names containing spaces.
+
+Interior
+
+This option will calculate several indices based on the distance of cells from harvested 
+and non-forest openings.   Calculated are the amount of interior and edge habitat, and the 
+GISfrag index (Ripple et al. 1991).  GISfrag is the average distance of a forested cell 
+from the nearest opening or edge, and it is a good index of fragmentation because it is 
+not susceptible to patch truncation effects.  Each of these indices considers both 
+harvested cells and the non-forest types in the forest type map to be forest openings.  
+There are two ways that you can perform interior analysis: either for the Current Map or 
+for Multiple Maps.  For all analyses conducted, information from both the stand age and 
+forest type maps is used.
+
+You will be prompted to enter an Interior buffer distance.  This is the distance that edge 
+effects extend into the forest, and should be selected based on the ecological process(es) 
+that are of interest.  (You may wish to conduct several analyses at various buffer 
+distances.)  HARVEST will convert the distance you enter to the nearest number of pixels, 
+so the actual value used will be a multiple of the pixel width.  This information is 
+recorded in the running log.
+
+You will also be asked to enter the number of decades that harvested openings persist.  
+When analyzing forest interior and edge, any stand less than or equal to this age will be 
+considered a forest opening.  Stands older than this age are assumed to have returned to a 
+closed canopy condition.  This value must be a multiple of the length of the time step, 
+and should be selected with knowledge of the local forest regeneration rates and the 
+ecological process(es) of interest.
+
+You will also be prompted for the value(s) representing non-forest in the forest type map.  
+Cells having this value will also be considered openings when calculating forest interior.  
+All other values will be considered forest.  To select multiple values, click on the first 
+value, and then select the additional value(s) while simultaneously holding down the Ctrl 
+key on your keyboard.
+
+The results of this analysis are reported in the Progress and Results window and can be 
+saved as a log file.  The interior map may also be saved as a .gis file.  The results of 
+Multiple Map analysis can be saved in a comma-delimited file that can later be imported 
+into a spreadsheet program.
+
+Complete
+
+If you choose to perform either patch or interior analysis for multiple age maps, you will 
+be given a Windows dialog to select the first file in the map series, followed by a dialog 
+to select the last map in the series.  All of the maps in the series must have the same 
+base name, and must be sequentially numbered from the first map to the last map selected 
+(i.e. Map01.gis, Map02.gis…Map15.gis).  You will also be asked to enter a filename where 
+the tabular output will be stored in a comma-delimited format.  The parameters dialog will 
+be displayed just as it is for single-map analysis, and the parameters will be applied to 
+each map in the series.  Results for each map analysis will be displayed in the log 
+window.  Interior maps will be saved using the base names of the input maps with ‘_int’ 
+appended to each name.  Note: Existing files will be overwritten.
+
+HARVEST will also submit multiple maps to APACK.  The procedure is similar to that for 
+requesting multiple patch analyses.  HARVEST execution will pause until all the APACK 
+analyses are completed.
+
+Query Stand
+
+Select this option to interactively investigate the characteristics of specific stands in 
+the stand age map.  Using the left-click button on the mouse, select a cell within a 
+stand.  A dialog box will appear showing the following information about the cell and the 
+stand it is in: Stand ID number, stand size, average age of the cells in the stand, the 
+management area the stand is in, the forest type of the stand, year last treated, 
+treatment code, and revisit interval.  The treatment code reflects the Dispersion Method 
+used when the stand was last cut (1 = Dispersed, 2 = Clustered, 3 = Group Selection, 4 = 
+Oldest First).  Stands that were cut using a negative Reset cell age value will have a 4 
+added to the treatment code value (e.g., Dispersed = 5, Oldest First = 8).  Negative Reset 
+cell age values typically represent an uneven-aged treatment, and this feature will allow 
+the user to distinguish them from even-aged treatments.  In some cases the actual stand 
+boundaries will not be evident from the ages of the cells, because the stand ID map is not 
+shown.  When you are finished, press the Close button.  Although many HARVEST functions 
+can be used with the Query Stand dialog open, some will not respond until the dialog is 
+closed.
+
+WINDOW
+
+This menu allows the user to bring windows to the front for viewing.  Selecting the Forest 
+Type or Management Area items will cause a new window to be generated to display the 
+selected map if it has not yet been opened, or it will bring the window to the front if it 
+already has been opened.
+
+HELP
+
+The help menu provides access to an electronic version of the document you are now 
+reading.  You may also determine the version of HARVEST you are using by selecting About.
+
+MAP FILES
+
+The output maps produced by HARVEST are saved in an ERDAS 7.5 file format.  To import 
+these files into Arc GRID format, use the IMAGEGRID command at the arc: prompt (not the 
+grid: prompt).  They can be directly read by ArcGIS, ArcView and ERDAS Imagine.
+
+COMMA-DELIMITED FILES
+
+If you choose to create a list of all log output for export to a spreadsheet, HARVEST 
+saves the data as a comma-delimited file.  Most spreadsheet programs provide capabilities 
+to import such data.  You may have to specify the delimiter (in this case a comma “,”), 
+and the spreadsheet program should automatically import the data, including the column 
+headings.
+
+
+Script file format
+The script file is a flat text file that can be edited to specify lengthy and complex 
+simulation runs.  Because the file is read by HARVEST as a formatted file, it is critical 
+that information appear on the correct line and in the correct column.  The recommended 
+way to produce a script file is to use the Program harvest script under the Model menu in 
+HARVEST to produce at least the first several harvest actions (script records).  The 
+script can then be expanded by copying and pasting records and editing the details in the 
+records.
+
+A sample script file is given here.  Data type of the fields appear in the column where 
+HARVEST begins reading data, and are indicated by Fortran format statements: A represents 
+characters, I represents integers, F real numbers; the number following the letter 
+indicates the number of columns read.  F formats also indicate the number of columns after 
+the decimal point, but the number to the left of the decimal is the total columns read.  
+Note that a leading space occurs in every line.  Text after the pound sign (#) is a 
+comment.  HARVEST ignores all text after the last column read (as indicated by the format 
+statements).
+
+ [GLOBALS-Harvest6.1]		# Header text must appear exactly as shown here
+ Inst Mem File Name  : A100
+ Random Number Seed  : I10
+ Save Age Maps?      : A1	# Any character except (capital) Y will be interpreted as No
+ Save For. Type Maps?: A1	# Any character except Y will be interpreted as No
+ Map Base Name       : A100
+ Manual Harvests?    : A1	# Any character except Y will be interpreted as No
+ Create Log List?    : A1	# Any character except Y will be interpreted as No
+ Log List File Name  : A100
+ Time Step Length    : I3
+ [RECORD NUMBER   1]		#Value of record number is ignored by HARVEST
+ Mng Area (  1)      : I3	#Value in parentheses will be ignored
+ Mng Area (  n)      : I3	#Multiple MAs (2-n) will appear only if selected
+ Forest Type (  1)   : I3	#Value in parentheses will be ignored
+ Forest Type (  n)   : I3	#Multiple FTs (2-n) will appear only if selected
+ Mean Harv Size      : F8.2
+ Standard Deviation  : F8.2
+ Min Harvest Size    : F8.2
+ Max Harvest Size    : F8.2
+ Stand Filling?      : A1	# Any character except Y will be interpreted as No
+ Fill stand to size? : A1	# Any character except Y will be interpreted as No
+ Dispersion Type     : A9	# Must be one of: Dispersed, Clustered, Oldest, Group
+ Group Proportion    : F7.4
+ Revisit Interval    : I3
+ Minimum Age/Time    : A4	# Must be one of Age, Time
+ Minimum Age         : I3
+ Maximum Age         : I3
+ Harv Calculated By  : A8	# Must be one of Area, Pct, PctAvail
+ Amount to Harvest   : F8.2
+ Adjacency Constr?   : A1	# Any character except Y will be interpreted as No
+ Green-Up Interval   : I3
+ Riparian Buffers?   : A1	# Any character except Y will be interpreted as No
+ Val to Buff (  1)   : I3	#Value in parentheses will be ignored
+ Val to Buff (  n)   : I3	#Multiple FTs (2-n) will appear only if selected
+ Buffer Width        : F5.1
+ Treatment Code      : I3	See footnote *
+ Convert Forest Type?: A1	# Any character except Y will be interpreted as No
+ Convert FT To       : I3
+ Reset cell age?     : A1	# Any character except Y will be interpreted as No
+ Reset cell age to   : I4
+ Last Harv In TS?    : A1	# Any character except Y will be interpreted as No
+ [END OF RECORD]     		# Text must appear exactly as shown here
+ [RECORD NUMBER   n]		#Subsequent records may follow
+
+* Treatment codes are: 1=Dispersed, 2=Clustered, 3=Group, 4=Oldest First; when a negative 
+age is specified for Reset Forest Age, a 4 is added to these values to indicate uneven-
+aged treatment.
+
+
+Common problems and how to fix them
+
+Problem:  HARVEST warns me that there are not enough colors available.
+
+Fix:  Go to the Windows Control Panel and select 'Display'.  Set colors to 'High color 
+(16-bit)'.  You may need to re-start your computer for this change to take effect.
+
+Problem:  When selecting maps, I always receive this message: "The selected maps have 
+different properties, use anyway?"  The maps have the same properties.  It even happens 
+after selecting the "fix header of this map" option. 
+
+Fix:  Select Edit - Preferences.  You may have selected either metric or English units to 
+be the default.  Whatever it is set to, change it and see if the problem goes away. 
+
+Problem:  When pressing the harvest button after entering the harvest parameters, the 
+following error message appears: 'Please select a different land use or management area.’'
+
+Fix:  This message appears because the parameters selected resulted in a total amount to 
+cut of 0 acres/ha.  You must change the parameters to produce a non-zero cut amount (the 
+amount that will be harvested is in ‘Total area to cut’ box of the HARVEST parameters 
+dialog).  This is typically done by selecting other management area(s) or forest type(s), 
+or lowering the minimum age for harvest.
+
+Problem:  When refreshing a map window, it changes shape and is left blank.
+
+Fix:  Close the window and open it again using the Window menu.
+
+
+Using HARVEST for research or strategic planning
+REPLICATES
+
+Because HARVEST is a stochastic simulation model, you will get a somewhat different result 
+each time you run a given set of parameters on the same set of maps (if you use a 
+different random number seed).  However, this is also true in real life, where you will 
+get different management plan implementations if you give different project-level planners 
+the same task.  Remember that the purpose of HARVEST is to simulate the project-level 
+(stand-level) implementation of a strategic-level plan.  This will provide an expected 
+landscape spatial pattern given the management strategy simulated.
+
+To understand an expected outcome requires statistical methods and replicated 
+observations.  It is recommended that simulation replicates be generated whenever data are 
+produced to support a decision or a research finding.  A simulation replicate is a 
+repeated simulation run where only the random number seed is changed.  The question of how 
+many replicates are required depends on how much variation exists among replicates.  A 
+minimum of 3 replicates should be produced to assess the between-replicate variation in 
+measures of spatial pattern (e.g., amount of interior, mean patch size.)  Consult with a 
+statistician to determine the number of replicates required.
+
+Using script files is the recommended way to manage replicate simulations.  Make a copy of 
+the script file for each replicate and change only the random number seed in each.  You 
+can manage the output files by using either a base filename that identifies the replicate, 
+or specifying a separate directory (as part of the base filename) for each replicate.  The 
+base filename can include the file system path, and is specified in the header of the 
+script file.  It is possible to simultaneously run several instances of HARVEST, but they 
+must be invoked from separate directories to keep the temporary log file ($temp.txt) from 
+being corrupted.  The simplest way to do this is to copy the executable (and rgb.dat and 
+defaults.sys) into the several directories.
+
+ALTERNATIVE SCENARIOS
+
+HARVEST is a powerful tool to compare the spatial pattern expected under alternative 
+management scenarios.  These alternatives may differ in the boundaries and objectives of 
+management areas, the intensity of harvest (area cut), the size of harvest units, the 
+dispersion of openings, or some combination.  Furthermore, the strategies may change over 
+time in various ways.  To see some examples of such comparisons, see Gustafson and Crow 
+(1996), Gustafson (1996), Gustafson and Crow (1998), Gustafson (1998), and Gustafson et 
+al. (in press).
+
+HARVEST is not a tactical planning tool
+
+HARVEST is a strategic-level planning and research tool.  It should not be used to support 
+project-level planning except as a heuristic (what-if?) device.  To make HARVEST easy to 
+use for strategic, coarse-filter evaluation of management alternatives, many simplifying 
+assumptions were made to reduce data requirements and processing time.  Because HARVEST 
+ignores many forest conditions and constraints that are critical in tactical planning, it 
+cannot be expected to provide guidance on the specific location of individual timber 
+sales.
+
+ASSUMPTIONS
+
+A number of key assumptions were made in the development of HARVEST to maintain its ease 
+of use as a strategic planning and research tool.  Users of HARVEST should keep these in 
+mind as they interpret and apply the results from simulations.
+
+1.	Forest age is used as a surrogate for merchantability.  It is assumed that the 
+likelihood of harvest of a stand of a given forest type within a management area is 
+related solely to the age of the stand.  However, we know that stocking density, 
+size class, site conditions, accessibility and operability are all factors that 
+influence stand growth and harvest decisions in reality.
+2.	HARVEST randomly selects suitable stands.  When HARVEST does not select stands using 
+the Oldest First method, stands are selected at random from those stands that 
+satisfy age and adjacency constraints.  Over a time period of a decade or more, this 
+mimics the pattern found on real managed forests (Gustafson and Crow 1999).  For 
+shorter time periods this may not be the case.  When multiple forest types and/or 
+multiple management areas are selected, harvests are distributed among the combined 
+area of the forest type(s) and management area(s).
+3.	Forest type of a stand is assigned based on the type that is most abundant within 
+the stand.  When forest type conversion is active, forest type of a stand is re-
+computed immediately after it is cut, based on the type that is most common within 
+the stand boundaries.
+4.	Forest succession processes are not simulated.  This lack of succession may be 
+unrealistic for certain forest types under uneven-aged management.  However, if the 
+treatments targeted to forest types are designed to maintain those types, then this 
+will not be a problem.  Some succession may be simulated by converting the forest 
+type of stands when they reach a certain age.  This should be attempted only when 
+the succession process for that forest type is fairly deterministic.  If the user is 
+interested in how forest composition might change by succession under alternative 
+management strategies, then HARVEST is not the tool to use.  The LANDIS model is one 
+option to consider for such questions, since it is a process-based model that 
+includes succession processes 
+(http://landscape.forest.wisc.edu/projects/landis.htm).
+5.	Stand boundaries do not change, even when the harvest boundaries are significantly 
+different than the original stand boundaries.  The original stand boundaries are 
+maintained solely for bookkeeping purposes.  This normally does not create problems, 
+but has the potential to create a logistical limit to harvest activity if simulated 
+harvests are generally much smaller (or somewhat larger) than the original stands.
+
+INTERIOR
+
+Analysis of forest interior and edge habitat requires the user to provide information to 
+define what is to be considered forest interior.  Interior conditions are generally not so 
+much a physical phenomenon as an ecological phenomenon that arises from the perception of 
+habitat quality by organisms.  Microclimate edge effects usually extend into the forest 
+only a few tens of meters.  However, some bird species avoid habitat within several 
+hundred meters of a forest edge.  The user must have a specific ecological question in 
+mind when requesting an interior analysis, and define interior conditions accordingly.  In 
+some cases, several analyses using different definitions of interior may be conducted to 
+provide estimates of interior conditions relevant to different species or ecological 
+communities.
+
+PATCHES
+
+Patches are defined as a collection of contiguous cells, connected edge-to-edge or 
+diagonally, whose ages are all in the same age class (e.g., 1-10, 30-60).  HARVEST allows 
+the user to define the age classes.  HARVEST always assumes cells are part of a patch if 
+they are connected diagonally; APACK allows the user to choose the connection rule.  
+Forest type is not considered in the patch delineation process, except by APACK.
+
+LINK TO SPECTRUM
+
+A utility program was developed to convert output from the harvest-scheduling program 
+Spectrum into a script file that can be used as input to HARVEST.  This allows Spectrum 
+schedules to be simulated in a spatial context (e.g., Gustafson et al. in press, Leefers 
+et al. in press).  For more information on this utility program and its use, contact Eric 
+Gustafson, or visit the HARVEST Web site 
+(http://www.ncrs.fs.fed.us/4153/Harvest/v61/v6_1.htm).
+
+
+References
+Gustafson, E.J.  1996.  Expanding the scale of forest management: allocating timber 
+harvests in time and space.  Forest Ecology and Management 87:27-39.
+
+Gustafson, E.J. and T.R. Crow.  1996.  Simulating the effects of alternative forest 
+management strategies on landscape structure.  Journal of Environmental Management 
+46:77-94.
+
+Gustafson, E.J.  1998.  Clustering timber harvests and the effect of dynamic forest 
+management policy on forest fragmentation.  Ecosystems 1:484-492.
+
+Gustafson, E.J. and T.R. Crow.  1998.  Simulating spatial and temporal context of forest 
+management using hypothetical landscapes.  Environmental Management 22:777-787.
+
+Gustafson, E.J. and T.R. Crow.  1999.  HARVEST: linking timber harvesting strategies to 
+landscape patterns.  In Spatial modeling of forest landscapes: approaches and 
+applications, Mladenoff, D.J. and W.L. Baker (eds).  Cambridge University Press, 
+Cambridge, England.
+
+Gustafson, E.J.  1999.  HARVEST: a timber harvest allocation model for simulating 
+management alternatives.  In Landscape ecological analysis: issues and applications, 
+Klopatek, J.M. and R.H. Gardner (eds).  Springer, New York.
+
+Gustafson, E.J., L.J. Roberts, and L.A. Leefers.  In press.  Linking linear programming 
+and spatial simulation models to predict landscape effects of forest management 
+alternatives.  Journal of Environmental Management.
+
+Leefers, L.A., L J. Roberts and E.J. Gustafson.  2005.  Spatial sensitivity analysis: an 
+application of HARVEST to a Spectrum alternative.  In: Bevers, Michael; Barrett, Tara 
+M., comps.  Systems Analysis in Forest Resources: Proceedings of the 2003 Symposium; 
+October 7-9, Stevenson, WA. Gen. Tech. Rep. PNW-GTR-000. Portland, OR: U.S. Department 
+of Agriculture Forest Service, Pacific Northwest Research Station.
+
+McGarigal, K., and B. J. Marks. 1995.  FRAGSTATS: spatial pattern analysis program for 
+quantifying landscape structure.  Gen. Tech. Rep. PNW-GTR-351.  USDA Forest Service, 
+Pacific Northwest Research Station, Portland, Oregon, USA.
+
+Mladenoff, D.J. and B. DeZonia.  2004.  APACK 2.23 analysis software: User’s guide.  
+Published on Internet server http://landscape.forest.wisc.edu/projects/apack/
+
+Ripple, W.J., G.A. Bradshaw, and T.A. Spies. 1991.  Measuring landscape pattern in the 
+Cascade Range of Oregon, USA.  Biological Conservation 57:73-88.
+
+Citation information
+This User’s Guide should be cited as:
+
+Gustafson, Eric J. and Luke V. Rasmussen.  2005.  HARVEST for Windows v6.1: User’s guide.  
+Published on the Internet by the USDA Forest Service, North Central Research Station, St. 
+Paul, MN.  URL: http://www.ncrs.fs.fed.us/4153/harvest/v61/documentation/default.asp.

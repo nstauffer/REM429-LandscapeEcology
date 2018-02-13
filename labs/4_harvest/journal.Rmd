@@ -1,0 +1,148 @@
+---
+title: "HarvestLite Explorations"
+output:
+  html_document:
+    df_print: paged
+---
+## Getting Data
+HarvestLite has a nicely-structured but also extremely not-tidy output format. I ran the model with various parameters tweaked and then analyzed edge and patch effects before saving the logs as .txt files and the rasters as .gis files. Once I'd done that, I wrote some functions to extract the metadata and tables from those logs and return a list of the contents as tidy data frames.
+
+I wasn't careful about my logs as I should've been and several weren't initially all that complete. I ended up spending some time rerunning a few and patching up others using tables from other logs. Don't worry! It was mostly just copying Patch Anylsis sections to the persistence and buffer edge effect testing logs because those parameters only affect edge analyses.
+
+```{r data, echo = TRUE}
+# Load up the functions
+source("code/log_extraction.R")
+
+# Read in the logs (the warnings are about coercing factors into character strings and dropping the "total" rows from tables)
+logs <- logs.read("data/logs")
+
+# Somehow the metadata for the hectares cut is dorpped by an order of magnitude?
+logs$metadata$harvest.hectares.mean <- logs$metadata$harvest.hectares.mean*10
+```
+
+
+## Exploring Data
+There were five parameters we had to explore and each had one to three values in particular to watch for resulting changes in:
+
+1) Mean Harvest Size
+    * Forest interior area
+    * Forest edge area
+2) Percent of Forest Cut
+    * Forest interior area
+    * Forest edge area
+3) Spatial Configuration
+    * Forest interior habitat area
+    * Forest edge area
+    * Mean patch size
+4) Buffer Width
+    * Forest interior area
+5) Persistence Time
+    * Forest interior area
+
+    
+### Mean Harvest Size
+The parameter for mean harvest size determines exactly that: what the mean number of hectares will be for a harvest event. There are not parameters for adjusting the distribution of the sizes, so I assume it's probably normal. Reported alongside this is the standard deviation in the areas of those harvest events.
+
+```{r meanharvest_habitat}
+# The runs we want to include here. Baseline values and then post harvest where the only changed parameter was mean harvest area
+meanharvest.keys <- c("baseline", logs$metadata$key[grepl(logs$metadata$key, pattern = "^meanharvest") & !grepl(logs$metadata$key, pattern = "_")])
+
+meanharvest.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% meanharvest.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% meanharvest.keys))
+
+# Make a tall version so I can easily plot them against each other
+meanharvest.data.tall <- tidyr::gather(dplyr::select(meanharvest.data,
+                                                     key, harvest.hectares.mean, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:harvest.hectares.mean))
+
+ggplot(meanharvest.data.tall) +
+  geom_col(aes(x = harvest.hectares.mean, y = area.ha, fill = habitat.type), position = "dodge")
+```
+
+
+
+### Percent of Forest Cut
+```{r pctcut_habitat}
+pctcut.keys <- c("baseline", logs$metadata$key[grepl(logs$metadata$key, pattern = "^cutpct")])
+
+pctcut.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% pctcut.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% pctcut.keys))
+
+pctcut.data.tall <- tidyr::gather(dplyr::select(pctcut.data,
+                                                     key, decade.pct.cut, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:decade.pct.cut))
+
+ggplot(pctcut.data.tall) +
+  geom_area(aes(x = decade.pct.cut, y = area.ha, fill = habitat.type), position = "identity", alpha =0.25) +
+  geom_col(aes(x = decade.pct.cut, y = area.ha, fill = habitat.type), position = "dodge")
+  
+```
+
+### Spatial Configuration
+```{r spatial_habitat}
+# spatial.keys <- c("baseline", "meanharvest5", "meanharvest5_clust")
+spatial.keys <- c("meanharvest5", "meanharvest5_clust")
+
+spatial.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% spatial.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% spatial.keys))
+
+spatial.data.tall <- tidyr::gather(dplyr::select(spatial.data,
+                                                     key, dispersion, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:dispersion))
+
+ggplot(spatial.data.tall) +
+  geom_col(aes(x = dispersion, y = area.ha, fill = key), position = "dodge") +
+  facet_wrap(~habitat.type)
+```
+
+```{r spatial_patches}
+spatial.patch <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% spatial.keys),
+                          y = dplyr::filter(logs$patch.sizes, logs$patch.sizes$key %in% spatial.keys))
+
+names(spatial.patch)[names(spatial.patch) == "Age class (decades)"] <- "age.class"
+names(spatial.patch)[names(spatial.patch) == "Avg. size (ha)"] <- "avg.size.ha"
+library(ggridges)
+ggplot(spatial.patch) +
+  # geom_col(aes(x = age.class, y = avg.size.ha, color = key)) +
+  geom_col(aes(x = age.class,
+               y = avg.size.ha,
+               fill = dispersion),
+           position = "identity",
+           color = "black",
+           alpha = 0.7)
+```
+### Buffer Width
+```{r buffer_interior}
+buffer.keys <- c("meanharvest5", logs$metadata$key[grepl(logs$metadata$key, pattern = "buffer")])
+
+buffer.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% buffer.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% buffer.keys))
+
+buffer.data.tall <- tidyr::gather(dplyr::select(buffer.data,
+                                                     key, buffer, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:buffer))
+
+ggplot(dplyr::filter(buffer.data.tall, habitat.type == "habitat.ha.interior")) +
+    geom_col(aes(x = buffer, y = area.ha, fill = habitat.type), position = "dodge")
+```
+
+
+### Persistence Time
+```{r persistence_interior}
+persist.keys <- c("meanharvest5", logs$metadata$key[grepl(logs$metadata$key, pattern = "per")])
+
+persist.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% persist.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% persist.keys))
+
+persist.data.tall <- tidyr::gather(dplyr::select(persist.data,
+                                                     key, persistence.decades, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:persistence.decades))
+
+ggplot(dplyr::filter(persist.data.tall, habitat.type == "habitat.ha.interior")) +
+    geom_col(aes(x = persistence.decades, y = area.ha, fill = habitat.type), position = "dodge")
+```

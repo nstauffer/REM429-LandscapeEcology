@@ -1,0 +1,150 @@
+ HARVEST -- Session log             2/ 9/2018            12:10:22
+
+ Base age map: C:\Users\Nelson\Documents\Projects\GitHub\REM429-Landscape
+ Number of rows and columns: 213, 207
+ Cell width: 30.0 meters;  Cell area: 0.09 ha
+ Total map area (ha):  3968.2
+ Total forested area (ha): 3906.2
+ Oldest age class (decades):  22
+ Random number seed:          4
+
+ SIMULATION LOG
+
+ Average harvest size (hectares):     5.00
+ Standard deviation in harvest size (hectares):     0.50
+ Percent of forested area to be cut each decade:   7.50 ( 293.0 hectares.)
+ Minimum age class (decades) where harvest is allowed:  8
+ Spatial dispersion method: DISPERSED
+
+
+ Decade        Area harvested (ha)
+    1                294.4
+    2                294.8
+    3                292.2
+    4                293.3
+    5                294.3
+    6                294.7
+    7                295.7
+    8                292.6
+
+ Simulation was completed successfully
+
+
+ PATCH ANALYSIS (AFTER HARVEST)
+
+ Total boundary length between different-aged cells =   711.12 (km)
+
+ AGE CLASS DISTRIBUTION
+ Age (decades)          Area (ha)
+     1                     292.6
+     2                     295.7
+     3                     294.7
+     4                     294.3
+     5                     293.3
+     6                     292.2
+     7                     294.8
+     8                     294.4
+     9                       0.0
+    10                       0.0
+    11                       0.0
+    12                       0.0
+    13                       0.0
+    14                       0.0
+    15                       0.0
+    16                       0.0
+    17                     110.4
+    18                      73.6
+    19                      64.0
+    20                     129.5
+    21                      54.5
+    22                     115.4
+    23                     186.2
+    24                     273.0
+    25                     293.5
+    26                     168.0
+    27                      35.6
+    28                      22.0
+    29                      23.8
+    30                       4.9
+
+
+ TOTAL NUMBER OF PATCHES AND AVERAGE SIZES:
+
+ Age class (decades)   No. of patches    Avg. size (ha)
+         1                   60                 4.877
+         2                   63                 4.694
+         3                   58                 5.080
+         4                   58                 5.074
+         5                   56                 5.238
+         6                   56                 5.218
+         7                   56                 5.263
+         8                   59                 4.990
+         9                    0                 0.000
+        10                    0                 0.000
+        11                    0                 0.000
+        12                    0                 0.000
+        13                    0                 0.000
+        14                    0                 0.000
+        15                    0                 0.000
+        16                    0                 0.000
+        17                   96                 1.150
+        18                   61                 1.207
+        19                   70                 0.914
+        20                  115                 1.126
+        21                   38                 1.433
+        22                   77                 1.498
+        23                  115                 1.619
+        24                  132                 2.068
+        25                  218                 1.346
+        26                  156                 1.077
+        27                   42                 0.846
+        28                   30                 0.732
+        29                   30                 0.792
+        30                    4                 1.215
+
+ Total (all classes)       1650                 2.367
+
+
+ DISTRIBUTION OF PATCHES BY SIZE CLASS:
+
+ Age class (decades)    <1 ha     1-10      10-50    50-100   100-1000  >1000 ha
+         1                1        58         1         0         0         0
+         2                4        59         0         0         0         0
+         3                1        56         1         0         0         0
+         4                0        57         1         0         0         0
+         5                0        54         2         0         0         0
+         6                0        54         2         0         0         0
+         7                1        53         2         0         0         0
+         8                0        59         0         0         0         0
+         9                0         0         0         0         0         0
+        10                0         0         0         0         0         0
+        11                0         0         0         0         0         0
+        12                0         0         0         0         0         0
+        13                0         0         0         0         0         0
+        14                0         0         0         0         0         0
+        15                0         0         0         0         0         0
+        16                0         0         0         0         0         0
+        17               71        25         0         0         0         0
+        18               43        18         0         0         0         0
+        19               53        16         1         0         0         0
+        20               85        29         1         0         0         0
+        21               26        11         1         0         0         0
+        22               61        13         3         0         0         0
+        23               74        38         3         0         0         0
+        24               88        40         4         0         0         0
+        25              164        48         6         0         0         0
+        26              124        29         3         0         0         0
+        27               34         8         0         0         0         0
+        28               23         7         0         0         0         0
+        29               20        10         0         0         0         0
+        30                2         2         0         0         0         0
+      Total            2475      4152      1587       161        20         0
+
+
+ INTERIOR/EDGE ANALYSIS (AFTER HARVEST)
+
+ Edge-buffer width:  180. meters
+ Number of decades openings persist: 2
+
+ Area of interior habitat =   973.17 hectares.
+ Area of edge habitat     =  2344.68 hectares.
