@@ -1,0 +1,135 @@
+---
+title: "Point Patterns"
+author: "Nelson Stauffer"
+date: "March 30, 2018"
+output: word_document
+---
+
+```{r setup, include=FALSE, echo=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggthemes)
+data.wide <- read.csv("C:/Users/Nelson/Documents/Projects/GitHub/REM429-LandscapeEcology/labs/11_patterns/data/clean_wide.csv", stringsAsFactors = FALSE)
+data.tall <- read.csv("C:/Users/Nelson/Documents/Projects/GitHub/REM429-LandscapeEcology/labs/11_patterns/data/clean_tall.csv", stringsAsFactors = FALSE)
+```
+
+## Introduction
+Understanding the impacts of patterns is critical for understanding any data, including those in landscape ecology. This is true not only of the patterns observed, but also the patterns *created* in the sample designs. A sample design that results in data being gathered in a spatially or temporally uneven distribution has a high risk of introducing biases. These can be compensated for with techniques like weighting values according to their distributions to emphasize data from comparatively undersampled regions/times, but there are limits to those approaches *e.g.* features like aspen stands which may occur in small, discrete spatial extents are likely to be missed when samples are clustered. However, a perfectly rigid and regular sample can also introduce biases because it can dramatically limit the inference space by excluding areas or periods from being part of the population sampled, *e.g.* sampling vegetation at regularly spaced intervals in an area with seed rows from a planting might over or underestimate foliar cover if the spacing coincides with the sampling interval.
+
+For many study efforts, a random sampling approach with minimal clustering will produce a dataset with maximum power. There are ways to try to achieve this (*e.g.* a sample design using an explicitly spatial-balanced random sampling algorithm like Generalized Random Tesselation Stratified [GRTS]) but characterizing the ultimate distribution biases in the final data is important because real-world sampling rarely adheres exactly to even a perfectly-distributed sample design. Additionally, there are situations in which the sampling effort's spatial distribution is determined by the population itself, as in the case of the data used in this lab which attempts to survey every longleaf pine (*Pinus palustris*) within two stands and is constrained to the distributions of the individual trees. In any case, there are metrics that can be used to quantify the distribution like Ripley's K(t).
+
+
+$\text{K(t) =}\frac{\text{Samples within radius t}}{\text{Density of sampling}}$
+
+Historically, *P. palustris*-dominated ecosystems covered much of the North American southeast, but has seen rapid decline since the introduction of invasive *H. sapiens* from Europe starting circa 1500 CE due to heavy exploitation. The systems also evolved for frequent fire, which humans typically suppress, either through conversion of the fire-prone systems or interfering with the ignition and spread of burns. Because understanding and preserving these forests is important, efforts to characterize their growth patterns are also important. However, interpreting the data is always complicated and should be guided by metrics like Ripley's K which can help to understand the robustness and generalizability of those interpretations.
+
+## Methods
+
+Table 1: Survey locations used in the study and their physical characteristics (CITATION)
+
+The data used came from two locations: Caffey Hill and Red-tail Ridge. (Table 1) Within each of these areas, the diameter at breast height (DBH) in cm was recorded for every living *P. palustris* with DBH greater than 2.5 cm. Sampling took place in 1999 and again in 2013.
+
+Data were stored in an Excel workbook without built-in quality assurance mechanisms and so there were minor variations indata recording approaches both within and between years as well as some unusable data. Data cleaning was extremely aggressive because I was not part of the survey crew and didn't have access to additional information beyond their notes to use to correct (rather than remove) data. The data were standardized in a series of quality control steps:
+
+1) Convert the varaible names to consistently differentiate the year the record came from *e.g.* "DBH99" and "DBH13" for the DBH values from 1999 and 2013, respectively
+2) Convert all "NA", "NR", and "N" string values to **NA**, correctly representing the lack of a value for those records
+3) Convert DBH99 from inches to centimeters using 2.54 as the conversion factor
+4) Round DBH values to the nearest cm, eliminating false precision
+5) Remove records without both a numeric X and Y coordinate value
+6) Remove records where the DBH99 value was greater than the DBH13 values, *N.B.* one such record had a note suggesting that it was smaller in 2013 due to a burn, but it was removed to be safe
+7) Removed any records where a tree was recorded as dead in 1999 and alive in 2013
+
+The data were left in a "wide" format with each record representing an individual tree for the sake of analysis rather than converting to a "tidy" format in which each record represented a tree measurement for a sampling year. For mapping, the tidy version was used.
+
+## Results
+```{r tables, echo=FALSE}
+library(tidyverse)
+
+data.working <- dplyr::mutate(data.wide, dbh.delta = DBH13 - DBH99)
+
+dbh.delta <- ggplot() +
+  geom_histogram(data = dplyr::filter(data.working, source == "Caffey Hill"),
+                 aes(y=..count../sum(..count..),
+                     x = dbh.delta,
+                     fill = source),
+                 alpha = 0.5) +
+  geom_histogram(data = dplyr::filter(data.working, source == "Red-Tail Ridge"),
+                 aes(y=..count../sum(..count..),
+                     x = dbh.delta,
+                     fill = source),
+                 alpha = 0.5) +
+  scale_fill_discrete() +
+  labs(y = "Proportion of individuals within sampling area",
+       x = "Change in DBH (cm)",
+       fill = "Sampling Area") +
+  theme(panel.background = element_blank())
+
+dbh <- ggplot() +
+  geom_histogram(data = dplyr::mutate(dplyr::filter(data.tall, Year == 1999), yearstring = as.character(Year)),
+                 aes(y=..count../sum(..count..),
+                     x = DBH,
+                     fill = yearstring),
+                 alpha = 0.5) +
+  geom_histogram(data = dplyr::mutate(dplyr::filter(data.tall, Year == 2013), yearstring = as.character(Year)),
+                 aes(y=..count../sum(..count..),
+                     x = DBH,
+                     fill = yearstring),
+                 alpha = 0.5) +
+  scale_fill_discrete() +
+  labs(y = "Proportion of individuals within sampling area",
+       x = "DBH (cm)",
+       fill = "Sampling Year") +
+  theme(panel.background = element_blank()) +
+  facet_grid(~ source)
+
+dbh.delta <- ggplot() +
+  geom_histogram(data = data.working,
+                 aes(y=..count../sum(..count..),
+                     x = dbh.delta,
+                     fill = source)) +
+  labs(y = "Proportion of individuals within sampling area",
+       x = "Change in DBH (cm)") +
+  theme(panel.background = element_blank(),
+        legend.position = "none") +
+  facet_grid(~ source)
+```
+
+```{r}
+dbh.delta
+```
+
+Figure 1: The change in DBH in cm from 1999 to 2013 for trees alive in both years normalized for the number of sampled trees in each area. Caffey Hill shows a slightly higher change in DBH for the period than Red-Tail Ridge.
+```{r}
+dbh
+```
+
+Figure 2: The proportional distribution of DBH by year in both sampled areas. Red-Tail Ridge shows a possible shift in overall distribution of the size classes toward thicker trees whereas Caffey Hill shows a shift toward smaller ones.
+
+```{r}
+ggplot(data.tall) +
+  geom_point(aes(x = X, y = Y, size = DBH, color = source)) +
+  labs(x = "Relative X position",
+       y = "Relative Y position",
+       size = "DBH") +
+  theme(axis.text = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank()) +
+  facet_grid(source ~ Year, switch = "y") +
+  guides(color = FALSE)
+```
+
+Figure 3: Spatial distribution (using relative coordinates) of DBH by year for both sampled areas.
+
+Table 2: Statistics for tree features for both stands.
+
+Table 3: Results of Ripley's K(t) for both stands for trees with a less than 5 cm increase in DBH versus those with greater than or equal to 5 cm increase in DBH. 
+
+## Discussion
+Based on the changes in DBH, it seems likely that the smallest trees in Caffey Hill saw the greatest rate of increase in DBH, resulting in trees of smaller DBH classes making up a greater proportion of the population (Figures 1 and 2).
+
+
+## Literature Cited
+
+
+ 

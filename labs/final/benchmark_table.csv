@@ -1,0 +1,10 @@
+Indicator,Precipitation Regime,Season of Sage-Grouse Use,Acceptable Range
+"Non-invasive Tree Cover  (%, any hit)",Arid,Any,0% <= X <= 1.5%
+"Invasive Annual Grass Cover  (%, any hit)",Arid,Any,0% <= X <= 5%
+"Sagebrush Cover  (%, any hit)",Any,Spring,20% <= X <= 100%
+"Non-invasive Perennial Grass Cover  (%, any hit)",Any,Spring,10% <= X <= 100%
+"Non-invasive Shrub Cover  (%, any hit)",Any,Spring,30% <= X <= 100%
+"Non-invasive Perennial Forb/Grass Cover  (%, any hit)",Any,Summer,15% < X <= 100%
+"Non-invasive Perennial Forb Cover  (%, any hit)",Arid,Summer,5% <= X <= 100%
+"Non-invasive Perennial Forb Cover  (%, any hit)",Mesic,Summer,15% <= X <= 100%
+"Sagebrush Cover  (%, any hit)",Arid,Summer,10% <= X <= 25%

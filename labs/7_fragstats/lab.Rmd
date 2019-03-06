@@ -1,0 +1,120 @@
+---
+title: 'Fragstats: Spatial Granularity and Time'
+author: "Nelson Stauffer"
+date: "February 23, 2018"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+# Vegetation class number lookup table
+class.lut <- readxl::read_excel(paste(getwd(), "data/Lab 7 Cover Class Codes.xls", sep = "/"))
+# Statistic name lookup vector
+stat.lut <- c("PLAND" = "percent.landscape",
+              "NP" = "patch.count",
+              "AREA_MN" = "patch.area.mean",
+              "PARA_MN" = "edge.area.ratio.mean",
+              "SHDI" = "shdi",
+              "SHEI" = "shei",
+              "SHAPE_MN" = "shape.index.mean",
+              "type" = "type",
+              "cover" = "cover",
+              "grain" = "grain",
+              "year" = "year")
+
+# Results with all eight metrics for 30, 100, and 500 m
+spatial.class <- read.csv(paste(getwd(), "data/spatial_granularity_class.csv", sep = "/"),
+                          stringsAsFactors = FALSE) %>%
+  dplyr::mutate(type = as.numeric(stringr::str_replace(TYPE, pattern = "cls_", replacement = "")),
+                grain = stringr::str_extract(LID, pattern = "\\d{1,5}m")) %>%
+  merge(x = .,
+        y = class.lut,
+        by.x = "type",
+        by.y = "code") %>%
+  dplyr::select(-LID, - TYPE)
+
+names(spatial.class) <- stat.lut[names(spatial.class)]
+
+spatial.landscape <- read.csv(paste(getwd(), "data/spatial_granularity_land.csv", sep = "/"),
+                          stringsAsFactors = FALSE) %>%
+  dplyr::mutate(grain = stringr::str_extract(LID, pattern = "\\d{1,5}m")) %>%
+  dplyr::select(-LID)
+
+names(spatial.landscape) <- stat.lut[names(spatial.landscape)]
+
+# Results with all eight metrics for 1800, 1900, and 2000
+temporal.class <- read.csv(paste(getwd(), "data/temporal_class.csv", sep = "/"),
+                          stringsAsFactors = FALSE) %>%
+  dplyr::mutate(type = as.numeric(stringr::str_replace(TYPE, pattern = "cls_", replacement = "")),
+                year = stringr::str_extract(LID, pattern = "\\d{4}")) %>%
+  merge(x = .,
+        y = class.lut,
+        by.x = "type",
+        by.y = "code")
+
+names(temporal.class) <- stat.lut[names(temporal.class)]
+
+temporal.landscape <- read.csv(paste(getwd(), "data/temporal_land.csv", sep = "/"),
+                              stringsAsFactors = FALSE) %>%
+  dplyr::mutate(year = stringr::str_extract(LID, pattern = "\\d{4}")) %>%
+  dplyr::select(-LID)
+
+names(temporal.landscape) <- stat.lut[names(temporal.landscape)]
+
+## Make a function for generating tables as a list
+# the argument group should be either "grain" or "year" depending on the variable in the data frame
+get.tables <- function(df,
+                       stat.lut,
+                       group) {
+  
+  stats.used <- stat.lut[!(stat.lut %in% c("grain", "cover", "year", "type"))][stat.lut[!(stat.lut %in% c("grain", "cover", "year", "type"))] %in% names(df)]
+  
+  # The setNames() is so that my list doesn't get the LUT names for the source file format
+  output <- lapply(setNames(stats.used, stats.used),
+                   FUN = function(X, df, group) {
+                     metric <- rlang::quo(X)
+                     grouping <- quo(group)
+                     tidyr::spread(df[, c(group, "cover", X)],
+                                   key = !!grouping,
+                                   value = !!metric,
+                                   fill = 0)
+                   }, df = df, group = group)
+  return(output)
+}
+
+```
+
+## Introduction
+Landscape metrics are important to ecology because they provide quantitative measures for otherwise abstract concepts. While it is useful to speak to conceptual frameworks regarding properties of landscapes like connectivity, heterogeneity, and patch dynamics, it's difficult to develop or provide specific, accurate predictions of landscape behavior over time without quantifying those ideas.
+
+In order to facilitate the calculation of landscape structure metrics for its own management purposes, the USDA Forest Service developed the software FRAGSTATS to calculate landscape metrics from categorical landscape data, driven through a graphical user interface for accessibility. CITATION. This was the software used to calculate all landscape metrics for this lab.
+
+The data used in this lab come from the Owyhee region of Idaho were used to explore the changes in landscape metrics over time (three records with a spatial resolution of 30 m and a temporal resolution of 100 years) and with changes in spatial granularity (three records with spatial resolutions of 30, 50, and 100 m from the same timeslice). The metrics were both landscape and patch class scale and selected both to highlight potential changes due to the changes in time and granularity and to complement one another in interpretation.
+
+## Methods
+FRAGSTATS was used to calculate the following landscape and class metrics for the two groups of data:
+
+* Shannon's Diversity Index (SHDI)
+* Shannon's Evenness Index (SHEI)
+* Mean patch shape index
+* Patch count
+* Percent of landscape*
+* Patch count*
+* Mean patch area*
+* Mean edge:area ratio*
+
+*By patch type
+
+## Results
+```{r, echo=FALSE}
+class.tables.spatial <- get.tables(spatial.class, stat.lut, "grain")
+class.tables.temporal <- get.tables(temporal.class, stat.lut, "year")
+```
+tables
+
+## Discussion
+discussion
+
+## Literature Cited
+references

@@ -1,0 +1,1409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <title>Fire Perimeters Historic (Polygon)</title>
+        <geoform>vector digital data</geoform>
+        <othercit>Historic fire perimeters through year prior to each "current year".  Each year the "current year" is used to update this layer.  The current year is maintained as a separate feature.   For example, if the current year is 2016, fire perimeters for 2016 would be maintained in "Current Year", and historic would include perimeters through 2015.  In 2017, the 2016 current year would be migrated to "historic" and that layer would include perimeters through 2016.</othercit>
+        <origin>U.S. Department of the Interior, Bureau of Land Management (BLM)</origin>
+        <pubdate>20180205</pubdate>
+        <pubinfo>
+          <pubplace>BLM Idaho State Office, 1387 S Vinnell Way, Boise, ID 83709 US</pubplace>
+          <publish>U.S. Department of the Interior, Bureau of Land Management (BLM), Idaho State Office</publish>
+        </pubinfo>
+        <onlink>https://navigator.blm.gov/data?fs_publicRegion=Idaho</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This polygon feature class represents the final spatial extent and boundaries of the BLM Fire Occurrence and History Perimeter: Final Perimeters. Current through 2017.</abstract>
+      <purpose>BLM Fire Occurrence and History Perimeter: Final Perimeters are used for vegetation analysis such as habitat suitability, vegetation types and succession. Fire History can be used for current strategy and tactics on fires, fuels management, making forecasts for fire planning, analysis of vegetation and for stabilization and rehabilitation activities after fire. There are internal and external reporting requirements on burned acreage on a daily and annual basis. This will also provide timely updates for public web-services.</purpose>
+    </descript>
+    <status>
+      <update>Annually</update>
+      <progress>In work</progress>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-117.525292</westbc>
+        <eastbc>-110.476702</eastbc>
+        <northbc>48.995302</northbc>
+        <southbc>41.138261</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>BLM-THEME</themekt>
+        <themekey>Fire</themekey>
+        <themekey>Wildland Fire</themekey>
+        <themekey>Fire Perimeter</themekey>
+        <themekey>Fire History</themekey>
+        <themekey>Disturbance</themekey>
+        <themekey>Management</themekey>
+        <themekey>Range</themekey>
+        <themekey>Vegetation</themekey>
+      </theme>
+      <theme>
+        <themekt>None</themekt>
+        <themekey>Wildland Fire Management Informaton</themekey>
+        <themekey>WFMI</themekey>
+        <themekey>FIRECODE</themekey>
+        <themekey>Wildland Fire Decision Support System</themekey>
+        <themekey>WFDSS</themekey>
+        <themekey>National Interagency Fire Center</themekey>
+        <themekey>NIFC</themekey>
+      </theme>
+      <theme>
+        <themekt>ISO 19115 Topic Categories</themekt>
+        <themekey>environment</themekey>
+        <themekey>boundaries</themekey>
+        <themekey>planningCadastre</themekey>
+      </theme>
+      <place>
+        <placekey>ID</placekey>
+        <placekt>BLM-STATE</placekt>
+        <placekey>Idaho</placekey>
+      </place>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>These data are provided by BLM "as is" and may contain errors or omissions. The User assumes the entire risk associated with its use of these data and bears all responsibility in determining whether these data are fit for the User's intended use. The information contained in these data is dynamic and may change over time. The data are not better than the original sources from which they were derived, and both scale and accuracy may vary across the data set. These data may not have the accuracy, resolution, completeness, timeliness, or other characteristics appropriate for applications that potential users of the data may contemplate. The User is encouraged to carefully consider the content of the metadata file associated with these data. These data are neither legal documents nor land surveys, and must not be used as such. Official records may be referenced at most BLM offices. Please report any errors in the data to the BLM office for which it was obtained. The BLM should be cited as the data source in any products derived from these data. Any Users wishing to modify the data should describe the types of modifications they have performed. The User should not misrepresent the data, nor imply that changes made were approved or endorsed by BLM. This information may be updated without notification.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office</cntorg>
+          <cntper>Assistant Fire Management Officer</cntper>
+        </cntorgp>
+        <cntpos>Assistant Fire Management Officer</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical address</addrtype>
+          <address>1387 South Vinnell Way</address>
+          <city>Boise</city>
+          <state>Idaho</state>
+          <postal>83709-1657</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>208-373-4000</cntvoice>
+        <cntemail>id_so_information@blm.gov</cntemail>
+        <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+      </cntinfo>
+    </ptcontac>
+    <native>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.3.1.4959</native>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>20180205</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+  </idinfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc>Source data through 2007 loaded into FGDB with common attribute schema .  Most source data  were in the format of shapefiles or coverages,   and maintained by BLM local Offices.  The "Current" perimeters for 2007 loaded into the polygon data.  Some data acquired from other agencies.
+
+Attributes identifying reporting office (UNIT_ID, Field_Office) may reflect old district organizations for some fires. Cursory checks were made for dates out of range. Only a few records were found to be in error. Examples below Jarbidge "Dish Pan" 2001 F270 Date Start 8/30/2201 - Date Start Changed to 8/30/2001.  Shoshone "McKay" 1975 Date Start 7/15/2075 - Date Start Changed to 7/15/1975 - Shoshone "Kimama 1" 1971 Date Start 7/2/2071 - Date Start changed to 7/2/1971 
+
+At some point perimeters were segregated into "Current Year"  and "Historic" to facilitate multiuser editing in SDE over our very slow network., as well as providing "new" fires to national ftp sites.   When the perimeters were segregated into "Current" and "Historic", the CREAT_BY , CREATE_DATE, MODIFY_BY, and MODIFY_DATE fields were not retained in the Historic data set.  Records prior to 2016 will have default values for those fields.</procdesc>
+        <procdate>20080101</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>GIS Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709-1657</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Reviewed perimeters for duplication or variation in perimeters reported by more than one office. Worked with GIS specialist on each District to determine which perimeter to use. "Indian Cove" 2007 - used Boise District "Murphy Complex" 2007 -modified perimeter supplied by Team to represent field verification/modification in Bruneau Offices</procdesc>
+        <procdate>20080303</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>GIS Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709-1657</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Removed duplicate perimeter (Rowland 2006), Updated date_current field  for several fires.</procdesc>
+        <procdate>20080606</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 S. Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>UNITED STATES</country>
+            </cntaddr>
+            <cntvoice>(208) 373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov</cntemail>
+            <hours>7:45am - 4:15pm, Mountain Time, Monday - Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Converted the date elements to the National Wildfire Coordinating Group (NWCG) Standard where Data Type = YYYYMMDD</procdesc>
+        <procdate>20090320</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>GIS Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709-1657</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Append 2008 SDE FC</procdesc>
+        <procdate>20090501</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 S. Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>UNITED STATES</country>
+            </cntaddr>
+            <cntvoice>(208) 373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov</cntemail>
+            <hours>7:45am - 4:15pm, Mountain Time, Monday - Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Append 2009 SDE FC fire perimeters</procdesc>
+        <procdate>20100325</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 S. Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>UNITED STATES</country>
+            </cntaddr>
+            <cntvoice>(208) 373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov</cntemail>
+            <hours>7:45am - 4:15pm, Mountain Time, Monday - Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Removed 3 sets of duplicates from 2008: Arsenic Fire - identical (Four Rivers Field Office) Big Fire - identical (Four Rivers Field Office) Res. Line - (Pocatello Field Office) duplicated perimeters slightly offset from one another. Field Office researched records and determined that the eastern most perimeter was the correct one.</procdesc>
+        <procdate>20100329</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>Diane McConnaughey</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>2 Fires from 2009 were added back into this compiled dataset: "Wolf Creek" EKW7" 39 Acres, Four Rivers Field Office; and "Wheat Fire" E6ZV" 141 Acres Pocatello Field Office. Wolf Creek did burn on BLM Land. The Wheat Fire was in a BLM response areas threatening State Lands. GIS Fire Specialists in the local offices indicated that the fires should be in the compiled data. Used Load Objects in ArcMap.</procdesc>
+        <procdate>20100528</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 S. Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>UNITED STATES</country>
+            </cntaddr>
+            <cntvoice>(208) 373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov</cntemail>
+            <hours>7:45am - 4:15pm, Mountain Time, Monday - Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Schema modification and attribute cleanup. Fields were added/removed to match the schema for "Current Year" adopted by the GIS Coordinators 5/2010. For example Date_Start was a long field in the original, and transferred to a Date_Start as a Date Field.</procdesc>
+        <procdate>20100528</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Fires updated through 2012.. The update included 2011 perimeters collected by the BLM, as well as perimeters provided by Idaho National Laboratory. The INL update also included an updated fire perimeter for 2010, Middle Butte Fire. The original perimeter was GPS'd based on firelines used for a backburn. The updated perimeter was derived from imagery and reflected what actually burned., and was approximately 1/2 the size of the original perimeter. The fire/fuels resource specialist at the Upper Snake Field Office requested that updated perimeter be used since it better reflected the conditions.  Looks like some process steps missed between 2010-2012, oh well.  
+</procdesc>
+        <procdate>20120106</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>Diane McConnaughey</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>The original metadata document for this feature class was upgraded from ESRI version 9 to Version 10.0, Service Pack 4 using the ArcCatalog Upgrade tool and the FGDC-to-ArcGIS transformation.  The FGDC CSCGM and ESRI-ISO components of the metadata, except for the entity and attribute section, were then removed from ArcGIS metadata using the ”remove pre94 metadata elements.xslt” provided by ESRI.  Geoprocessing history was removed using the removeGeoprocessingHistory.xslt.  The metadata was reviewed and additional changes were made to the metadata to provide consistency and clarification, and to edit outdated information.  No changes were made to the actual data.</procdesc>
+        <procdate>20121010</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>John Courtright</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 S. Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>UNITED STATES</country>
+            </cntaddr>
+            <cntvoice>(208) 373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov</cntemail>
+            <hours>7:45am - 4:15pm, Mountain Time, Monday - Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>2012 fires were loaded on February 14, 2013 by John C.</procdesc>
+        <procdate>20130204</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>John Courtright</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 S. Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>UNITED STATES</country>
+            </cntaddr>
+            <cntvoice>(208) 373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov</cntemail>
+            <hours>7:45am - 4:15pm, Mountain Time, Monday - Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>The 2013 current year fire perimeters were loaded.</procdesc>
+        <procdate>20140117</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 S. Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>UNITED STATES</country>
+            </cntaddr>
+            <cntvoice>(208) 373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov</cntemail>
+            <hours>7:45am - 4:15pm, Mountain Time, Monday - Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>There are 77 fire perimeters for 2014 which were appended to this feature class.
+
+Some of the 2014 data would not append to the fire perimeters and needed to be changed.  This included;
+
+Comments that had &lt;NULL&gt; entries were converted to "".
+
+GIS_ACRES were recalculated.</procdesc>
+        <procdate>20150227</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>John Courtright</cntper>
+            </cntorgp>
+            <cntpos>GIS Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709-1657</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Fire perimeters for 2015 were  added to this data set to keep the data set  current.  </procdesc>
+        <procdate>20160115</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>GIS Specialist</cntper>
+            </cntorgp>
+            <cntpos>GIS Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709-1657</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Historic Fire perimeters (through 2015) were copied from corporate SDE to a work area.  New attributes not previously captured in the perimeters were added and calculated.  Existing attributes were migrated into the new standard.  Several attributes that were not part of the standard were retained at the request of the District.   No intentional changes were made to the geometry.   Perimeters may include perimeters from adjacent states as well as perimeters that do not have a record in BLM's official fire occurrence database, Wildland Fire Management System (WFMI).  WFMI records are available from 1980 to present.  These Historic fire perimeters include many perimeters prior to 1980.  The process for migrating existing attributes and populating were migrated or created described below.  Attribute definitions and descriptions can be found in the Attribute/Field section.
+
+ The FPER_V2 standard allows for, but does not mandate mapping "Unburned Islands" greater than 10 acres within a perimeters.  If Unburned Islands are mapped, the standard requires mapping them as "donut holes".  Many of the historic perimeters prior to 2006 reflect their heritage as ArcInfo "coverages", and Unburned areas are mapped as polygons within the perimeters and attributed as "Unburned Islands".
+
+The Fire Codes in the perimeters were reviewed to identify fire codes in the perimeters that did not occur in WFMI.   A subquery was used for this. The firecode is a unique 4-character alpha-numeric code assigned to a specific incident. See WFMI BLM User Guide 2016.  In reviewing WFMI codes, it was  revealed that the codes are not necessarily uinique.   Many of the fire codes not found in WFMI were typos as well as other errors.  Some errors were valid codes, but for a different fire.  Records may include records that would not be captured in WFMI, such as fires outside of BLM managed lands or response areas or that BLM did not provided assistance/support to.  Local Offices may want to review perimeters occurring after 1980 that do not seem to occur in WFMI and work with Dispatch Offices to determine if the record should be in WFMI.  Some firecodes matched the firecode in the FIRECODE system, but did not match WFMI.  Those records were edited to match WFMI so that they could be joined to WFMI.  Firecodes are not unique.   Unique IDs (or almost unique) were assigned to both the WFMI data and Perimeters by concatenating the Year, Reporting Unit, and Fire Code Fields.  Summaries on the “Unique-ID” were made so that records could be filtered for unique-ids occurring more than once, prior to joining the WFMI data to the Fire Perimeters.  Tables were joined to the WFMI data so that attributes could be calculated from the WFMI.  The Reporting Unit as reported in WFMI had not been previously included in the perimeters, and was added prior to creating the "unique id". 
+
+POO_JRSDCTNL_UNIT_ID.   Firetype/ProtectionType and Ownership codes in the WFMI data as well as GIS layers for BLM Surface Management Agency (SMA), Federal-State Interagency Fire Protection Boundary, and BLM, USFS  National Park Service (NPS) administrative boundaries were used to assign  POO_JRSDCTNL_UNIT_ID .   POO_JRSDCTNL_UNIT_ID  Codes are from the National Wildfire Coordinating Group Unit Identifier.  NWCG, (http://www.nwcg.gov).  Codes for all jurisdictional areas were not available, such as Idaho Department of Fish and Game, Military/COE areas in Eastern Idaho.  Those areas may be unattributed.  For some areas, it is unclear, such the Fort Hall Indian Reservation in Eastern Idaho ,  the Orchard Training Range in Southwestern Idaho, and Bureau of Reclamation (BOR) Lands throughout southwestern Idaho.  Some of the "BOR" lands identified by BLM Idaho Surface Management (SMA) layer might not be managed by the BOR, but might have some other status.   Discrepancies within WFMI coding for firetype/protectiontype/ownership codes as well as discrepancies in WFMI and GIS layers were observed, but no attempt was made to resolve the discrepancies.   This attribute had not previously been part of the fire perimeters.   
+
+POO_PRTCT_UNIT_ID.  Firetype/ProtectionType and Ownership codes in the WFMI data as well as GIS layers for SMA, Federal-State Interagency Fire Protection Boundary,  and  BLM and USFS administrative boundaries were used to select codes from the National Wildfire Coordinating Group  Unit Identifier. NWCG, (http://www.nwcg.gov).   This attribute had not previously been part of the fire perimeters. Discrepancies within WFMI coding for firetype/protectiontype/ownership codes as well as discrepancies in WFMI and GIS layers were observed, but no attempt was made to resolve the discrepancies.  If the point of origin is outside of Federal or State jurisdiction, the local protection entity might not be known, and there might not be a local protection entity for the time the fire occurred.   Local Fire Protection changes over time and may or may not include wildland fire protection, and it may or may not include all areas within its boundary.  Many of these areas are responded to by the BLM, but the BLM might not be  the entity responsible for providing direct incident management and services to the given area pursuant to its jurisdictional responsibility or as specified by law, contract, or agreement.  
+
+RPT_UNIT_ID.  This attribute was not previously captured in Idaho perimeters and was added during the migration to the new standard.  It was guestimated based on the fire location, year and WFMI location  For some areas, there is some correlation with Field Office or District Boundary, but for some areas such as "Southern Idaho District (1997-2001), a boundary could not be found.  The Reporting Unit for Idaho does change in extent and with time, as described in the attribute/field section.  The BLM Administrative District and Field Office in Idaho also changes with time,   The "Craters of the Moon NM (IDCMD) did not seem to be used by WFMI, and is not used here.   For a description of the BLM RPT_UNIT_ID refer to the BLM User Guides for WFMI.
+
+LOCAL_INCDNT_ID.  Calculated from the FIRECODE data provided by the NOC.  Those records are available from 2004 to present.    A few records in that data were incomplete, and the LOCAL_INCDNT_ID could not be calculated.   
+
+FIRE_CODE_ID.  Most records 1980-2015 were calculated from the "FIRE_NUM' in the original data, maintained as HISTORIC_IDAHO_FIRE_NUMBER in this dataset.  Records 1980-2015 were compared to WFMI, and if a match was not found, an attempt was made to correct the fire code attribute.  A subquery was used to select “firecodes” in the perimeters that did not occur in WFMI.  Not all records in WFMI have XY’s or the XY falls outside of the perimeter, which complicates verifying perimeters with WFMI.  Some perimeters did not seem to have a record in WFMI.   Many of the fires that could not be matched were in the Orchard Training Range or land managed by the Idaho National Laboratory.   A few fires on BLM managed were in areas protected by the Idaho Department of Lands (IDL) or the US Forest Service (USFS), and might not have been entered in WFMI or were coded differently than the perimeter.  Some perimeters may be outside of BLM's reporting system, but were included by Districts for various analysis needs.  WFMI and FIRECODE point locations, and other information in the perimeters attributes were used to try and determine the fire code when codes were in error or could not be found in WFMI.     An effort was made to correct errors in the original fire code for the perimeter.  Those errors can be found by using a subquery with the HISTORIC_IDAHO_FIRE_NUMBER and WFMI.    The FIRE_CODE_ID for records prior to 1980 were calculated to equal zero.  A subquery was used on the original fire code for the polygon (Historic_Idaho_Fire_Number).  The WFMI data pulled included all reports except for severity and false alarms.
+ This subquery was used:
+RPTUNIT_YEAR_FCODE Not IN (SELECT RPTUNIT_YEAR_FCODE  FROM WFMI_import_From_Excel_Defaults)  AND FIRE_DSCVR_CY &gt;= 1980
+
+INCDNT_NM.  Calculated from original perimeter “FIRE_NAME”.  No edits were made.  A few records had different names than WFMI (other than how it was abbreviated), but the names were not edited to match WFMI. A few records were calculated from WFMI if the original data did not record the name of the fire.  
+
+FIRE_DSCVR_CY.  Calculated from original Perimeter "Fire_Year”.  One or two records were edited where the original "Start_Date" and "Fire_Year" had a different Year, and the Start_Date matched WFMI.  
+FIRE_DSCVR_DT.   Calculated from the original Perimeter “Date_Start".  If the original Date_Start was coded 12/31/xxxx or 1/1/xxxx (where xxxx = year) indicating the exact date was unknown, and the Start_Date was available in WFMI, then the FIRE_DSCVR_DT was calculated to match WFMI.  If the “Date_Start" was complete, but different than WFMI, then it was not recalculated.
+
+FIRE_DSCVR_DT_EST_FLAG.  Compared to WFMI "StartTiime". to the FIRE_DSCVR_DT of the perimeter,  Perimeters with the same date calculated "NO", else calculated "YES".  Many perimeters had FIRE_DSCVR_DT that were 1-3 days different than recorded in WFMI "StartTiime”.
+
+FIRE_CNTRL_DT.    This attribute was not captured in Idaho perimeters and was added during the migration to the new standard.  Perimeters joined to WFMI data and calculated equal the ControlDate.
+
+FIRE_CNTRL_DT_EST_FLAG.  Records with known control dates calculated "NO", else "YES"
+
+FIRE_CAUSE_NM.  Calculated from the original perimeter, "Cause"
+
+FPER_DOM_CLCTN_MTHD.   Calculated from the original perimeter "Mapping_Source".  Almost all records matched the new schema.  A few were calculated to the best fit.
+
+TOTAL_RPT_ACRES_NR.  Calculated to equal the Reported Acres in WFMI.  The  acres reported in TOTAL_RPT_ACRES_NR and the acres calculated in the "GIS_Acres"  can vary widely. "Unburned Islands" were calculated equal 0.   A few records had multiple polygons for the fire; all polygons for the fire were calculated to the reported acres in WFMI
+GIS_ACRES.  Calculated to equal the original perimeter GIS_ACRES.  No changes were made.
+
+CMPLX_NM.  Calculated = original perimeter "Complex_NA"
+
+IRWIN_ID.  Not calculated
+
+COMMENT.  Calculated to equal the original perimeter "Comments".  
+
+ADM_UNIT_CD - Calculated to equal original perimeter "ADM_UNIT_CD".  No changes made. Idaho perimeters could be Field Office Name or District Office Name, both are used in this data.  What is intended?
+
+ADMIN_ST.  -  Calculated to equal the administrative state as reported in WFMI.
+
+PERCENT_BU - From original perimeters.  Not part of FPER_V2 standard
+
+GPS_UNIT_T  - From original perimeters.  Not part of FPER_V2 standard
+
+DATAFILE - From original perimeters.  Not part of FPER_V2 standard
+
+GPS_DATE    - From original perimeters.  Not part of FPER_V2 standard
+
+HISTORIC_IDAHO_FIRE_NUMBER .  Original "FIRE_NUM" (firecode).  No edits made to original data
+</procdesc>
+        <procdate>20160809</procdate>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+              <cntper>Diane McConnaughey</cntper>
+            </cntorgp>
+            <cntpos>Geographic Information Systems (GIS) Specialist</cntpos>
+            <cntaddr>
+              <addrtype>mailing and physical address</addrtype>
+              <address>1387 South Vinnell Way</address>
+              <city>Boise</city>
+              <state>Idaho</state>
+              <postal>83709</postal>
+              <country>US</country>
+            </cntaddr>
+            <cntvoice>208-373-4000</cntvoice>
+            <cntemail>id_so_information@blm.gov </cntemail>
+            <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <srcinfo>
+        <srctime>
+          <timeinfo>
+            <sngdate>
+              <caldate>20180205</caldate>
+            </sngdate>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srcscale>1:24,000, within about 32 m</srcscale>
+        <typesrc>computer program</typesrc>
+        <srccitea>GPS</srccitea>
+        <srccontr>GPS perimeters are collected using Avenza PDF, ESRI Collector, and Trimble TerraSync applications.</srccontr>
+      </srcinfo>
+    </lineage>
+    <attracc>
+      <attraccr>Attributes are accurate to the best of BLM ID's knowledge. Errors can be edited when found.</attraccr>
+    </attracc>
+    <complete>Features and attributes are updated with current year's perimeters at the end of each fire season. Dataset is complete to the best of BLM ID's knowledge</complete>
+    <posacc>
+      <horizpa>
+        <horizpar>Features are collected with GPS units and smart mobile devices. They are accurate enough for what the data is intended.</horizpar>
+      </horizpa>
+    </posacc>
+  </dataqual>
+  <spdoinfo>
+    <direct>Vector</direct>
+    <ptvctinf>
+      <esriterm Name="FIRE_NOC_FPERHistoric_PUB_NA_POLY">
+        <efeatyp Sync="TRUE">Simple</efeatyp>
+        <efeageom code="4" Sync="TRUE" />
+        <esritopo Sync="TRUE">FALSE</esritopo>
+        <efeacnt Sync="TRUE">0</efeacnt>
+        <spindex Sync="TRUE">TRUE</spindex>
+        <linrefer Sync="TRUE">FALSE</linrefer>
+      </esriterm>
+    </ptvctinf>
+  </spdoinfo>
+  <eainfo>
+    <detailed Name="FIRE_NOC_FPERHistoric_PUB_NA_POLY">
+      <enttyp>
+        <enttypl>fper_poly</enttypl>
+        <enttypd>BLM Fire Occurence and History Perimeter: Final Perimeters (FPER)</enttypd>
+        <enttypds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</enttypds>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">0</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl>OBJECTID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SHAPE</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>POO_PRTCT_UNIT_ID</attrlabl>
+        <attrdef>The active National Wildfire Coordinating Group ( NWCG ) Unit Identifier of the entity responsible for providing direct incident management and services to the given area pursuant to its jurisdictional responsibility or as specified by law, contract, or agreement.  The assigned code is based on the Point of Origin of the Fire, and might not reflect how the fire was managed as it grew.  The Point of Origin Protecting Unit Identifier might not reflect who actually responded to or managed the fire.  If the origin of the fire was on private land and local fire protection entities were unknown and/or protection agreements were unknown, the area might be unattributed.  If a WFMI point was not available to identify the point of Origin, the area may be unattributed.  NWCG Codes did not seem to be available for all areas.   A complete list of NWCG codes can be found   https://wfmi.nifc.gov/unit_id/Publish.html.    
+
+In Southern Idaho, BLM has protection agreements for State Lands and private timber lands, as well as BOR, COE, and Military Lands.   BLM also seems to protect NWR, NPS.  There may or may not be a protection agreement for this.    The USFS and Idaho Department of Lands (IDL) protect BLM managed land in northern Idaho.  BLM managed land within the Payette NF administrative boundary is protected by the Payette NF.  The Firetype/Protection Type and ownership codes in WFMI as well as GIS layers SMA, Idaho Federal-State Interagency Fire Protection boundaries, and BLM/USFS administrative boundaries were used to determine which NWCG code to use.  
+
+Jurisdiction and fire protection change with time.  A combination of the Firetype/Protectiontype and ownership codes in WFMI and GIS layers for BLM  2016 Idaho Surface Management (SMA), 2016  Interagency Fire Protection Agreement (sometimes called "offset agreement"), and BLM , USFS,  administrative boundaries ,  were used to guestimate the POO_JRSDCTNL_UNIT_ID.  This can be a problem since the SMA reflects 2016, and the codes in WFMI may reflect a different time.  There have also been some changes overtime in fire protection agreements.  The 2016 Interagency Fire Protection Agreement is an agreement between the US Forest Service, BLM, and the State (Idaho).  Other lands such as BOR and Military are not part of this agreement and are covered by other agreements.   It is unlikely that anyone will ever use this attribute for anything meaningful, so maybe all the nuances and problems are moot.
+
+The Firetype/ProtectionType and Ownership codes in WIFMI did not always match one another.   For example, some WFMI records coded as Firetype/protectiontypes coded 11, 12, 13, or 21, (BLM land protected by somebody), had ownerships codes other than "1" (BLM).   Some   WFMI records coded as Firetype/protectiontypes 15 or 16 (Non-BLM protected by BLM), were coded as "1" (BLM).  The Firetype/protectiontypes and ownership codes in WFMI are not always as precise as the codes available in NWCG.  For example, WFMI may code an area as National Park Service (NPS), where NWCG has the specific NPS Unit such as Craters of the Moon National Monument (USIDCMP) or Hagerman Fossil Beds National Monument (USIDHFP).  WFMI does not identify the specific agency that has protection responsibility for BLM managed lands when the entity is other than BLM.   Records may be coded as 15, 16, 25, or 26, indicating that it is BLM managed lands protected by different entity.  NWCG has specific codes for the Idaho Department of Lands (IDL) or USFS, such as USIDMCS, IDL, Maggie Creek Area Office or USIDPAF, USFS, Payette National Forest.   "Assist Fires" coded as 37 in WFMI are even more confusing,  
+
+POO_PRTCT_UNIT_ID Codes occurring as of  8/2016
+
+USIDBOD, BLM, Boise District
+USIDBOF, USFS, Boise National Forest
+USIDCMS, IDL, Craig Mountain Area Office
+USIDCOD, BLM, Coeur d' Alene Field Office
+USIDCTS, IDL, Clearwater Potlatch Timber Protective Association
+USIDCWD, BLM, Cottonwood Field Office
+USIDFHA, BIA, Fort Hall Agency
+USIDIFD, BLM, Idaho Falls District
+USIDINE, DOE, Idaho National Laboratory
+USIDIPF, USFS, Idaho Panhandle National Forest
+USIDMCS, IDL, Maggie Creek Area Office
+USIDMHQ, DOD, Mountain Home Airforce Base
+USIDNCF, USFS, Nez Perce National Forest
+USIDNIA, BIA, Northern Idaho Agency
+USIDPAF, USFS, Payette National Forest
+USIDSTF, USFS, Sawtooth National Forest
+USIDSWS, IDL, Southwest Area Office
+USIDTFD, BLM, Twin Falls District
+USNVEKD, BLM Elko District Office
+USORVAD, BLM, Vale District
+USORWWF, USFS, Wallowa-Whitman National Forest
+USNVHTF, USFS, Humboldt-Toiyabe National Forest
+USUTSLD, BLM, Utah Field Office 
+
+  </attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Point of Origin Protecting Unit Identifier</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">9</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>RPT_UNIT_ID</attrlabl>
+        <attrdef>The active National Wildfire Coordinating Group (NWCG) Unit Identifier of the governmental entity reported to the authoritative fire reporting system.
+  The Reporting Unit ID here is the Reporting Unit ID in the Wildland Fire Information System (WFMI).   WFMI Reporting Units prefixed with "US" as required by the 2016 FPER standard.     Most of the values listed in WFMI for Idaho do not occur in the NWCG downloaded 4/2016. The values here represent the values as reported in WFMI.  These Reporting Units could change as BLM standardizes fire reporting.  Fires prior to 1980 are coded as "USNA" The Fires coded in WFMI often correspond to Idaho BLM Field Offices (as of 2005), but not always.  As much as possible, the WFMI codes were used, regardless of the fire's location.  BLM Reporting Units in Idaho change in time and extent.  So fires in the same area may be coded differently depending on the year of the fire.
+
+USIDBPD Birds of Prey NCA (valid from 10/1/2001)
+USIDBOD Boise District (valid through 9/30/2001)
+USIDBRD Bruneau Field Office (valid from 10/1/2005 to present
+USIDBUD Burley District (valid through 12/31/1996)
+USIDBUD Burley Field Office (valid 10/1/2001 to present)
+USIDCHD Challis Field Office (valid from 10/1/2001 to present)
+USIDCOD Coeur d'Alene Field Office (valid through 9/30/2001)
+USIDCWD Cottonwood Field Office (valid 10/1/2001 to present)
+USIDCMD Craters of the Moon NM (valid 10/1/2001 to present).  Note, this code did not seem to be used by WFMI and most fires in this area coded in WFMI as USIDSHD
+USIDFRD Four Rivers Field Office (valid 10/1/2001 to present)
+USIDIFD Idaho Falls District (valid through 9/30/2001)
+USIDIFD Idaho Falls Field Office (valid from 10/1/2001).  There is not an Idaho Falls Field Office in Idaho.  There is an Upper Snake Field Office, but there is not a code for this.
+USIDJRD Jarbidge Field Office (valid 10/1/2001 to present)
+USIDOYD Owyhee Field Office (valid from 10/1/2001 to present)
+USIDPOD Pocatello Field Office (valid from 10/1/2001)
+USIDSAD Salmon District (valid through 9/30/2001)
+USIDSAD Salmon Field Office (valid from 10/1/2001 to present)
+USIDSHD  Shoshone District (valid through 12/31/1996)
+USIDSHD Shoshone Field Office (valid from 10/1/2001)
+USIDSID Southern Idaho District (Valid from 10/1/1997 to 9/30/2001)
+
+
+NWCG codes https://wfmi.nifc.gov/unit_id/Publish.html
+
+NWCG  http://www.nwcg.gov/ 
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Reported Unit Identifier</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">9</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LOCAL_INCDNT_ID</attrlabl>
+        <attrdef>A number assigned by the Protecting Unit or the Dispatch Center that has dispatch responsibilities over the point of origin for the fire. It is derived from a CAD system for BLM and is used in multiple systems for tracking in programs such as FireCode, ROSS, WFDSS, IQCS, and SIT209.  In this dataset it was calculated from the numeric portion of the Incident Identifier in FIRECODE.   FIRECODE was implemented in 2004, so  the LOCAL_INCDNT_ID was not available prior to 2004 from FIRECODE.  A FIRECODE dataset was provided by the BLM National Operations Center (NOC).  If the FIRECODE Incident ID  was not available or was incomplete, the Local_INCDNT_ID was calculated to equal "0" .  Null values are not allowed by the Standard.
+
+FIRECODES can be found here https://www.firecode.gov/</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Fire Incident Number</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>FIRE_CODE_ID</attrlabl>
+        <attrdef>The BLM Cost accounting tracking number.  From WFMI :  Fire Code: The unique 4-character alpha-numeric code assigned to a specific incident. Since Fiscal Year 2004, each BLM individual fire report requires a unique Fire Code obtained from the FireCode System at https://www.firecode.gov for all fire types/protection types. The same Fire Code cannot be assigned to multiple fires. (Exception: the United States Forest Service (USFS) assigns one FireCode per forest for ABCD Misc. fires to be used for initial attack, false alarms and extended attack if under 300 acres. So, for USFS ABCD Misc. fires, BLM will use the single assigned code and not generate a separate FireCode for each USFS ABCD fire.)
+
+In this dataset, the  FIRE_CODE_ID is the Fire Code as reported to WFMI.  This is a four character code and is usually used as an identifier for a fire, but it is not unique, and may need to be combined with other information such as FIRE_DSCVR_CY (Calendar Year)  and/or , State,  and/or Reporting Unit ID to query a particular fire.  Many of the original Fire Codes in the perimeters did not match fire codes in WFMI, and some perimeters occurring 1980-present  do not seem to have a record in WFMI.  Some of the firecodes in WFMI occurring after 2004 do not match the firecode in FIRECODE.  Perimeters that often did not seem to have a record in WFMI include fires in the Orchard Training Range and lands managed by the Idaho National Laboratory.   Some of the fires on BLM managed land that were in areas protected by the US Forest Service or Idaho Department of Lands did not seem to have a record in WFMI.   An effort was made to determine how fires were coded in WFMI, and when the perimeter code did not have a match in WFMI, it was recoded to the value in WFMI.    For some records, the firecode in WFMI did not match the firecode in the FIRECODE system.   For those records, the WFMI firecode was used.   The original polygon firecode is retained in the  HISTORIC_IDAHO_FIRE_NUMBER field.  The location of the record in WFMI was often used to help verify polygon attributes with WFMI.  This was often unclear if a fire in WFMI was coded as an "Assist Fire", because many of those do not include the XY information.  
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Fire Code</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>INCDNT_NM</attrlabl>
+        <attrdef>The name that is given to an incident for the purposes of providing a common way to identify the fire incident.  Usually the Fire Name in the perimeter matched the name as recorded in WFMI.  A few records (other than how they were abbreviated) did not match.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Incident Name</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">50</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>FIRE_DSCVR_CY</attrlabl>
+        <attrdef>The calendar year when the fire was discovered.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Fire Discovered Calendar Year</attalias>
+        <attrtype Sync="TRUE">SmallInteger</attrtype>
+        <attwidth Sync="TRUE">2</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>FIRE_DSCVR_DT</attrlabl>
+        <attrdef>The calendar year, month and day when the fire was discovered.
+If the year the fire was discovered is known, but not the month and date, 12-31-YYYY is used . If the month and year the fire was discovered is known, use  MM-31-YYYY (actual month, 31, actual year is used . If only the decade the year was discovered is known, use Dec 31, &lt;first year of the decade&gt; (12-31-YYYY) is used.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Fire Discovered Date</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>FIRE_DSCVR_DT_EST_FLAG</attrlabl>
+        <attrdef>A flag to indicate that the exact Fire Discovered Date is not known.
+No – The date in the Fire Discovery Date is the actual date the fire was discovered and is not estimated.
+Yes – The exact date on which the fire was discovered is not known and the date placed in the Fire Discovery Date attribute is only an estimate.
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Fire Discovered Date Estimated Flag</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">3</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>FIRE_CNTRL_DT</attrlabl>
+        <attrdef>The date that a wildfire was declared under control.  Original perimeters did not track this information, and all  FIRE_CNTRL_DT were calculated to equal the ControlDate reported to WFMI.  Fire prior to 1980 were calculated as 12/31/yyyy where yyyy = FIRE_DSCVR_CY.
+
+Implementation Guidelines for the FPER_v2 (2016) Standard.  If the year the fire was discovered is known, but not the month and date, 12-31-YYYY is used . If the month and year the fire was discovered is known, use  MM-31-YYYY (actual month, 31, actual year is used . If only the decade the year was discovered is known, use Dec 31, &lt;first year of the decade&gt; (12-31-YYYY) is used.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Fire Control Date</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>FIRE_CNTRL_DT_EST_FLAG</attrlabl>
+        <attrdef>A flag to indicate that the exact Fire Control Date is not known.
+No – The date in Fire Control Date is the actual date the fire was controlled and is not estimated.
+Yes – The exact date on which the fire was controlled is not known and the date placed in the Fire Control Date attribute is only an estimate.
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Fire Control Date Estimated Flag</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">3</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>FIRE_CAUSE_NM</attrlabl>
+        <attrdef>Broad classification of the reason the fire occurred.  Domain FPER_DOM_FIRE_CAUSE codes the casue as  Natural, Human, Unknown, Undetermined. 
+Perimeters prior to 2016 did not distinguish between "Unknown" and "Undetermined".  If the original attribute was NULL or blank, and the cause could be determined from WFMI, then the fire was coded to match WFMI.  The Cause category in WFMI did not distinguish between "Unknown" and 'Undetermined" , and no attempt was made to see if there was an investigation.  So those records are coded as "Unknown".  Original attributes were not changed, and there are a couple of perimeters coded as  "Unknown" that are identified in WFMI as "Natural".  No attempt was made to see which one was correct.  Original attributes included "Lightning", these were coded as "Natural"</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>Natural</edomv>
+            <edomvd>The fire started as the result of any type of activity not associated to humans.</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Human</edomv>
+            <edomvd>The fire was started as the result of human activity.</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Unknown</edomv>
+            <edomvd>The cause of the fire is not known and no investigation has been performed to try to determine cause. </edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Undetermined</edomv>
+            <edomvd>An investigation to determine cause of the fire was conducted but no determination could be made.</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+        </attrdomv>
+        <attalias Sync="TRUE">Incident General Cause Name</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">15</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CLCTN_MTHD_NM</attrlabl>
+        <attrdef>The method(s) by which perimeter data is collected in the field.  See   FPER_DOM_FIRE_CAUSE.  Methods include GPS, Remote sensing, and digitizing.  Sometimes the methods are unknown or might be described as "other".  Remote sensing may include various image sources and methods including  IR
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>GPS-Driven</edomv>
+            <edomvd>GPS-Driven</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>GPS-Flight</edomv>
+            <edomvd>GPS-Flight</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>GPS-Walked</edomv>
+            <edomvd>GPS-Walked</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>GPS-Walked/Driven</edomv>
+            <edomvd>GPS-Walked/Driven</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>GPS-Unknown</edomv>
+            <edomvd>GPS-Unknown</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Digitized-Topo</edomv>
+            <edomvd>Digitized-Topo</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Digitized-Other</edomv>
+            <edomvd>Digitized-Other</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Hand Sketch</edomv>
+            <edomvd>Hand Sketch</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Image Interpretation</edomv>
+            <edomvd>Image Interpretation</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Infrared Image</edomv>
+            <edomvd>Infrared Image</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Mixed Methods</edomv>
+            <edomvd>Mixed Methods</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Other</edomv>
+            <edomvd>Other</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Remote Sensing Derived</edomv>
+            <edomvd>Remote Sensing Derived</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Survey/GCDB/Cadastral</edomv>
+            <edomvd>Survey/GCDB/Cadastral</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+          <edom>
+            <edomv>Unknown</edomv>
+            <edomvd>Unknown</edomvd>
+            <edomvds>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</edomvds>
+          </edom>
+        </attrdomv>
+        <attalias Sync="TRUE">Collection Method</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">25</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>TOTAL_RPT_ACRES_NR</attrlabl>
+        <attrdef>The total number of acres burned as reported to the authoritative fire reporting system.
+The ControlAcres as reported in WFMI was used.  There may be some disparity in the Reported Acres and GIS_ACRES as calculated in GIS. 
+  Polygons identified as "Unburned Islands" are calculated to equal zero, since presumably these are not reported to WFMI.  Some perimeters include multi-part polygons, and each of these were calculated to equal the Reported Acres in WFMI for the fire.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Total Reported Acres</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GIS_ACRES</attrlabl>
+        <attrdef>The total number of acres within the wildland fire perimeter, as calculated from the GIS perimeter.  Original values were not changed and may have been calculated in UTM 11 or UTM 12 or Idaho Transverse Mercator.  They may or may not have been updated if any edits were made to the perimeter.   Some records have GIS_Acres &lt; 1 which might reflect polygons created by overlapping perimeters rather than an individual fire.  GIS Acres were not recalculated to the FPER_V2  standard and were copied from the original data.
+The standard requires that GIS_ACRES  are calculated in USA_Contiguous_Albers_Equal_Area_Conic
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">GIS Acres</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CMPLX_NM</attrlabl>
+        <attrdef>The name assigned to the fire complex, which is two or more individual incidents located in the same general area that are assigned to a single incident commander or unified command. Each fire within the complex has its own record.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Complex Name</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">50</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>IRWIN_ID</attrlabl>
+        <attrdef>The unique identifier that IRWIN assigns to the fire occurrence. Primary key for linking to the Wildland Fire Locations Point dataset.  IRWIN_ID not calculated for fires prior to 2016.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Irwin Identifier</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">50</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>COMMENT</attrlabl>
+        <attrdef>Additional comments or information about how wildland fire perimeter data was collected and characteristics of the fire itself.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Wildland Fire Perimeter Comments</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">255</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>ADM_UNIT_CD</attrlabl>
+        <attrdef>The BLM administrative unit/office that is a combination of Administrative State Code and Administrative Office Code that fully identifies the geographic area which has jurisdiction over the lands.  For  this dataset it might be attributed as the Field Office or District Office Name.   Both the Field Office and  District Office Name codes are used in this data.
+
+An administrative unit that identifies the state or geographic area which has administrative jurisdiction over lands, and cases.  This dataset may include perimeters originating from states adjacent to Idaho and it may include perimeters that did not burn into Idaho, but were acquired by BLM Offices for analysis needs. </attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Administrative Unit Code</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>ADMIN_ST</attrlabl>
+        <attrdef>An administrative unit that identifies the state or geographic area which has administrative jurisdiction over lands, and cases.  This dataset may include perimeters originating stgates adjacent to Idaho.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Administrative State Code</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">2</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>PERCENT_BU</attrlabl>
+        <attrdef>An ocular estimate of the percent of the area within the perimeter burned. It is an optional field.  This field is unique to Idaho and is not part of the Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2.  This field is optional.  A value equal to 0 is used if a burn estimate was not calculated or estimated. </attrdef>
+        <attrdefs>None</attrdefs>
+        <attalias Sync="TRUE">PERCENT_BU</attalias>
+        <attrtype Sync="TRUE">SmallInteger</attrtype>
+        <attwidth Sync="TRUE">2</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GPS_UNIT_T</attrlabl>
+        <attrdef>The type of GPS Unit used to collect the perimeter.   It is an optional field.  This field is unique to Idaho and is not part of the Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2. </attrdef>
+        <attrdefs>None</attrdefs>
+        <attalias Sync="TRUE">GPS_UNIT_T</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">20</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>DATAFILE</attrlabl>
+        <attrdef>The name of the GPS file. This field is unique to Idaho and is not part of the Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2.  This field is optional.</attrdef>
+        <attrdefs>None</attrdefs>
+        <attalias Sync="TRUE">DATAFILE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">20</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GPS_DATE</attrlabl>
+        <attrdef>The date of the most recent GPS collection.   This field is unique to Idaho and is not part of the Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2.  This field is optional.</attrdef>
+        <attrdefs>None</attrdefs>
+        <attalias Sync="TRUE">GPS_DATE</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>HISTORIC_IDAHO_FIRE_NUMBER</attrlabl>
+        <attrdef>This is the original firecode for the perimeters through 2015,  No edits/corrections were made to this field.  Some codes are in error and can be found by comparing this field to Fire_Code_ID field.  Some of the codes match the code that was used in the FIRECODE system but did not match the code that was recorded in WFMI.  Others may be codes prior to WFMI and were added for various mapping needs.   It is an optional field and will probably not be maintained after 2015.  This field is unique to Idaho and is not part of the 2016  Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2.  Districts identified the fields in the original perimeters that were not part of the standard that they wanted retained,   It is unlikely that this field will be used for fires occurring after 2015.</attrdef>
+        <attrdefs>None</attrdefs>
+        <attalias Sync="TRUE">IDAHO_FIRE_NUMBER</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>POO_JRSDCTNL_UNIT_ID</attrlabl>
+        <attrdef>The active NWCG Unit Identifier of the governmental entity having overall land and resource management for the specific geographical area as provided by law for the piece of land where the fire started.  
+
+POO_JRSDCTNL_UNIT_ID  is based on the Point of Origin of the Fire, and might not reflect land jurisdiction in all areas of the fire or even the majority of the fire.   Not all areas are coded.   NWCG codes are not available for all of Idaho.   If a WFMI  point was not available to identify the point of Origin or jurisdiction was uncertain, the area may be uncoded.   The older the fire, the less likely the WFMI  location is accurate.  
+ NWCG Codes did not seem to be available for all areas, such as  Idaho Department of Fish and Game, and Military/COE areas in Eastern Idaho.  Areas in the Saylor Creek Military area might be coded as  USIDMHQ (Mountain Home Air Force Base), this may or may not be the correct code for this area.  There is  BOR  area in Eastern Idaho managed by the BOR Upper Colorado Regional Office (USCOBRL).  All other BOR areas in Idaho are managed by the BOR Pacific Northwest Region (USIDBRL).   In this data set, some areas coded as Idaho Private Lands (USIDPRI) might be areas managed by cities or counties.  
+
+Jurisdiction changes with time.  A combination of the Firetype/Protectiontype and ownership codes in WFMI and GIS layers for BLM  2016 Idaho Surface Management (SMA), 2016  InterAgency Fire Protection Agreement (sometimes called "offset agreement"), and BLM  and  USFS administrative boundaries ,  were used to guestimate the POO_JRSDCTNL_UNIT_ID.  This can be a problem since the SMA reflects 2016, and the codes in WFMI may reflect a different time.  There has also been some changes overtime in fire protection agreements.  2016  InterAgency Fire Protection Agreement is between the US Forest Service, BLM , and the State.  Other lands such as BOR and Military are not part of this agreement and are covered by other agreements. 
+
+The Firetype/ProtectionType and Ownership codes  in WIFMI did not always match one another.   For example,  some WFMI records coded as Firetype/protectiontypes coded 11, 12, 13, or 21, (BLM land protected by somebody), had ownerships codes other than "1" ( BLM).   Some   WFMI records coded as Firetype/protectiontypes 15 or 16 ( Non-BLM protected by BLM), were coded as "1" (BLM).  The  Firetype/protectiontypes and ownership codes in WFMI  are not always as precise as the codes available in NWCG.  For example, WFMI may code an area as National Park Service (NPS), where NWCG has the specific NPS Unit such as Craters of the Moon National Monument (USIDCMP) or Hagerman Fossil Beds National Monument (USIDHFP).
+
+A complete list can be found   https://wfmi.nifc.gov/unit_id/Publish.html.   
+
+ NWCG Codes for  the POO_JRSDCTNL_UNIT_ID  occurring in this dataset as of 8/2016 include:
+USCOBRL , BOR Upper Colorado Regional Office.  ( There is  a BOR  area  in Eastern Idaho  managed by the Upper Colorado Office.  Other BOR lands in Idaho are managed by the BOR Pacific NW Region Office. 
+USIDBOD, BLM, Boise District
+USIDBOF, USFS, Boise National Forest
+USIDBRL,  BOR, Pacific NW Region
+USIDCMP, BLM, Craters of the Moon.  Code does not seem to be used consistently by WFMI
+USIDCOD, BLM,  Coeur d' Alene Field Office
+USIDCWD, BLM, Cottonwood Field Office
+USIDFHA,  BIA, Fort Hall Agency
+USIDHFP,  NPS, Hagerman Fossil Beds National Monument
+USIDIDS, State, Idaho Department of Lands
+USIDIFD, BLM, Idaho Falls District
+USIDINE, DOE, Idaho National Laboratory
+USIDIPS, State, Idaho Department of Parks and Recreation
+USIDMHQ, DOD, Mountain Home Airforce Base
+USIDPRI, Idaho Private Lands, may include county and city
+USIDSTF, USFS, Sawtooth National Forest
+USIDTFD, BLM, Twin Falls District
+USNVEKO, BLM  Elko Field Office
+USNVHTF, USFS, Humboldt-Toiyabe National Forest
+USORPRI,  Oregon Private Lands, may include county and city
+USUTPRI,  Utah Private Lands, may include county and city
+USUTSLD, BLM, Utah Field Office
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Point of Origin Jurisdictional Unit Identifier</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">9</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CREATE_DATE</attrlabl>
+        <attrdef>The month, day, and calendar year on which the position of the Location was created.  Might not be relevant here since date updated as data migrated and does not refect when the feature was created.
+
+At some point perimeters were segregated into "Current Year" and "Historic" to facilitate multiuser editing in SDE over our very slow network, as well as providing "new" fires to national ftp sites.   When the perimeters were segregated into "Current" and "Historic", the CREATE_BY , CREATE_DATE, MODIFY_BY, and MODIFY_DATE fields were not retained in the Historic data set.  Records prior to 2016 will have default values for those fields.
+
+</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Created Date</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CREATE_BY</attrlabl>
+        <attrdef>The User ID (BLM login ID) of the person who created or imported the data into the BLM GIS system. 
+
+At some point perimeters were segregated into "Current Year" and "Historic" to facilitate multiuser editing in SDE over our very slow network, as well as providing "new" fires to national ftp sites.   When the perimeters were segregated into "Current" and "Historic", the CREATE_BY , CREATE_DATE, MODIFY_BY, and MODIFY_DATE fields were not retained in the Historic data set.  Records prior to 2016 will have default values for those fields.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Created By Name</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">30</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>MODIFY_DATE</attrlabl>
+        <attrdef>The month, day, and calendar year on which the position of the Location was modified.
+
+At some point perimeters were segregated into "Current Year" and "Historic" to facilitate multiuser editing in SDE over our very slow network, as well as providing "new" fires to national ftp sites.   When the perimeters were segregated into "Current" and "Historic", the CREATE_BY , CREATE_DATE, MODIFY_BY, and MODIFY_DATE fields were not retained in the Historic data set.  Records prior to 2016 will have default values for those fields.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Modified Date</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>MODIFY_BY</attrlabl>
+        <attrdef>The User ID (BLM login ID) of the person who edited or modified data in the BLM GIS system will be collected and maintained.
+
+At some point perimeters were segregated into "Current Year" and "Historic" to facilitate multiuser editing in SDE over our very slow network, as well as providing "new" fires to national ftp sites.   When the perimeters were segregated into "Current" and "Historic", the CREATE_BY , CREATE_DATE, MODIFY_BY, and MODIFY_DATE fields were not retained in the Historic data set.  Records prior to 2016 will have default values for those fields.</attrdef>
+        <attrdefs>Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2</attrdefs>
+        <attalias Sync="TRUE">Modify By Name</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">30</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>created_user</attrlabl>
+        <attrdef>The name of the user who created the feature within the feature class of a geodatabase.  Created by software.  Not editble</attrdef>
+        <attrdefs>Software generated</attrdefs>
+        <attalias Sync="TRUE">created_user</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">255</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>created_date</attrlabl>
+        <attrdef>The date (UTC)  the feature within the feature class of a geodatabase was created.  Created by software.  Not editble</attrdef>
+        <attrdefs>Software generated.</attrdefs>
+        <attalias Sync="TRUE">created_date</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>last_edited_user</attrlabl>
+        <attrdef>The name of the user who most recently updated the feature.  Created by software.  Not editble</attrdef>
+        <attrdefs>Software generated.</attrdefs>
+        <attalias Sync="TRUE">last_edited_user</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">255</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>last_edited_date</attrlabl>
+        <attrdef>The date (UTC)  the feature within the feature class of a geodatabase most recently edited.  Created by software.  Not editble</attrdef>
+        <attrdefs>Software generated</attrdefs>
+        <attalias Sync="TRUE">last_edited_date</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>RPTUNIT_Year_FCODE</attrlabl>
+        <attrdef>A unique ( or almost unique) identifier for the fire.  Created by concatenating FIRE_DSCVR_CY,  RPT_UNIT_ID, and FIRE_CODE_ID fields.  This attribute is not part of the 2016 FPER_V2 standard or original perimneter schema.  It was created for purposes of uniquely identifying records in WFMI  so that they could be used to attribute and verify attributes in the perimeters.
+ The Firecodes in WFMI  are not unique.  This field was created in both the perimeters and in the WFMI data so that information that did not exist in the perimeters could be extracted from WFMI (such as FIRE_CNTRL_DT, TOTAL_RPT_ACRES_NR) , as well as comparing existing fields such as the FIRE_DSCVR_DT to the date reported to WFMI.  If records were incomplete for  existing fields and available in WFMI, that information was extracted.  Not all records could be joined to WFMI.    The Firetype/Protectiontype and ownership codes in WFMI were used to help with coding the POO_JRSDCTNL_UNIT_ID and  POO_PRTCT_UNIT_ID fields, but were not retained in this dataset.  The  RPTUNIT_Year_FCODE in not unique, but it was not a problem.   Most of the repeating codes occurred in perimeters with multiple polygons for the fire, Unburned Islands within a perimeter, or in the Orchard Training Range.
+
+CalculateField fper_poly DIANE_UNIQUE_ID "[RPT_UNIT_ID] + "_" + Cstr( [FIRE_DSCVR_CY]) +"_" + [FIRE_CODE_ID]" VB #
+</attrdef>
+        <attrdefs>None</attrdefs>
+        <attalias Sync="TRUE">RPTUNIT_Year_FCODE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">15</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Shape_Length</attrlabl>
+        <attalias Sync="TRUE">Shape_Length</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Length of feature in internal units.</attrdef>
+        <attrdefs Sync="TRUE">Esri</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Shape_Area</attrlabl>
+        <attalias Sync="TRUE">Shape_Area</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef>
+        <attrdefs Sync="TRUE">Esri</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <overview>
+      <eaover>The schema includes many of the attributes found in  WFMI, BLM's official record system for fire occurrence, as well as additional attributes not found in WFMI, and attributes that are not part of the FPER standard that Districts wanted to retain.  The attributes that are not part of the Standard are optional and may or may not be used for fires occurring after 2015.
+Attributes provide the date the fire started as well as the date the fire was declared controlled, fire name, fire code, fire cause,  perimeter collection method, and many other attributes. Some attributes may be incomplete. The comment fields are free text, and most are null, but are sometimes used to identify unburned islands within a given fire.  If  existing perimeters did not capture attributes found in WIFMI or were incomplete, then WFMI was used. If the  FIRE_DSCVR_DT  was complete but did not was not match WFMI's StartTime, the original FIRE_DSCVR_DT was not changed to match WFMI.  The FIRE_DSCVR_EST_FLAG  was used to indicate that it did not match the StartTime in WFMI.  The FIRE_CNTRL_DT and TOTAL_RPT_ACRES_NR fields were not previously captured and were copied from WFMI.  The LOCAL_INCDNT_ID was not previously captured and was calculated from FIRECODE.    The RPT_UNIT_ID was not previously captured in the perimeters and was guestimated as described in the lineage and field sections of this metadata.
+
+FIRE_CODE_ID.  In this dataset, it is the FireCode as reported to WFMI.  This is a four character code and is usually used as an identifier for a fire, but it is not unique, and may need to be combined with other information such as FIRE_DSCVR_CY (Calendar Year)  and/or , State,  and/or Reporting Unit ID to query a particular fire.  Many of the original Fire Codes in the perimeters did not match fire codes in WFMI, and some perimeters occurring 1980-present  do not seem to have a record in WFMI.  See discussion in the fields section for more details. 
+
+RPT_UNIT_ID.  Reporting Units were not in the original attributes and were assigned manually (best guestimate).  GIS layers for the  fire perimeters, WFMI locations, BLM admin boundaries were used.  One issue is that in Idaho, the Reporting Unit ID changes with time and may change by extent.  The Reporting Unit in WFMI might even reflect who actually responded to/managed the fire  rather than the official reporting unit.  See details in the fields section.  Unique IDs were created in both the perimeters and  WFMI data by concatenating the Year, Reporting Unit, and Firecode.  Then tables were joined.  Tables physically joined, virtual join in ArcMap failed miserably.  Firetype/Protectiontype and ownership codes in WFMI and GIS layers used to assign/calculate POO codes.  Total Reported Acres and Control dates calculated from WFMI fields.
+
+The  POO_JRSDCTNL_UNIT_ID  and  POO_PRTCT_UNIT_ID   represent the active National Wildfire Coordinating Group ( NWCG ) Unit Identifier of the entity responsible for providing direct incident management and services to the given area pursuant to its jurisdictional responsibility or as specified by law, contract, or agreement and the active NWCG Unit Identifier of the governmental entity having overall land and resource management for the specific geographical area as provided by law for origin of  the fire.   They may or may not reflect who responded to or managed the fire or the overall management of the land within the perimeter.  "Local" protection by city/volunteer/ rural/subscription services is not reflected . For fire origins outside of federal or State jurisdiction/management, no effort was made to determine if there was  Non-Federal or Non-State entity with fire protection or incident management responsibilities.  "Jurisdiction" and "Protection" may change with time.  These attributes could be misleading depending on how they are used.  So don't. 
+
+At some point  (2008 ? ) perimeters were segregated into "Current Year" and "Historic" to facilitate multiuser editing in SDE over our very slow network., as well as providing "new" fires to national ftp sites.   When the perimeters were segregated into "Current" and "Historic", the CREAT_BY , CREATE_DATE, MODIFY_BY, and MODIFY_DATE fields were not retained in the Historic data set.  Records prior to 2016 will have default values for those fields.
+
+_________________________________________________________________________________________________________________________________________________
+
+FPER - WFMI Crosswalk
+
+FPER                                                      WFMI
+________________________________________________________________________________________________________________________________________________
+
+POO_JRSDCTNL_UNIT_ID                   -------------
+POO_PRTCT_UNIT_ID                          -------------
+RPT_UNIT_ID                                        ReportingUnitID
+LOCAL_INCDNT_ID                              Presumably will be added to WFMI ( here it is from FIRECODE)
+FIRE_CODE_ID                                      Firecode
+INCDNT_NM                                           Firename     
+FIRE_DSCVR_CY                                  CalendarYear
+FIRE_DSCVR_DT                                   StartTime      
+FIRE_DSCVR_EST_FLAG                      ----------
+FIRE_CNTRL_DT                                    ControlTime
+FIRE_CNTRL_DT_EST_FLAG               -----------
+FIRE_CAUSE_NM                                   CauseCategory
+CLCTN_MTHD_NM                                 -------------
+TOTAL_RPT_ACRES_NR                       ControlAcres
+GIS_ACRES                                              ----------
+CMPLX_NM                                               -----------
+IRWIN_ID                                                   ----------
+Comment                                                    ----------
+Percent_BU                                                 ---------                 Not part of  FPER standard or WFMI
+GPS_Unit_T                                                 ---------                Not part of  FPER standard  or WFMI
+Datafile                                                         ---------                Not part of  FPER standard  or WFMI
+GPS_Date                                                    ----------               Not part of  FPER standard or WFMI
+Historic_Idaho_Fire_Number                      ----------                Not part of  FPER standard or WFMI
+
+For a description of the BLM Standard for Fire perimeters, see Fire Occurrence and History Perimeter: Final Perimeters (FPER) Implementation Guidelines, Version 2.2.  and FPER_Data_Standard_Report  for 2016. 
+http://teamspace/sites/blmnds/Established%20Data%20Standards/Forms/Grouped%20by%20Standard.aspx?InitialTabId=Ribbon%2EDocument&amp;VisibilityContext=WSSTabPersistence.
+
+
+
+
+
+</eaover>
+      <dsoverv>This dataset contains all of the historical fire perimeter features.</dsoverv>
+    </overview>
+  </eainfo>
+  <metainfo>
+    <metd>20160906</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Department of the Interior (DOI), Bureau of Land Management (BLM), Idaho State Office, Engineering and Geographic Sciences</cntorg>
+          <cntper>State Data Administrator</cntper>
+        </cntorgp>
+        <cntpos>State Data Administrator</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical address</addrtype>
+          <address>1387 South Vinnell Way</address>
+          <city>Boise</city>
+          <state>Idaho</state>
+          <postal>83709-1657</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>208-373-4000</cntvoice>
+        <cntemail>id_so_information@blm.gov</cntemail>
+        <hours>7:45 A.M. - 4:30 P.M., Mountain Time, Monday – Friday</hours>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+    <metuc>These data are provided by BLM "as is" and may contain errors or omissions. The User assumes the entire risk associated with its use of these data and bears all responsibility in determining whether these data are fit for the User's intended use. The information contained in these data is dynamic and may change over time. The data are not better than the original sources from which they were derived, and both scale and accuracy may vary across the data set. These data may not have the accuracy, resolution, completeness, timeliness, or other characteristics appropriate for applications that potential users of the data may contemplate. The User is encouraged to carefully consider the content of the metadata file associated with these data. These data are neither legal documents nor land surveys, and must not be used as such. Official records may be referenced at most BLM offices. Please report any errors in the data to the BLM office for which it was obtained. The BLM should be cited as the data source in any products derived from these data. Any Users wishing to modify the data should describe the types of modifications they have performed. The User should not misrepresent the data, nor imply that changes made were approved or endorsed by BLM. This information may be updated without notification.</metuc>
+    <metrd>20180205</metrd>
+  </metainfo>
+  <dataIdInfo>
+    <envirDesc Sync="TRUE"> Version 6.2 (Build 9200) ; Esri ArcGIS 10.4.1.5686</envirDesc>
+    <dataLang>
+      <languageCode value="eng" Sync="TRUE" />
+      <countryCode value="USA" Sync="TRUE" />
+    </dataLang>
+    <idCitation>
+      <resTitle Sync="TRUE">FIRE_NOC_FPERHistoric_PUB_NA_POLY</resTitle>
+      <presForm>
+        <PresFormCd value="005" Sync="TRUE" />
+      </presForm>
+    </idCitation>
+    <spatRpType>
+      <SpatRepTypCd value="001" Sync="TRUE" />
+    </spatRpType>
+  </dataIdInfo>
+  <mdLang>
+    <languageCode value="eng" Sync="TRUE" />
+    <countryCode value="USA" Sync="TRUE" />
+  </mdLang>
+  <Esri>
+    <DataProperties>
+      <itemProps>
+        <itemName Sync="TRUE">FIRE_NOC_FPERHistoric_PUB_NA_POLY</itemName>
+        <imsContentType Sync="TRUE">002</imsContentType>
+        <itemLocation>
+          <linkage Sync="TRUE">file://\\ILMIDSO50565937\C$\tmp\GIS\Data_Administration\GIS\NOC_Public_Download\gdb\DataToPublish_20170605.gdb</linkage>
+          <protocol Sync="TRUE">Local Area Network</protocol>
+        </itemLocation>
+      </itemProps>
+      <coordRef>
+        <type Sync="TRUE">Projected</type>
+        <geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn>
+        <csUnits Sync="TRUE">Linear Unit: Meter (1.000000)</csUnits>
+        <projcsn Sync="TRUE">NAD_1983_UTM_Zone_11N</projcsn>
+        <peXml Sync="TRUE">&lt;ProjectedCoordinateSystem xsi:type='typens:ProjectedCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.4'&gt;&lt;WKT&gt;PROJCS[&amp;quot;NAD_1983_UTM_Zone_11N&amp;quot;,GEOGCS[&amp;quot;GCS_North_American_1983&amp;quot;,DATUM[&amp;quot;D_North_American_1983&amp;quot;,SPHEROID[&amp;quot;GRS_1980&amp;quot;,6378137.0,298.257222101]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433]],PROJECTION[&amp;quot;Transverse_Mercator&amp;quot;],PARAMETER[&amp;quot;False_Easting&amp;quot;,500000.0],PARAMETER[&amp;quot;False_Northing&amp;quot;,0.0],PARAMETER[&amp;quot;Central_Meridian&amp;quot;,-117.0],PARAMETER[&amp;quot;Scale_Factor&amp;quot;,0.9996],PARAMETER[&amp;quot;Latitude_Of_Origin&amp;quot;,0.0],UNIT[&amp;quot;Meter&amp;quot;,1.0],AUTHORITY[&amp;quot;EPSG&amp;quot;,26911]]&lt;/WKT&gt;&lt;XOrigin&gt;-5120900&lt;/XOrigin&gt;&lt;YOrigin&gt;-9998100&lt;/YOrigin&gt;&lt;XYScale&gt;10000&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;0.001&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;WKID&gt;26911&lt;/WKID&gt;&lt;LatestWKID&gt;26911&lt;/LatestWKID&gt;&lt;/ProjectedCoordinateSystem&gt;</peXml>
+      </coordRef>
+    </DataProperties>
+    <SyncDate>20170605</SyncDate>
+    <SyncTime>17381000</SyncTime>
+    <ModDate>20170605</ModDate>
+    <ModTime>17381000</ModTime>
+  </Esri>
+  <distInfo>
+    <distFormat>
+      <formatName Sync="TRUE">File Geodatabase Feature Class</formatName>
+    </distFormat>
+  </distInfo>
+  <mdHrLv>
+    <ScopeCd value="005" Sync="TRUE" />
+  </mdHrLv>
+  <mdHrLvName Sync="TRUE">dataset</mdHrLvName>
+  <refSysInfo>
+    <RefSystem>
+      <refSysID>
+        <identCode code="26911" Sync="TRUE" />
+        <idCodeSpace Sync="TRUE">EPSG</idCodeSpace>
+        <idVersion Sync="TRUE">6.13(3.0.1)</idVersion>
+      </refSysID>
+    </RefSystem>
+  </refSysInfo>
+  <spatRepInfo>
+    <VectSpatRep>
+      <geometObjs Name="FIRE_NOC_FPERHistoric_PUB_NA_POLY">
+        <geoObjTyp>
+          <GeoObjTypCd value="002" Sync="TRUE" />
+        </geoObjTyp>
+        <geoObjCnt Sync="TRUE">0</geoObjCnt>
+      </geometObjs>
+      <topLvl>
+        <TopoLevCd value="001" Sync="TRUE" />
+      </topLvl>
+    </VectSpatRep>
+  </spatRepInfo>
+  <mdDateSt Sync="TRUE">20170605</mdDateSt>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Department of the Interior, Bureau of Land Management (BLM), Idaho State Office</cntorg>
+          <cntper>State Data Administrator</cntper>
+        </cntorgp>
+        <cntpos>State Data Administrator</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical address</addrtype>
+          <address>1387 South Vinnell Way</address>
+          <city>Boise</city>
+          <state>ID</state>
+          <postal>83709</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>208-373-4000</cntvoice>
+        <cntemail>blm_id_stateoffice@blm.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>The information depicted in this GIS layer is the result of digital analyses performed on a database consisting of information from a variety of governmental and other credible sources. The accuracy of the information presented is limited to the collective accuracy of the database on the date of the analysis. The information is believed accurate and reasonable efforts have been made to ensure the accuracy of the data. However, the BLM Idaho State Office expressly disclaims responsibility for damages or liability that may arise from use of this data. No warranty is made by the Bureau of Land Management as to the accuracy, reliability, or completeness of these data for individual use or aggregate use with other data. Be certain to cite the Bureau of Land Management Idaho State Office in the use of this data.</distliab>
+    <availabl>
+      <timeinfo>
+        <sngdate>
+          <caldate>20170629</caldate>
+        </sngdate>
+      </timeinfo>
+    </availabl>
+  </distinfo>
+</metadata>

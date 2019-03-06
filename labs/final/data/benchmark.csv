@@ -1,0 +1,21 @@
+Benchmark Group,Reporting Unit,Lower Limit,LL Relation,Indicator,UL Relation,Upper Limit,Unit,Condition Category,Duration,indicator,precip.regime,season,name
+Arid,Arid,0,<=,"Non-invasive Tree Cover  (%, any hit)",<=,1.5,%,Meeting,All,Tree,arid,any,Non-invasive Tree Cover  (arid)
+Arid,Arid,1.5,<,"Non-invasive Tree Cover  (%, any hit)",<=,100,%,Not Meeting,All,Tree,arid,any,Non-invasive Tree Cover  (arid)
+Arid,Arid,0,<=,"Invasive Annual Grass Cover  (%, any hit)",<=,5,%,Meeting,Annual,,arid,any,Invasive Annual Grass Cover  (arid)
+Arid,Arid,5,<,"Invasive Annual Grass Cover  (%, any hit)",<=,100,%,Not Meeting,Annual,,arid,any,Invasive Annual Grass Cover  (arid)
+Spring,Spring,0,<=,"Sagebrush Cover  (%, any hit)",<,20,%,Not Meeting,All,Sagebrush,any,spring,Sagebrush Cover  (spring)
+Spring,Spring,20,<=,"Sagebrush Cover  (%, any hit)",<=,100,%,Meeting,All,Sagebrush,any,spring,Sagebrush Cover  (spring)
+Spring,Spring,0,<=,"Non-invasive Perennial Grass Cover  (%, any hit)",<,10,%,Not Meeting,Perennial,Graminoid,any,spring,Non-invasive Perennial Grass Cover  (spring)
+Spring,Spring,10,<=,"Non-invasive Perennial Grass Cover  (%, any hit)",<=,100,%,Meeting,Perennial,Graminoid,any,spring,Non-invasive Perennial Grass Cover  (spring)
+Spring,Spring,0,<=,"Non-invasive Shrub Cover  (%, any hit)",<,30,%,Not Meeting,Perennial,Shrub,any,spring,Non-invasive Shrub Cover  (spring)
+Spring,Spring,30,<=,"Non-invasive Shrub Cover  (%, any hit)",<=,100,%,Meeting,Perennial,Shrub,any,spring,Non-invasive Shrub Cover  (spring)
+Summer,Summer,0,<=,"Non-invasive Perennial Forb/Grass Cover  (%, any hit)",<=,15,%,Not Meeting,Perennial,Non-woody,any,summer,Non-invasive Perennial Forb/Grass Cover  (summer)
+Summer,Summer,15,<,"Non-invasive Perennial Forb/Grass Cover  (%, any hit)",<=,100,%,Meeting,Perennial,Non-woody,any,summer,Non-invasive Perennial Forb/Grass Cover  (summer)
+Arid,Summer,0,<=,"Non-invasive Perennial Forb Cover  (%, any hit)",<,5,%,Not Meeting,Perennial,Forb/herb,arid,summer,"Non-invasive Perennial Forb Cover  (summer, arid)"
+Arid,Summer,5,<=,"Non-invasive Perennial Forb Cover  (%, any hit)",<=,100,%,Meeting,Perennial,Forb/herb,arid,summer,"Non-invasive Perennial Forb Cover  (summer, arid)"
+Mesic,Summer,0,<=,"Non-invasive Perennial Forb Cover  (%, any hit)",<,15,%,Not Meeting,Perennial,Forb/herb,mesic,summer,"Non-invasive Perennial Forb Cover  (summer, mesic)"
+Mesic,Summer,15,<=,"Non-invasive Perennial Forb Cover  (%, any hit)",<=,100,%,Meeting,Perennial,Forb/herb,mesic,summer,"Non-invasive Perennial Forb Cover  (summer, mesic)"
+Upland,Summer,0,<=,"Sagebrush Cover  (%, any hit)",<,10,%,Not Meeting,All,Sagebrush,arid,summer,"Sagebrush Cover  (summer, arid)"
+Upland,Summer,10,<=,"Sagebrush Cover  (%, any hit)",<=,25,%,Meeting,All,Sagebrush,arid,summer,"Sagebrush Cover  (summer, arid)"
+Upland,Summer,25,<,"Sagebrush Cover  (%, any hit)",<=,100,%,Not Meeting,All,Sagebrush,arid,summer,"Sagebrush Cover  (summer, arid)"
+Summer,Summer,0,<=,Number Non-Invasive Plant Species,<,5,#,Not Meeting,All,,any,summer,Number Non-Invasive Plant Species (summer)

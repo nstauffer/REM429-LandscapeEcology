@@ -1,0 +1,222 @@
+---
+title: "HARVEST Lite Explorations"
+author: "Nelson Stauffer"
+date: "February 15, 2018"
+output: word_document
+---
+```{r setup, echo = FALSE, warning = FALSE}
+# Load up the functions
+source("code/log_extraction.R")
+
+# Read in the logs (the warnings are about coercing factors into character strings and dropping the "total" rows from tables)
+logs <- logs.read("data/logs")
+
+# Somehow the metadata for the hectares cut is dorpped by an order of magnitude?
+logs$metadata$harvest.hectares.mean <- logs$metadata$harvest.hectares.mean*10
+```
+
+## Introduction
+Spatial configuration is important to consider when dealing with landscapes because every agent and entity, biotic or abiotic, has to physically pass through space. Every piece of the landscape is influenced by its position relative to the others as interactions occur within that piece and between it and adjacent pieces. The edge effects occurring as a result of the interactions between adjacent patch types can have pronounced effects on the function of the ecological systems (Demaynadier, 1998). For this reason, it can be extremely important to consider the spatial distribution and effects when building a model.
+
+The HARVEST Lite software runs a spatial model approximating the effects of a probabilistic timber extraction effort over time within a discrete area (Gustafson, 2005). There are both model parameters (mean harvest size in hectares, percent of forest cut each decade, spatial configuration of harvest, and model seed number) and reporting parameters (buffer width and opening persistence) available to the user. Model parameters affect the model run and result in differences in the model output. Reporting parameters do not have an effect on the model output, but do result in differences in the calculations of values reported from the output (Gustafson, 2005).
+
+Of the reported values, those of greatest interest are area of area of interior habitat, area of edge habitat, and mean patch size. Interior habitat is the area within a patch which is far enough from the edge of the patch to be considered free (as defined by the user) from edge effects. Edge habitat is the area within a patch that is close enough to the interface with other patch types to have edge effects resulting from interactions at the boundaries (again, as defined by the user). These two values are affected by changes in patch size and the distance the user defines as "edge," so it is of interest how parameters which drive those, *i.e.* every model parameter and reporting parameter, would in turn affect the interior and edge habitat areas. Also, edge and interior areas are in direct opposition to each other and the only two categories, so as one decreases the other necessarily increases by the same amount.
+
+Mean patch size, like habitat areas, will vary with all parameters, but of particular interest here is how the distribution of the harvesting efforts, either dispersed or clumped, will result in changes to intact patch sizes.
+
+## Methods
+### Defaults
+HARVEST Lite takes as its starting data source a raster .gis file in which each cell is assigned a value representing the age of the forest stand in the cell in decades. The software comes with two data sets and this work used the "undisturbed" data, UNDISTBD.GIS. Additionally, every time the model is executed, the user can assign a seed number or allow the software to use a random one. The seed number used for every model run here was 4 to ensure that differences in output were not due to differences in random effects but instead differences in parameters.
+
+### Model Runs
+For each parameter being investigated, multiple runs were executed with a different value for the parameter in each run. Only one parameter was changed from the default value in a run so that the effects observed would be isolated to the results of that parameter.
+
+The following values were used for each of the parameters, default in bold:
+
+  - Mean harvest size (ha): 2.5, 7.5, **5.0**, 10.0, 12.5
+  - Forest area cut (%/decade): 0.5, **1.0**, 2.5, 5.0, 7.5
+  - Spatial configuration of harvest: **"Dispersed"**, "Clumped"
+  - Buffer width (m): 30, 60, 120, **180**, 240
+  - Opening persistence (decades): 1, **2**, 3, 4, 5
+  
+After a model run, the software was used to report both patch and habitat metrics. The resulting rasters and log files were saved to be parsed into usable data for analysis.
+
+
+## Results
+### Mean Harvest Size
+```{r meanharvest_habitat, echo = FALSE, warning = FALSE}
+# The runs we want to include here. Baseline values and then post harvest where the only changed parameter was mean harvest area
+meanharvest.keys <- c("baseline", logs$metadata$key[grepl(logs$metadata$key, pattern = "^meanharvest") & !grepl(logs$metadata$key, pattern = "_")])
+
+meanharvest.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% meanharvest.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% meanharvest.keys))
+
+# Make a tall version so I can easily plot them against each other
+meanharvest.data.tall <- tidyr::gather(dplyr::select(meanharvest.data,
+                                                     key, harvest.hectares.mean, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:harvest.hectares.mean))
+
+meanharvest.data.tall <- dplyr::mutate(meanharvest.data.tall,
+              habitat.type = (stringr::str_extract(habitat.type, pattern = "(edge)|(interior)")))
+
+ggplot(meanharvest.data.tall) +
+  geom_col(aes(x = harvest.hectares.mean, y = area.ha, fill = habitat.type)) +
+  labs(x = "Mean harvest size (ha)",
+       y = "Habitat area (ha)",
+       fill = "Habitat Type")
+```
+
+Figure 1: Area of edge and interior habitat as a function of mean harvest size. The effects are most pronounced in smaller-scale disturbance, likely due to maximizing the interspersion:patch size ratio.
+
+
+### Percent of Forest Cut Each Decade
+```{r pctcut_habitat, echo = FALSE, warning = FALSE}
+pctcut.keys <- c("baseline", logs$metadata$key[grepl(logs$metadata$key, pattern = "^cutpct")])
+
+pctcut.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% pctcut.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% pctcut.keys))
+
+pctcut.data.tall <- tidyr::gather(dplyr::select(pctcut.data,
+                                                     key, decade.pct.cut, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:decade.pct.cut))
+
+pctcut.data.tall <- dplyr::mutate(pctcut.data.tall,
+              habitat.type = (stringr::str_extract(habitat.type, pattern = "(edge)|(interior)")))
+
+ggplot(pctcut.data.tall) +
+  # geom_area(aes(x = decade.pct.cut, y = area.ha, fill = habitat.type), position = "identity", alpha =0.25) +
+  geom_col(aes(x = decade.pct.cut, y = area.ha, fill = habitat.type)) +
+  labs(x = "Harvest Size (percent of forest per decade)",
+       y = "Habitat area (ha)",
+       fill = "Habitat Type")
+  
+```
+
+Figure 2: Area of edge and interior habitat as a function of percent of forest area cut per decade. There is a relatively linear relationship with both variables and an inverse relationship between the variables.
+
+### Spatial Configuration
+```{r spatial_habitat, echo = FALSE, warning = FALSE}
+# spatial.keys <- c("baseline", "meanharvest5", "meanharvest5_clust")
+spatial.keys <- c("meanharvest5", "meanharvest5_clust")
+
+spatial.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% spatial.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% spatial.keys))
+
+spatial.data.tall <- tidyr::gather(dplyr::select(spatial.data,
+                                                     key, dispersion, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:dispersion))
+
+spatial.data.tall <- dplyr::mutate(spatial.data.tall,
+              habitat.type = (stringr::str_extract(habitat.type, pattern = "(edge)|(interior)")))
+
+ggplot(spatial.data.tall) +
+  geom_col(aes(x = dispersion, y = area.ha, fill = habitat.type)) +
+  labs(x = "Dispersion Method",
+       y = "Habitat area (ha)",
+       fill = "Habitat Type")
+```
+
+Figure 3: Area of edge and interior habitat as a function of dispersion method. Clumped disturbances create larger patches, corresponding to higher interior habitat areas; dispersed, the inverse.
+
+```{r spatial_patches, echo = FALSE, warning = FALSE}
+spatial.patch <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% spatial.keys),
+                       y = dplyr::filter(logs$patch.sizes, logs$patch.sizes$key %in% spatial.keys))
+
+names(spatial.patch)[names(spatial.patch) == "Age class (decades)"] <- "age.class"
+names(spatial.patch)[names(spatial.patch) == "No. of patches"] <- "patch.n"
+names(spatial.patch)[names(spatial.patch) == "Avg. size (ha)"] <- "avg.size.ha"
+library(ggridges)
+ggplot(spatial.patch) +
+  geom_violin(aes(y = avg.size.ha, x = dispersion, fill = dispersion)) +
+  # geom_col(aes(y = patch.n,
+  #              x = avg.size.ha,
+  #              fill = dispersion),
+  #          position = "identity",
+  #          color = "black",
+  #          alpha = 0.7) +
+  labs(y = "Mean patch size (ha)",
+       x = "Dispersion Method",
+       fill = "Dispersion Method") +
+  theme(legend.position = "none")
+```
+
+Figure 4: Distribution of age class mean patch size as a function of dispersion method. Dispersed disturbances have a very slight tendency toward larger patches, although smoothing interpolating data masks 0 values.
+
+### Buffer Width
+```{r buffer_interior, echo = FALSE, warning = FALSE}
+buffer.keys <- c("meanharvest5", logs$metadata$key[grepl(logs$metadata$key, pattern = "buffer")])
+
+buffer.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% buffer.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% buffer.keys))
+
+buffer.data.tall <- tidyr::gather(dplyr::select(buffer.data,
+                                                     key, buffer, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:buffer))
+
+buffer.data.tall <- dplyr::mutate(buffer.data.tall,
+              habitat.type = (stringr::str_extract(habitat.type, pattern = "(edge)|(interior)")))
+
+ggplot(dplyr::filter(buffer.data.tall, habitat.type == "interior")) +
+    geom_col(aes(x = buffer, y = area.ha, fill = habitat.type), position = "dodge") +
+  labs(x = "Buffer radius (m)",
+       y = "Habitat area (ha)") +
+  theme(legend.position = "none")
+```
+
+Figure 5: Area of interior habitat as a function of buffer radius. As the search radius for patch interface increases, the number of cells qualifying as "interior" decreases.
+
+### Persistence Time
+```{r persistence_interior, echo = FALSE, warning = FALSE}
+persist.keys <- c("meanharvest5", logs$metadata$key[grepl(logs$metadata$key, pattern = "per")])
+
+persist.data <- merge(x = dplyr::filter(logs$metadata, logs$metadata$key %in% persist.keys),
+                          y = dplyr::filter(logs$other, logs$other$key %in% persist.keys))
+
+persist.data.tall <- tidyr::gather(dplyr::select(persist.data,
+                                                     key, persistence.decades, habitat.ha.interior, habitat.ha.edge),
+                                       key = "habitat.type",
+                                       value = "area.ha", -(key:persistence.decades))
+
+persist.data.tall <- dplyr::mutate(persist.data.tall,
+              habitat.type = (stringr::str_extract(habitat.type, pattern = "(edge)|(interior)")))
+
+ggplot(dplyr::filter(persist.data.tall, habitat.type == "interior")) +
+    geom_col(aes(x = persistence.decades, y = area.ha, fill = habitat.type), position = "dodge") +
+  labs(x = "Persistence (decades)",
+       y = "Habitat area (ha)") +
+  theme(legend.position = "none")
+```
+
+Figure 6: Area of interior habitat as a function of opening persistence in decades. As persistence time increases, succession is delayed resulting in more distinct patches and decreased numbers of cells qualifying as "interior".
+
+## Discussion
+It is important to remember the limitations of any model when attempting to interpret or apply the outputs from the model. In the case of HARVEST Lite, the raster values are limited to age classes of forest, but contain no reference to any other potential successional factors like ecological potential of a given cell or possible differences due to species makeup. Likewise, the only disturbance represented is logging with no representation of the effects of supporting infrastructure like road development or incidental natural disturbances like wildfire which may occur over the considered timescales. HARVEST Lite also operates on a decade timescale, which risks missing the forest for the trees, overlooking the possible effects on and from faster-living species in the vegetation communities.
+
+### Mean Harvest Size And Percent Cut
+Mean harvest size and percent cut per decade are parameters which interact with each other, which must be taken into account when considering them. While holding the percent cut constant, reducing the mean harvest size results in more, smaller disturbances and increasing it results in fewer, larger disturbances. Likewise, holding the mean harvest size constant while increasing the percent of the forest cut will result in more, smaller disturbances; decreasing it, the inverse.
+
+With smaller mean harvest sizes, the resulting high number of disturbances with low patch areas produces higher edge habitat areas across the landscape. With higher mean harvest sizes, the resulting disturbance patches are large enough to contain more interior habitat area (Fig 1).
+
+With a smaller percentage of the forest harvested each decade, there are much larger areas of the landscape left intact as large undisturbed patches, which themselves have significant interior-qualifying areas. Higher percentages result in greater area across the landscape being disturbed and the breaking up of the original patches, resulting in a shift to a greater area in edge-qualifying cells (Fig. 2).
+
+### Spatial Configuration
+As expected, keeping disturbances near one another in space will tend to cause multiple disturbances contributing to a single patch. This results in higher interior habitat areas for clumped dispersion of disturbances than in a dispersed approach which will result in more discrete, smaller patches (Fig. 3).
+
+While there were differences in the mean patch size, the pattern was not particularly strong (Fig. 4). The expectation would be that clumped disturbances resulted in larger patch sizes, both because multiple disturbances would tend to form a single patch and because undisturbed patches would be less frequently broken apart by individual disturbances.
+
+### Buffer Width
+Buffer width dictates how far the search for a cell belonging to a different patch reaches, so as the search radius increases, interior habitat area decreases because the likelihood of the search radius exceeding the distance to the patch interface increases (Fig. 5).
+
+### Opening Persistence
+Opening persistence determines the minimum age of a cell that is considered forest, so as it increases so do the number of non-habitat cells punctuating the landscape, creating an inverse relationship between persistence and interior habitat area.
+
+## Literature Cited
+Demaynadier, Phillip G. and Malcolm L. Hunter. 1998. Effects of Silvicultural Edges on the Distribution and Abundance of Amphibians in Maine. Conservation Biology 12:40-352.
+
+Gustafson, Eric J. and Luke V. Rasmussen. 2005. HARVEST for Windows v6.1: User’s guide.
+Published on the Internet by the USDA Forest Service, North Central Research Station, St. Paul, MN.
+URL: http://www.ncrs.fs.fed.us/4153/harvest/v61/documentation/default.asp.
